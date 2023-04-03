@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Booklyn</string>
+    <string name="activity_hotel_selection_title">Гостиницы</string>
+    <string name="filter">Фильтр</string>
+    <string name="sort">Сортировать</string>
+    <string name="chose">Выбрать</string>
 </resources>

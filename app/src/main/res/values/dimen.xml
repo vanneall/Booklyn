@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_title_size">20dp</dimen>
+    <dimen name="simple_size">15dp</dimen>
+    <dimen name="little_size">10dp</dimen>
+</resources>
