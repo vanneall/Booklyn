@@ -28,6 +28,7 @@
             android:textSize="@dimen/simple_size"
             android:gravity="bottom"
             android:fontFamily="sans-serif-black"
+            android:textColor="@color/black"
             />
 
         <LinearLayout
@@ -50,7 +51,8 @@
                 android:gravity="top"
                 android:text="rate"
                 android:textSize="@dimen/simple_size"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -62,7 +64,8 @@
             android:layout_weight="1"
             android:text="price"
             android:textSize="@dimen/simple_size"
-            android:fontFamily="sans-serif-black"/>
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
     <Button
