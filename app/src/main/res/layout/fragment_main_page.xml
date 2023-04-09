@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".hotel_page.MainPageFragment"
+    android:paddingTop="20dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/main_page_textView_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hotel_title"
+        style="@style/Title"
+        android:gravity="center_horizontal"/>
+
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/main_page_imageView_photo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/main_page_textView_category_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info"
+        style="@style/CategoryTitle"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/main_page_textView_info"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="200dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <TextView
+        android:id="@+id/main_page_textView_category_services"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/services"
+        style="@style/CategoryTitle"
+        android:background="#E0E8ED"
+        android:gravity="center_horizontal"/>
+
+
+</LinearLayout>

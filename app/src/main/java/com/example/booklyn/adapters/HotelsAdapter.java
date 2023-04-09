@@ -1,6 +1,7 @@
 package com.example.booklyn.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.booklyn.HotelActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 
@@ -42,6 +44,15 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         TextView textViewRate = view.findViewById(R.id.textView_hotel_list_item_rate);
         TextView textViewPrice = view.findViewById(R.id.textView_hotel_list_item_price);
         Button button = view.findViewById(R.id.button_selection_hotel);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(button.getContext(), HotelActivity.class);
+                // TODO: Изменить
+                intent.putExtra("hotel_selected", i);
+                button.getContext().startActivity(intent);
+            }
+        });
 
         Hotel hotel = hotels.get(i);
         imageView.setImageResource(hotel.getMainPicture());

@@ -4,4 +4,15 @@
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
 
+    <style name="Title" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">@dimen/title_size</item>
+        <item name="color">@color/text_color</item>
+    </style>
+
+    <style name="CategoryTitle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="color">@color/text_color</item>
+        <item name="android:textSize">@dimen/simple_size</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
 </resources>

@@ -4,4 +4,10 @@
     <string name="filter">Фильтр</string>
     <string name="sort">Сортировать</string>
     <string name="chose">Выбрать</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hotel_title">Гостиница</string>
+    <string name="info">Описание</string>
+    <string name="services">Услуги</string>
 </resources>
