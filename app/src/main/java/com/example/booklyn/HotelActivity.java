@@ -13,9 +13,9 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
 
     MainPageFragment mainPageFragment;
 
-    ReviewFragment reviewFragment = new ReviewFragment();
-    PhotosFragment photosFragment = new PhotosFragment();
-    FeedbackFragment feedbackFragment = new FeedbackFragment();
+    ReviewFragment reviewFragment;
+    PhotosFragment photosFragment;
+    FeedbackFragment feedbackFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,9 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
         Bundle bundle = getIntent().getExtras();
 
         MainPageFragment mainPageFragment = new MainPageFragment(bundle);
+        reviewFragment = new ReviewFragment();
+        photosFragment = new PhotosFragment();
+        feedbackFragment = new FeedbackFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.hotel_activity, mainPageFragment).commit();
     }
 

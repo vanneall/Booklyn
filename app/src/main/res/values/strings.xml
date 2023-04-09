@@ -22,4 +22,7 @@
 
     <!-- Бронь -->
     <string name="book_button">Забронировать</string>
+
+    <!-- Страница с отзывами -->
+    <string name="feedback_title">Отзывы и рейтинг</string>
 </resources>

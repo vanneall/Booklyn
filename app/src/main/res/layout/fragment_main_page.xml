@@ -76,37 +76,50 @@
         android:layout_height="wrap_content"
         android:src="@drawable/line"/>
 
-    <FrameLayout
-            android:id="@+id/frame_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/line"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="40dp"
+            <FrameLayout
+                android:id="@+id/frame_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_gravity="bottom"
+                android:padding="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/CategoryTitle"
-                android:textColor="@color/black"
-                android:text="2500 за ночь"
-                android:gravity="center"
-                android:layout_weight="1"/>
+                android:src="@drawable/line"/>
 
-            <Button
-                android:layout_width="40dp"
+            <LinearLayout
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="@string/book_button"
-                android:layout_weight="1"/>
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    style="@style/CategoryTitle"
+                    android:textColor="@color/black"
+                    android:text="2500 за ночь"
+                    android:gravity="center"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="@string/book_button"
+                    android:layout_weight="1"/>
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 </LinearLayout>

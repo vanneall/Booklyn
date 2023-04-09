@@ -66,10 +66,10 @@ public class MainPageFragment extends Fragment {
 
         RadioButton radioButtonFeedback = view.findViewById(R.id.radio_button_feedback);
         RadioButton radioButtonReview = view.findViewById(R.id.radio_button_review);
-        radioButtonReview.toggle();
         RadioButton radioButtonPhotos = view.findViewById(R.id.radio_button_photos);
         radioButtonFeedback.setOnCheckedChangeListener(checkedChangeListener);
         radioButtonReview.setOnCheckedChangeListener(checkedChangeListener);
+        radioButtonReview.toggle();
         radioButtonPhotos.setOnCheckedChangeListener(checkedChangeListener);
     }
 
