@@ -49,7 +49,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
             public void onClick(View view) {
                 Intent intent = new Intent(button.getContext(), HotelActivity.class);
                 // TODO: Изменить
-                intent.putExtra("hotel_selected", i);
+                intent.putExtra(Hotel.SELECTED_HOTEL, i);
                 button.getContext().startActivity(intent);
             }
         });
@@ -58,7 +58,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         imageView.setImageResource(hotel.getMainPicture());
         textViewName.setText(hotel.getName());
         textViewRate.setText(String.valueOf(hotel.getRate()));
-        textViewPrice.setText(String.valueOf(hotel.getPrice()));
+        textViewPrice.setText(String.valueOf(hotel.getPrice()) + "₽");
         return view;
     }
 }

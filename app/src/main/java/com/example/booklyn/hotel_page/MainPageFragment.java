@@ -38,7 +38,7 @@ public class MainPageFragment extends Fragment {
     PageController pageController;
 
     public MainPageFragment(Bundle bundle){
-        hotel =  Hotel.hotels.get(bundle.getInt("hotel_selected"));
+        hotel =  Hotel.hotels.get(bundle.getInt(Hotel.SELECTED_HOTEL));
     }
 
 
