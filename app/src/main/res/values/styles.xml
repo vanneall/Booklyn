@@ -6,13 +6,23 @@
 
     <style name="Title" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textSize">@dimen/title_size</item>
-        <item name="color">@color/text_color</item>
+        <item name="android:textColor">@color/text_color</item>
     </style>
 
     <style name="CategoryTitle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="color">@color/text_color</item>
+        <item name="android:textColor">@color/text_color</item>
         <item name="android:textSize">@dimen/simple_size</item>
         <item name="textAllCaps">true</item>
+    </style>
+    
+    <style name="InteractText" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="android:textSize">@dimen/simple_size</item>
+    </style>
+
+    <style name="HotelDataString" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/simple_size</item>
     </style>
 
 </resources>
