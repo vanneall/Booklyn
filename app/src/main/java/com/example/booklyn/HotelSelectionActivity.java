@@ -1,22 +1,18 @@
 package com.example.booklyn;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booklyn.adapters.HotelsAdapter;
 import com.example.booklyn.entities.Hotel;
-
-import java.util.ArrayList;
 
 public class HotelSelectionActivity extends AppCompatActivity {
 
     ListView listViewMainHotels;
 
-    ArrayList<Hotel> hotels = new ArrayList<>(3);
+    HotelsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +21,17 @@ public class HotelSelectionActivity extends AppCompatActivity {
         listViewMainHotels = findViewById(R.id.listView_main_hotels);
         Hotel.hotels.clear();
         Hotel.addHotels(Hotel.hotels);
-        HotelsAdapter adapter = new HotelsAdapter(this, R.layout.hotels_list_item, Hotel.hotels);
+        adapter = new HotelsAdapter(this, R.layout.hotels_list_item, Hotel.hotels);
         listViewMainHotels.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        refreshRating();
+    }
+
+    public void refreshRating(){
+        adapter.notifyDataSetChanged();
     }
 }

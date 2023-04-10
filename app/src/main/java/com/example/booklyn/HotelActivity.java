@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
 import com.example.booklyn.hotel_page.MainPageFragment;
 import com.example.booklyn.hotel_page.PhotosFragment;
 import com.example.booklyn.hotel_page.ReviewFragment;
 
-public class HotelActivity extends AppCompatActivity implements MainPageFragment.PageController {
+public class HotelActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter {
 
     MainPageFragment mainPageFragment;
 
@@ -44,5 +45,10 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photosFragment).commit();
                 break;
         }
+    }
+
+    @Override
+    public void setRate(float rate, String info) {
+        feedbackFragment.addRate(rate, info);
     }
 }

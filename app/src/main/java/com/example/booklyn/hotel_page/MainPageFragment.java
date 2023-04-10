@@ -2,21 +2,17 @@ package com.example.booklyn.hotel_page;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
@@ -60,6 +56,9 @@ public class MainPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView textViewName = view.findViewById(R.id.main_page_textView_title);
         textViewName.setText(hotel.getName());
+
+        TextView textViewPrice = view.findViewById(R.id.main_page_textView_price_for_night);
+        textViewPrice.setText(hotel.getPrice() + "₽ за ночь");
 
         ImageView imageViewMain = view.findViewById(R.id.main_page_imageView_photo);
         imageViewMain.setImageResource(hotel.getMainPicture());

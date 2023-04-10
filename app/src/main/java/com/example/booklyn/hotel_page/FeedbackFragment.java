@@ -1,26 +1,29 @@
 package com.example.booklyn.hotel_page;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+
+import com.example.booklyn.HotelSelectionActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.RatingAdapter;
 import com.example.booklyn.entities.Hotel;
 
-import java.util.Arrays;
-
 public class FeedbackFragment extends Fragment {
 
     Hotel hotel;
+    RatingAdapter ratingAdapter;
+    ListView listView;
+
+    View homeView;
 
     public FeedbackFragment(Bundle bundle) {
         hotel = Hotel.hotels.get(bundle.getInt(Hotel.SELECTED_HOTEL));
@@ -35,10 +38,25 @@ public class FeedbackFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView listView = view.findViewById(R.id.feedback_list_view);
-        RatingAdapter ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());
+        homeView = view;
+        listView = view.findViewById(R.id.feedback_list_view);
+        ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());
         listView.setAdapter(ratingAdapter);
         setRatingProcents(view);
+        TextView textViewAddFeedback = view.findViewById(R.id.feedback_add_feedback);
+        textViewAddFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment dialogFragment = new DialogAddFragment();
+                dialogFragment.show(getFragmentManager(), "tag1");
+            }
+        });
+    }
+
+    public void addRate(float rate, String info) {
+        hotel.addRate(rate, info);
+        setRatingProcents(homeView);
+        ratingAdapter.notifyDataSetChanged();
     }
 
     private void setRatingProcents(View view) {
@@ -50,11 +68,10 @@ public class FeedbackFragment extends Fragment {
 
         int[] rateCount = hotel.getRateCount();
         int sum = hotel.getRates().size();
-        int a = (int)(((float)rateCount[4]/sum)*100);
-        textView5stars.setText(String.valueOf((int)(((float)rateCount[4]/sum)*100)) + "%");
-        textView4stars.setText(String.valueOf((int)(((float)rateCount[3]/sum)*100)) + "%");
-        textView3stars.setText(String.valueOf((int)(((float)rateCount[2]/sum)*100)) + "%");
-        textView2stars.setText(String.valueOf((int)(((float)rateCount[1]/sum)*100)) + "%");
-        textView1stars.setText(String.valueOf((int)(((float)rateCount[0]/sum)*100)) + "%");
+        textView5stars.setText((int) (((float) rateCount[4] / sum) * 100) + "%");
+        textView4stars.setText((int) (((float) rateCount[3] / sum) * 100) + "%");
+        textView3stars.setText((int) (((float) rateCount[2] / sum) * 100) + "%");
+        textView2stars.setText((int) (((float) rateCount[1] / sum) * 100) + "%");
+        textView1stars.setText((int) (((float) rateCount[0] / sum) * 100) + "%");
     }
 }
