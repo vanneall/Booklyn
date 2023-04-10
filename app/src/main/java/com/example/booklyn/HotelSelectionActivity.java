@@ -1,9 +1,11 @@
 package com.example.booklyn;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.booklyn.adapters.HotelsAdapter;
 import com.example.booklyn.entities.Hotel;
@@ -21,12 +23,9 @@ public class HotelSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_selection);
         listViewMainHotels = findViewById(R.id.listView_main_hotels);
-        // TODO Убрать
+        Hotel.hotels.clear();
         Hotel.addHotels(Hotel.hotels);
-
         HotelsAdapter adapter = new HotelsAdapter(this, R.layout.hotels_list_item, Hotel.hotels);
         listViewMainHotels.setAdapter(adapter);
     }
-
-
 }

@@ -16,8 +16,6 @@ import com.example.booklyn.HotelActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class HotelsAdapter extends ArrayAdapter<Hotel> {
@@ -57,7 +55,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         Hotel hotel = hotels.get(i);
         imageView.setImageResource(hotel.getMainPicture());
         textViewName.setText(hotel.getName());
-        textViewRate.setText(String.valueOf(hotel.getRate()));
+        textViewRate.setText(String.valueOf(hotel.getAvgRate()));
         textViewPrice.setText(String.valueOf(hotel.getPrice()) + "₽");
         return view;
     }

@@ -27,7 +27,7 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
         MainPageFragment mainPageFragment = new MainPageFragment(bundle);
         reviewFragment = new ReviewFragment(bundle);
         photosFragment = new PhotosFragment();
-        feedbackFragment = new FeedbackFragment();
+        feedbackFragment = new FeedbackFragment(bundle);
         getSupportFragmentManager().beginTransaction().add(R.id.hotel_activity, mainPageFragment).commit();
     }
 

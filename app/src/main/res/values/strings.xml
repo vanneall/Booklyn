@@ -7,6 +7,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="apply">Принять</string>
+    <string name="cancel">Отменить</string>
+
     <!-- Страница выбора отеля -->
     <string name="hotel_title">Гостиница</string>
     <string name="review">Описание</string>
@@ -25,4 +28,10 @@
 
     <!-- Страница с отзывами -->
     <string name="feedback_title">Отзывы и рейтинг</string>
+    <string name="feedback_add">Добавить отзыв</string>
+
+    <!-- Страница с добавлением отзыва -->
+    <string name="feedback_add_feedback">Поставьте оценку</string>
+    <string name="feedback_add_input_msg">Добавьте отзыв</string>
+
 </resources>

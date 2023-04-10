@@ -2,65 +2,59 @@ package com.example.booklyn.hotel_page;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.booklyn.R;
+import com.example.booklyn.adapters.RatingAdapter;
+import com.example.booklyn.entities.Hotel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FeedbackFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.Arrays;
+
 public class FeedbackFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    Hotel hotel;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FeedbackFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FeedbackFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FeedbackFragment newInstance(String param1, String param2) {
-        FeedbackFragment fragment = new FeedbackFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public FeedbackFragment(Bundle bundle) {
+        hotel = Hotel.hotels.get(bundle.getInt(Hotel.SELECTED_HOTEL));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feedback, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ListView listView = view.findViewById(R.id.feedback_list_view);
+        RatingAdapter ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());
+        listView.setAdapter(ratingAdapter);
+        setRatingProcents(view);
+    }
+
+    private void setRatingProcents(View view) {
+        TextView textView5stars = view.findViewById(R.id.feedback_percent5);
+        TextView textView4stars = view.findViewById(R.id.feedback_percent4);
+        TextView textView3stars = view.findViewById(R.id.feedback_percent3);
+        TextView textView2stars = view.findViewById(R.id.feedback_percent2);
+        TextView textView1stars = view.findViewById(R.id.feedback_percent1);
+
+        int[] rateCount = hotel.getRateCount();
+        int sum = hotel.getRates().size();
+        int a = (int)(((float)rateCount[4]/sum)*100);
+        textView5stars.setText(String.valueOf((int)(((float)rateCount[4]/sum)*100)) + "%");
+        textView4stars.setText(String.valueOf((int)(((float)rateCount[3]/sum)*100)) + "%");
+        textView3stars.setText(String.valueOf((int)(((float)rateCount[2]/sum)*100)) + "%");
+        textView2stars.setText(String.valueOf((int)(((float)rateCount[1]/sum)*100)) + "%");
+        textView1stars.setText(String.valueOf((int)(((float)rateCount[0]/sum)*100)) + "%");
     }
 }
