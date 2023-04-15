@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.booklyn.entities.Hotel;
+import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
@@ -15,7 +16,8 @@ import com.example.booklyn.hotel_page.PhotosFragment;
 import com.example.booklyn.hotel_page.ReviewFragment;
 import com.example.booklyn.hotel_page.TripDateFragment;
 
-public class HotelActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter, TripDateFragment.DateSetter {
+public class HotelActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter,
+        TripDateFragment.DateSetter, MainPageFragment.Transfer {
     ReviewFragment reviewFragment;
     PhotosFragment photosFragment;
     FeedbackFragment feedbackFragment;
@@ -63,5 +65,15 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
         tripDateCheckIn = date1;
         tripDateCheckOut = date2;
         reviewFragment.setDate(date1.toString(), date2.toString());
+    }
+
+    @Override
+    public TripDate[] getTripDate() {
+        return new TripDate[]{tripDateCheckIn, tripDateCheckOut};
+    }
+
+    @Override
+    public Room getRoom() {
+        return reviewFragment.getRoom();
     }
 }

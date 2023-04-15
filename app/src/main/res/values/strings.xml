@@ -35,5 +35,26 @@
     <string name="feedback_add_feedback">Поставьте оценку</string>
     <string name="feedback_add_input_msg">Добавьте отзыв</string>
 
-    <!-- Страница с выбором даты -->
+    <!-- Страница с информацией о брони -->
+    <string name="information_about_order">Информация о заказе</string>
+    <string name="information_about_room">Информация о номере</string>
+    <string name="information_about_trip_duration">Количество дней</string>
+    <string name="VAT">НДС</string>
+    <string name="result_sum">Итог</string>
+    <plurals name="days">
+        <item quantity="one">день</item>
+        <item quantity="few">дня</item>
+        <item quantity="other">дней</item>
+    </plurals>
+
+    <string name="information_about_customer">Информация о покупателе</string>
+    <string name="full_name">ФИО</string>
+    <string name="mail">Почта</string>
+    <string name="telephone_number">Номер телефона</string>
+
+    <string name="promocode">Промокод</string>
+    <string name="input_invite_promocode">Если у вас есть промо-код, пожалуйста, введите его ниже</string>
+    <string name="input_promo">ПРОМОКОД</string>
+
+    <string name="book">Оформить заказ</string>
 </resources>

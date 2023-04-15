@@ -11,16 +11,16 @@ public class Room implements Parcelable {
 
     private String info;
 
-    private float price;
+    private int price;
 
-    public Room(String info, float price){
+    public Room(String info, int price){
         this.info = info;
         this.price = price;
     }
 
     protected Room(Parcel in) {
         info = in.readString();
-        price = in.readFloat();
+        price = in.readInt();
     }
 
     public static final Creator<Room> CREATOR = new Creator<Room>() {
@@ -39,7 +39,7 @@ public class Room implements Parcelable {
         return info;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -51,6 +51,6 @@ public class Room implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeString(info);
-        parcel.writeFloat(price);
+        parcel.writeInt(price);
     }
 }

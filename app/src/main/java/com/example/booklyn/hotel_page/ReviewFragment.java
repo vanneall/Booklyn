@@ -47,13 +47,11 @@ public class ReviewFragment extends Fragment {
         textViewInfo.setText(hotel.getInfo());
         main = view;
         TextView textViewCheckIn = view.findViewById(R.id.fragment_review_textView_check_in);
-        textViewCheckIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TripDateFragment tripDateFragment = new TripDateFragment();
-                tripDateFragment.show(getFragmentManager(), "tag1");
-            }
-        });
+        textViewCheckIn.setOnClickListener(this::onCheckClick);
+
+        TextView textViewCheckOut = view.findViewById(R.id.fragment_review_textView_check_out);
+        textViewCheckOut.setOnClickListener(this::onCheckClick);
+
 
         textViewSelectRoom = view.findViewById(R.id.review_textView_room_select);
         textViewSelectRoom.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +63,10 @@ public class ReviewFragment extends Fragment {
         });
     }
 
+    public void onCheckClick(View view) {
+        TripDateFragment tripDateFragment = new TripDateFragment();
+        tripDateFragment.show(getFragmentManager(), "tag1");
+    }
 
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -81,5 +83,9 @@ public class ReviewFragment extends Fragment {
     public void setDate(String checkIn, String checkOut) {
         ((TextView)main.findViewById(R.id.fragment_review_textView_check_in)).setText(checkIn);
         ((TextView)main.findViewById(R.id.fragment_review_textView_check_out)).setText(checkOut);
+    }
+
+    public Room getRoom(){
+        return room;
     }
 }

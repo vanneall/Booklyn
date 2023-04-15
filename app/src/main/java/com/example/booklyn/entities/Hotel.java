@@ -55,7 +55,7 @@ public class Hotel {
             hotels.get(j).additionalPictures = new ArrayList<>(5);
             hotels.get(j).rooms = new ArrayList<>(5);
             for (int i = 0; i < 5; i++) {
-                hotels.get(j).rooms.add(new Room("1-комнатная с видом на море", 7000f));
+                hotels.get(j).rooms.add(new Room("1-комнатная с видом на море", hotels.get(j).minPrice));
                 hotels.get(j).addRate(((float) (10 + random.nextInt(40)) / 10), "Говно");
                 hotels.get(j).additionalPictures.add(hotels.get(j).mainPicture);
             }
