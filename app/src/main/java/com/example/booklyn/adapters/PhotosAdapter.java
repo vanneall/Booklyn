@@ -1,7 +1,10 @@
 package com.example.booklyn.adapters;
 
 import com.example.booklyn.R;
+import com.example.booklyn.hotel_page.PhotoViewActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,8 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 public class PhotosAdapter extends ArrayAdapter<Integer> {
+
+    public static final String PHOTO_KEY = "photo_key";
 
     List<Integer> hotelsImagies;
 
@@ -31,9 +36,16 @@ public class PhotosAdapter extends ArrayAdapter<Integer> {
         if (view == null) {
             view = inflater.inflate(layout, viewGroup, false);
         }
-
         ImageView imageView = view.findViewById(R.id.photos_list_item_imageView);
         imageView.setImageResource(hotelsImagies.get(i));
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(imageView.getContext(), PhotoViewActivity.class);
+                intent.putExtra(PHOTO_KEY, hotelsImagies.get(i));
+                imageView.getContext().startActivity(intent);
+            }
+        });
         return view;
     }
 }

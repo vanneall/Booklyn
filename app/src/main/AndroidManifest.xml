@@ -25,6 +25,10 @@
         android:theme="@style/Theme.Booklyn"
         tools:targetApi="31">
         <activity
+            android:theme="@style/Theme.PhotoBackGround"
+            android:name=".hotel_page.PhotoViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".HotelActivity"
             android:exported="false" />
         <activity
@@ -41,7 +45,7 @@
         <activity
             android:name=".HotelSelectionActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

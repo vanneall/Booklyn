@@ -2,19 +2,18 @@ package com.example.booklyn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
 import com.example.booklyn.hotel_page.MainPageFragment;
+import com.example.booklyn.hotel_page.PhotoViewActivity;
 import com.example.booklyn.hotel_page.PhotosFragment;
 import com.example.booklyn.hotel_page.ReviewFragment;
 
 public class HotelActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter {
-
-    MainPageFragment mainPageFragment;
-
     ReviewFragment reviewFragment;
     PhotosFragment photosFragment;
     FeedbackFragment feedbackFragment;
