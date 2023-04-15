@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
 import com.example.booklyn.hotel_page.MainPageFragment;
@@ -24,11 +25,12 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
         setContentView(R.layout.activity_hotel);
         // TODO: Убрать
         Bundle bundle = getIntent().getExtras();
+        Hotel hotel = Hotel.hotels.get(bundle.getInt(Hotel.SELECTED_HOTEL));
 
         MainPageFragment mainPageFragment = new MainPageFragment(bundle);
-        reviewFragment = new ReviewFragment(bundle);
-        photosFragment = new PhotosFragment();
-        feedbackFragment = new FeedbackFragment(bundle);
+        reviewFragment = new ReviewFragment(hotel);
+        photosFragment = new PhotosFragment(hotel.getAdditionalPictures());
+        feedbackFragment = new FeedbackFragment(hotel);
         getSupportFragmentManager().beginTransaction().add(R.id.hotel_activity, mainPageFragment).commit();
     }
 

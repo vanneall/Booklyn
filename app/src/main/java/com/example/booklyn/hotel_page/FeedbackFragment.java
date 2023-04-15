@@ -25,8 +25,8 @@ public class FeedbackFragment extends Fragment {
 
     View homeView;
 
-    public FeedbackFragment(Bundle bundle) {
-        hotel = Hotel.hotels.get(bundle.getInt(Hotel.SELECTED_HOTEL));
+    public FeedbackFragment(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     @Override

@@ -5,10 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".hotel_page.PhotosFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <GridView
+        android:layout_marginTop="15dp"
+        android:id="@+id/feedback_fragment_gridView_photos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Здесь фотки" />
+        android:layout_height="700dp"
+        android:numColumns="3"
+        android:gravity="center"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+
+        />
 
 </FrameLayout>

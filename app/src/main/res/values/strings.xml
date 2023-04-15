@@ -28,10 +28,12 @@
 
     <!-- Страница с отзывами -->
     <string name="feedback_title">Отзывы и рейтинг</string>
-    <string name="feedback_add">Добавить отзыв</string>
+    <string name="feedback_add">+ Добавить отзыв</string>
 
     <!-- Страница с добавлением отзыва -->
     <string name="feedback_add_feedback">Поставьте оценку</string>
     <string name="feedback_add_input_msg">Добавьте отзыв</string>
+
+    <!-- Страница с фотографиями отеля -->
 
 </resources>

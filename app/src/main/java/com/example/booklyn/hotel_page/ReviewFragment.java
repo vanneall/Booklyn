@@ -18,8 +18,8 @@ public class ReviewFragment extends Fragment {
 
     Hotel hotel;
 
-    public ReviewFragment(Bundle bundle) {
-        hotel =  Hotel.hotels.get(bundle.getInt(Hotel.SELECTED_HOTEL));
+    public ReviewFragment(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     @Override

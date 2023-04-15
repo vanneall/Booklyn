@@ -14,15 +14,21 @@ public class Hotel {
 
     private float allRatingSum = 0;
 
-    private String name;
+    // Название отеля
+    private final String name;
+    // Информация об отеля
     private String info;
+    // Средний рейтинг
     private float avgRate;
-
+    // Распределение по количеству звезд
     private int[] rateCount = new int[5];
-
+    // Весь рейтинг
     private ArrayList<Rate> rates;
+    // Цена за отель
     private int price;
+    // Главная картинка отеля
     private int mainPicture;
+    // Дополнительные фотографии
 
     private ArrayList<Integer> additionalPictures;
 
@@ -43,9 +49,11 @@ public class Hotel {
         hotels.get(2).setInfo("Гости́ница «Национа́ль» — московский отель, расположенный на Моховой улице, 15/1. Построен в 1900—1902 годах по проекту архитектора Александра Иванова. На момент открытия считался одним из самых престижных в Москве. После Революции 1917 года несколько лет в здании размещалось общежитие для чиновников советского правительства. В 1932 году гостиницу возродили под прежним названием");
         Random random = new Random();
         for (int j = 0; j < hotels.size(); j++) {
-            hotels.get(j).rates = new ArrayList<>(3);
+            hotels.get(j).rates = new ArrayList<>(5);
+            hotels.get(j).additionalPictures = new ArrayList<>(5);
             for (int i = 0; i < 5; i++) {
                 hotels.get(j).addRate(((float) (10 + random.nextInt(40)) / 10), "Говно");
+                hotels.get(j).additionalPictures.add(hotels.get(j).mainPicture);
             }
         }
     }
@@ -88,5 +96,9 @@ public class Hotel {
 
     public ArrayList<Rate> getRates() {
         return rates;
+    }
+
+    public ArrayList<Integer> getAdditionalPictures() {
+        return additionalPictures;
     }
 }
