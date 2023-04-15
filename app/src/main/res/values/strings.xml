@@ -22,6 +22,7 @@
     <string name="number">Номер</string>
     <string name="check_in">Заселение</string>
     <string name="check_out">Выселение</string>
+    <string name="hotel_room">Номер</string>
 
     <!-- Бронь -->
     <string name="book_button">Забронировать</string>

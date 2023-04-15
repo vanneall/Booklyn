@@ -58,7 +58,7 @@ public class MainPageFragment extends Fragment {
         textViewName.setText(hotel.getName());
 
         TextView textViewPrice = view.findViewById(R.id.main_page_textView_price_for_night);
-        textViewPrice.setText(hotel.getPrice() + "₽ за ночь");
+        textViewPrice.setText(hotel.getMinPrice() + "₽ за ночь");
 
         ImageView imageViewMain = view.findViewById(R.id.main_page_imageView_photo);
         imageViewMain.setImageResource(hotel.getMainPicture());

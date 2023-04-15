@@ -56,7 +56,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         imageView.setImageResource(hotel.getMainPicture());
         textViewName.setText(hotel.getName());
         textViewRate.setText(String.valueOf(hotel.getAvgRate()));
-        textViewPrice.setText(String.valueOf(hotel.getPrice()) + "₽");
+        textViewPrice.setText("от " + String.valueOf(hotel.getMinPrice()) + "₽");
         return view;
     }
 }

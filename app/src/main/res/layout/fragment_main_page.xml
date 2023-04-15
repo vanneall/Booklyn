@@ -1,85 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".hotel_page.MainPageFragment"
-    android:orientation="vertical"
-    android:scrollbars="none">
+    tools:context=".hotel_page.MainPageFragment">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="10dp">
-        <TextView
-            android:id="@+id/main_page_textView_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hotel_title"
-            style="@style/Title"
-            android:gravity="center_horizontal"/>
+        android:scrollbars="none">
 
-        <FrameLayout
-            android:layout_marginTop="20dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
-            <ImageView
-                android:id="@+id/main_page_imageView_photo"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center_horizontal"
-                />
-        </FrameLayout>
+                android:layout_height="300dp">
 
-        <RadioGroup
-            android:layout_marginTop="10dp"
-            android:id="@+id/radio_group_category_selection"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
 
-            <RadioButton
-                android:id="@+id/radio_button_feedback"
-                style="@style/InteractText"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:background="@drawable/interactive_reactangle_left"
-                android:button="@android:color/transparent"
-                android:text="@string/feedbacks"
-                android:gravity="center"
-                />
 
-            <RadioButton
-                android:id="@+id/radio_button_review"
-                style="@style/InteractText"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:background="@drawable/interactive_reactangle_middle"
-                android:button="@android:color/transparent"
-                android:text="@string/review"
-                android:gravity="center"/>
+                <ImageView
+                    android:id="@+id/main_page_imageView_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal"
+                    />
 
-            <RadioButton
-                android:id="@+id/radio_button_photos"
-                style="@style/InteractText"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:background="@drawable/interactive_reactangle_right"
-                android:button="@android:color/transparent"
-                android:text="@string/photos_hotel"
-                android:gravity="center"/>
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/main_page_textView_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hotel_title"
+                    android:textSize="@dimen/title_size"
+                    android:textColor="@color/white"
+                    android:gravity="left|top"
+                    android:textStyle="bold"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:shadowColor="@color/black"/>
+            </FrameLayout>
 
-        </RadioGroup>
+            <RadioGroup
+                android:layout_marginTop="10dp"
+                android:id="@+id/radio_group_category_selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/line"/>
+                <RadioButton
+                    android:id="@+id/radio_button_feedback"
+                    style="@style/InteractText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/interactive_reactangle_left"
+                    android:button="@android:color/transparent"
+                    android:text="@string/feedbacks"
+                    android:gravity="center"
+                    />
+
+                <RadioButton
+                    android:id="@+id/radio_button_review"
+                    style="@style/InteractText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/interactive_reactangle_middle"
+                    android:button="@android:color/transparent"
+                    android:text="@string/review"
+                    android:gravity="center"/>
+
+                <RadioButton
+                    android:id="@+id/radio_button_photos"
+                    style="@style/InteractText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/interactive_reactangle_right"
+                    android:button="@android:color/transparent"
+                    android:text="@string/photos_hotel"
+                    android:gravity="center"/>
+
+            </RadioGroup>
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line"/>
 
 
 
@@ -92,40 +108,36 @@
                     android:id="@+id/frame_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
-
-                <ImageView
-                    android:layout_gravity="bottom"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="1dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/line"/>
-
-                <LinearLayout
-                    android:layout_gravity="bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/main_page_textView_price_for_night"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        style="@style/CategoryTitle"
-                        android:textColor="@color/black"
-                        android:text=""
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                    <Button
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:text="@string/book_button"
-                        android:layout_weight="1"/>
-                </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
+    <LinearLayout
+        android:id="@+id/main_page_bottom_view"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/main_page_textView_price_for_night"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            style="@style/CategoryTitle"
+            android:textColor="@color/black"
+            android:text=""
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@color/white"/>
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="@string/book_button"
+            android:layout_weight="1"/>
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

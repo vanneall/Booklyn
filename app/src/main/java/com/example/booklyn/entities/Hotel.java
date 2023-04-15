@@ -12,6 +12,8 @@ public class Hotel {
     // TODO: Убрать
     public static ArrayList<Hotel> hotels = new ArrayList<>(3);
 
+    public ArrayList<Room> rooms;
+
     private float allRatingSum = 0;
 
     // Название отеля
@@ -25,7 +27,7 @@ public class Hotel {
     // Весь рейтинг
     private ArrayList<Rate> rates;
     // Цена за отель
-    private int price;
+    private int minPrice;
     // Главная картинка отеля
     private int mainPicture;
     // Дополнительные фотографии
@@ -34,7 +36,7 @@ public class Hotel {
 
     public Hotel(String name, int price, int picture) {
         this.name = name;
-        this.price = price;
+        this.minPrice = price;
         this.mainPicture = picture;
 
     }
@@ -51,7 +53,9 @@ public class Hotel {
         for (int j = 0; j < hotels.size(); j++) {
             hotels.get(j).rates = new ArrayList<>(5);
             hotels.get(j).additionalPictures = new ArrayList<>(5);
+            hotels.get(j).rooms = new ArrayList<>(5);
             for (int i = 0; i < 5; i++) {
+                hotels.get(j).rooms.add(new Room("1-комнатная с видом на море", 7000f));
                 hotels.get(j).addRate(((float) (10 + random.nextInt(40)) / 10), "Говно");
                 hotels.get(j).additionalPictures.add(hotels.get(j).mainPicture);
             }
@@ -70,8 +74,8 @@ public class Hotel {
         return mainPicture;
     }
 
-    public int getPrice() {
-        return price;
+    public int getMinPrice() {
+        return minPrice;
     }
 
     public void setInfo(String info) {
@@ -100,5 +104,9 @@ public class Hotel {
 
     public ArrayList<Integer> getAdditionalPictures() {
         return additionalPictures;
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
     }
 }
