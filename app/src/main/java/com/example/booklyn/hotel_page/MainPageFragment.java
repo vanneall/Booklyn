@@ -70,6 +70,14 @@ public class MainPageFragment extends Fragment {
         radioButtonReview.setOnCheckedChangeListener(checkedChangeListener);
         radioButtonReview.toggle();
         radioButtonPhotos.setOnCheckedChangeListener(checkedChangeListener);
+
+        ImageView imageViewBack = view.findViewById(R.id.main_page_imageView_back);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
     }
 
     CompoundButton.OnCheckedChangeListener checkedChangeListener = new CompoundButton.OnCheckedChangeListener() {
