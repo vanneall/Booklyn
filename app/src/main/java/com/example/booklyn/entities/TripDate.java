@@ -1,54 +1,74 @@
 package com.example.booklyn.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
-public class TripDate implements Comparable<TripDate> {
+import java.util.Date;
+
+public class TripDate extends Date implements Parcelable {
+
+    private Date date;
+
+    private long milliseconds;
 
     public TripDate(){
-        day = 0;
-        month = 0;
-        year = 0;
+        date = new Date();
+        milliseconds = date.getTime();
     }
 
-    private int day;
-    private int month;
-    private int year;
-
-    public void setDay(int day) {
-        this.day = day;
+    public TripDate(long milliseconds){
+        date = new Date(milliseconds);
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+
+    protected TripDate(Parcel in) {
+        milliseconds = in.readLong();
+        date = new Date(milliseconds);
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+    public static final Creator<TripDate> CREATOR = new Creator<TripDate>() {
+        @Override
+        public TripDate createFromParcel(Parcel in) {
+            return new TripDate(in);
+        }
 
-    public int getDay() {
-        return day;
-    }
+        @Override
+        public TripDate[] newArray(int size) {
+            return new TripDate[size];
+        }
+    };
 
-    public int getMonth() {
-        return month;
-    }
 
-    public int getYear() {
-        return year;
-    }
-
-    @Override
-    public int compareTo(TripDate tripDate) {
-        if (year > tripDate.year) return 1;
-        if (month > tripDate.month) return 1;
-        if (day > tripDate.day) return 1;
-        return -1;
-    }
-
-    @NonNull
     @Override
     public String toString() {
-        return day + "/" + month + "/" + year;
+        return date.getDate() + "/" + date.getMonth() + "/" + date.getYear();
+    }
+
+    public Date getInnerDate() {
+        return date;
+    }
+
+    public long getMilliseconds() {
+        return milliseconds;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setMilliseconds(long milliseconds) {
+        this.milliseconds = milliseconds;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeLong(milliseconds);
     }
 }

@@ -61,14 +61,14 @@ public class TripDateFragment extends DialogFragment {
                         .append(" ").toString();
                 if (isCheckInDay) {
                     ((TextView)view.findViewById(R.id.textView_check_in_info)).setText(selectedDate);
-                    checkIn.setDay(i2);
-                    checkIn.setMonth(i1+1);
-                    checkIn.setYear(i);
+                    checkIn.getInnerDate().setDate(i2);
+                    checkIn.getInnerDate().setMonth(i1+1);
+                    checkIn.getInnerDate().setYear(i);
                 } else {
                     ((TextView)view.findViewById(R.id.textView_check_out_info)).setText(selectedDate);
-                    checkOut.setDay(i2);
-                    checkOut.setMonth(i1+1);
-                    checkOut.setYear(i);
+                    checkOut.getInnerDate().setDate(i2);
+                    checkOut.getInnerDate().setMonth(i1+1);
+                    checkOut.getInnerDate().setYear(i);
                 }
                 isCheckInDay = !isCheckInDay;
             }
@@ -87,7 +87,7 @@ public class TripDateFragment extends DialogFragment {
     }
 
     public void onApplyClick(View view){
-        if (checkIn.compareTo(checkOut) < 0) {
+        if (checkIn.getInnerDate().before(checkOut.getInnerDate())) {
             dateSetter.setDate(checkIn, checkOut);
             getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
         } else {
