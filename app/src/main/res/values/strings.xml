@@ -34,6 +34,5 @@
     <string name="feedback_add_feedback">Поставьте оценку</string>
     <string name="feedback_add_input_msg">Добавьте отзыв</string>
 
-    <!-- Страница с фотографиями отеля -->
-
+    <!-- Страница с выбором даты -->
 </resources>

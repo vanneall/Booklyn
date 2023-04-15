@@ -12,5 +12,5 @@
     <color name="text_color">#FF000000</color>
     <color name="primary_color">#0156BA</color>
     <color name="primary_variant_color">#0156BA</color>
-    0156BA
+    <color name="selected_day">#D41616</color>
 </resources>

@@ -117,12 +117,14 @@
 
 
                     <ImageView
+                        android:layout_marginTop="2dp"
                         android:layout_width="20dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/check_in_icon"
                         />
 
                     <TextView
+                        android:id="@+id/fragment_review_textView_check_in"
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -139,12 +141,14 @@
                     android:gravity="right">
 
                     <ImageView
+                        android:layout_marginTop="2dp"
                         android:layout_width="20dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/check_out_icon"
                         />
 
                     <TextView
+                        android:id="@+id/fragment_review_textView_check_out"
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

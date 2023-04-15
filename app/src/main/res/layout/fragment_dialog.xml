@@ -62,7 +62,7 @@
                 android:id="@+id/feedback_add_button_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cancel"
+                android:text="@string/apply"
                 android:textSize="@dimen/little_size"
                 android:layout_gravity="center_horizontal"
                 />
@@ -79,7 +79,7 @@
                 android:id="@+id/feedback_add_button_apply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/apply"
+                android:text="@string/cancel"
                 android:textSize="@dimen/little_size"
                 android:layout_gravity="center_horizontal"
                 />

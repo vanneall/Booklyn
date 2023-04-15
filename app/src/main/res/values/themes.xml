@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Тема splashscreen -->
     <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splashscreen</item>
         <item name="android:statusBarColor">#0E126D</item>
@@ -20,6 +21,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Тема просмотра фотографий -->
     <style name="Theme.PhotoBackGround" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black</item>
@@ -27,4 +29,12 @@
         <item name="android:background">@color/black</item>
         <item name="android:statusBarColor">@color/black</item>
     </style>
+
+    <style name="Theme.Calendar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:title">@color/primary_color</item>
+        <item name="android:background">@color/white</item>
+        <item name="colorSecondary">@color/selected_day</item>
+    </style>
+
 </resources>
