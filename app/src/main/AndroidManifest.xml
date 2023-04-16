@@ -25,9 +25,15 @@
         android:theme="@style/Theme.Booklyn"
         tools:targetApi="31">
         <activity
+            android:name=".settings_page.SettingsPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user_page.UserPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".making_order_page.PaymentActivity"
             android:exported="false"
-            android:theme="@style/Theme.BooklynNoActionBar"/>
+            android:theme="@style/Theme.BooklynNoActionBar" />
         <activity
             android:name=".making_order_page.OrderInfoActivity"
             android:exported="false"
