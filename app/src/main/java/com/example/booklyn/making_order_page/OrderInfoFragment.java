@@ -1,6 +1,7 @@
 package com.example.booklyn.making_order_page;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,5 +76,11 @@ public class OrderInfoFragment extends Fragment {
         TextView textViewResult = view.findViewById(R.id.order_info_result_sum);
         textViewResult.setText(Float.toString(sum + vat) + "₽");
 
+        Button button = view.findViewById(R.id.order_info_button);
+        button.setOnClickListener(this::onClick);
+    }
+
+    public void onClick(View view){
+        startActivity(new Intent(getActivity(), PaymentActivity.class));
     }
 }

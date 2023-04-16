@@ -45,6 +45,8 @@
         <item name="android:statusBarColor">@color/black</item>
     </style>
 
+
+    <!-- Тема календаря -->
     <style name="Theme.Calendar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="android:title">@color/primary_color</item>

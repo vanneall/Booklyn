@@ -57,4 +57,14 @@
     <string name="input_promo">ПРОМОКОД</string>
 
     <string name="book">Оформить заказ</string>
+    
+    
+    <!-- Страница оплаты -->
+    <string name="payment_title">Оплата картой</string>
+    <string name="payment_card_number">Номер карты</string>
+    <string name="payment_card_holder_name">Имя держателя</string>
+    <string name="payment_card_date">Дата</string>
+    <string name="payment_CVV">CVV</string>
+    <string name="payment_pay">Оплатить</string>
+
 </resources>
