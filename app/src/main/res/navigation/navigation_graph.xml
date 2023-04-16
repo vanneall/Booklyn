@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/hotelSelectionFragment">
+
+
+    <fragment
+        android:id="@+id/hotelSelectionFragment"
+        android:name="com.example.booklyn.hotel_page.HotelSelectionFragment"
+        android:label="fragment_hotel_selection"
+        tools:layout="@layout/fragment_hotel_selection" >
+        <action
+            android:id="@+id/action_hotelSelectionFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_hotelSelectionFragment_to_userPageFragment"
+            app:destination="@id/userPageFragment" />
+        <action
+            android:id="@+id/action_hotelSelectionFragment_to_settingsPageFragment"
+            app:destination="@id/settingsPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.example.booklyn.hotel_page.MainPageFragment"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_mainPageFragment_to_orderInfoFragment"
+            app:destination="@id/orderInfoFragment" />
+        <argument
+            android:name="i"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userPageFragment"
+        android:name="com.example.booklyn.user_page.UserPageFragment"
+        android:label="fragment_user_page"
+        tools:layout="@layout/fragment_user_page" />
+    <fragment
+        android:id="@+id/settingsPageFragment"
+        android:name="com.example.booklyn.settings_page.SettingsPageFragment"
+        android:label="fragment_settings_page"
+        tools:layout="@layout/fragment_settings_page" />
+    <fragment
+        android:id="@+id/orderInfoFragment"
+        android:name="com.example.booklyn.making_order_page.OrderInfoFragment"
+        android:label="fragment_order_info"
+        tools:layout="@layout/fragment_order_info" >
+        <argument
+            android:name="i"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="room"
+            app:argType="com.example.booklyn.entities.Room"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="checkInTime"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="checkOutTime"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_orderInfoFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.booklyn.making_order_page.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+
+</navigation>

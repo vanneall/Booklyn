@@ -25,30 +25,12 @@
         android:theme="@style/Theme.Booklyn"
         tools:targetApi="31">
         <activity
-            android:name=".settings_page.SettingsPageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".user_page.UserPageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".making_order_page.PaymentActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BooklynNoActionBar" />
-        <activity
-            android:name=".making_order_page.OrderInfoActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BooklynNoActionBar" />
-        <activity
             android:name=".hotel_page.RoomSelectActivity"
             android:exported="false" />
         <activity
             android:name=".hotel_page.PhotoViewActivity"
             android:exported="false"
             android:theme="@style/Theme.PhotoBackGround" />
-        <activity
-            android:name=".HotelActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BooklynNoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -61,9 +43,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HotelSelectionActivity"
+            android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.BooklynNoActionBar"/>
     </application>
 
 </manifest>

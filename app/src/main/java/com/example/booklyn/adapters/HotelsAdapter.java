@@ -1,7 +1,7 @@
 package com.example.booklyn.adapters;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 
-import com.example.booklyn.HotelActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 
@@ -45,10 +45,11 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(button.getContext(), HotelActivity.class);
-                // TODO: Изменить
-                intent.putExtra(Hotel.SELECTED_HOTEL, i);
-                button.getContext().startActivity(intent);
+                Bundle bundle = new Bundle();
+
+                //TODO: поменять
+                bundle.putInt(Hotel.SELECTED_HOTEL, i);
+                Navigation.findNavController(button).navigate(R.id.action_hotelSelectionFragment_to_mainPageFragment, bundle);
             }
         });
 

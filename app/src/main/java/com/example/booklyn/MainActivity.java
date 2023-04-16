@@ -1,23 +1,25 @@
 package com.example.booklyn;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.booklyn.entities.Hotel;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
 import com.example.booklyn.hotel_page.MainPageFragment;
-import com.example.booklyn.hotel_page.PhotoViewActivity;
 import com.example.booklyn.hotel_page.PhotosFragment;
 import com.example.booklyn.hotel_page.ReviewFragment;
 import com.example.booklyn.hotel_page.TripDateFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HotelActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter,
+public class MainActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter,
         TripDateFragment.DateSetter, MainPageFragment.Transfer {
+
     ReviewFragment reviewFragment;
     PhotosFragment photosFragment;
     FeedbackFragment feedbackFragment;
@@ -25,19 +27,21 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
     TripDate tripDateCheckIn;
     TripDate tripDateCheckOut;
 
+    BottomNavigationView menu;
+    NavController navController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotel);
-        // TODO: Убрать
-        Bundle bundle = getIntent().getExtras();
-        Hotel hotel = Hotel.hotels.get(bundle.getInt(Hotel.SELECTED_HOTEL));
+        setContentView(R.layout.activity_hotel_selection);
+    }
 
-        MainPageFragment mainPageFragment = new MainPageFragment(bundle);
-        reviewFragment = new ReviewFragment(hotel);
-        photosFragment = new PhotosFragment(hotel.getAdditionalPictures());
-        feedbackFragment = new FeedbackFragment(hotel);
-        getSupportFragmentManager().beginTransaction().add(R.id.hotel_activity, mainPageFragment).commit();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menu = findViewById(R.id.bottom_navigation);
+        navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+        NavigationUI.setupWithNavController(menu, navController);
     }
 
     @Override
@@ -53,6 +57,21 @@ public class HotelActivity extends AppCompatActivity implements MainPageFragment
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photosFragment).commit();
                 break;
         }
+    }
+
+    @Override
+    public void createFeedbackPage(FeedbackFragment feedbackFragment) {
+        this.feedbackFragment = feedbackFragment;
+    }
+
+    @Override
+    public void createReviewPage(ReviewFragment reviewFragment) {
+        this.reviewFragment = reviewFragment;
+    }
+
+    @Override
+    public void createPhotosPage(PhotosFragment photosFragment) {
+        this.photosFragment = photosFragment;
     }
 
     @Override

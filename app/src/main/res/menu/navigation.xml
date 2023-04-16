@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Главная"
+        android:id="@+id/hotelSelectionFragment"
+        android:icon="@drawable/icon_main_page"/>
+    <item android:title="Профиль"
+        android:id="@+id/userPageFragment"
+        android:icon="@drawable/icon_user_profile_page"/>
+    <item android:title="Настройки"
+        android:id="@+id/settingsPageFragment"
+        android:icon="@drawable/icon_settings_page"/>
+</menu>

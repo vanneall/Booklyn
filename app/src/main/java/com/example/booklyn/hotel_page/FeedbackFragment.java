@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import com.example.booklyn.HotelSelectionActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.RatingAdapter;
 import com.example.booklyn.entities.Hotel;

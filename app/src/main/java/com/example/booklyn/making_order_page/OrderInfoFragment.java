@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
+import com.example.booklyn.hotel_page.MainPageFragment;
 
 import java.util.Date;
 
@@ -30,10 +32,14 @@ public class OrderInfoFragment extends Fragment {
 
     Room room;
 
-    public OrderInfoFragment(int i, TripDate[] tripDates, Room room){
-        this.hotel = Hotel.hotels.get(i);
-        this.tripDates = tripDates;
-        this.room = room;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        hotel = Hotel.hotels.get(bundle.getInt(MainPageFragment.SELECTED_HOTEL));
+        room = bundle.getParcelable(MainPageFragment.SELECTED_ROOM);
+        tripDates = new TripDate[]{ new TripDate(bundle.getLong(MainPageFragment.SELECTED_DATE_IN)),
+                new TripDate(bundle.getLong(MainPageFragment.SELECTED_DATE_OUT))};
     }
 
     @Override
@@ -81,6 +87,6 @@ public class OrderInfoFragment extends Fragment {
     }
 
     public void onClick(View view){
-        startActivity(new Intent(getActivity(), PaymentActivity.class));
+        Navigation.findNavController(view).navigate(R.id.action_orderInfoFragment_to_paymentFragment);
     }
 }

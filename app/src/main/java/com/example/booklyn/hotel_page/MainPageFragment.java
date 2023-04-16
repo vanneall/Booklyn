@@ -1,9 +1,9 @@
 package com.example.booklyn.hotel_page;
 
+import static androidx.navigation.Navigation.findNavController;
+
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +17,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
-import com.example.booklyn.making_order_page.OrderInfoActivity;
 
 
 public class MainPageFragment extends Fragment {
@@ -49,19 +49,18 @@ public class MainPageFragment extends Fragment {
 
         Room getRoom();
     }
-
     Transfer transfer;
 
     public interface PageController {
         void switchPage(int page);
-    }
 
+        void createFeedbackPage(FeedbackFragment feedbackFragment);
+
+        void createReviewPage(ReviewFragment reviewFragment);
+
+        void createPhotosPage(PhotosFragment photosFragment);
+    }
     PageController pageController;
-
-    public MainPageFragment(Bundle bundle) {
-        i = bundle.getInt(Hotel.SELECTED_HOTEL);
-        hotel = Hotel.hotels.get(i);
-    }
 
 
     @Override
@@ -72,9 +71,18 @@ public class MainPageFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        i = getArguments().getInt(Hotel.SELECTED_HOTEL);
+        hotel = Hotel.hotels.get(i);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        pageController.createReviewPage(new ReviewFragment(hotel));
+        pageController.createFeedbackPage(new FeedbackFragment(hotel));
+        pageController.createPhotosPage(new PhotosFragment(hotel.getAdditionalPictures()));
         return inflater.inflate(R.layout.fragment_main_page, container, false);
     }
 
@@ -102,20 +110,19 @@ public class MainPageFragment extends Fragment {
         Button button = view.findViewById(R.id.main_page_switch_to_orderActivity);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 check = transfer.getTripDate();
                 room = transfer.getRoom();
                 if (room != null && check[0] != null && check[1] != null){
-                    Intent intent = new Intent(getActivity(), OrderInfoActivity.class);
-                    intent.putExtra(SELECTED_HOTEL, i);
-                    intent.putExtra(SELECTED_DATE_IN, check[0].getInnerDate().getTime());
-                    intent.putExtra(SELECTED_ROOM, room);
-                    intent.putExtra(SELECTED_DATE_OUT, check[1].getInnerDate().getTime());
-                    startActivity(intent);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(SELECTED_HOTEL, i);
+                    bundle.putParcelable(SELECTED_ROOM, room);
+                    bundle.putLong(SELECTED_DATE_IN, check[0].getInnerDate().getTime());
+                    bundle.putLong(SELECTED_DATE_OUT, check[1].getInnerDate().getTime());
+                    Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_orderInfoFragment, bundle);
                 } else {
                     Toast.makeText(getActivity(), "Некорректные данные", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 
