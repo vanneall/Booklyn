@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements MainPageFragment.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotel_selection);
+        setContentView(R.layout.activity_main);
     }
 
     @Override

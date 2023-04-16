@@ -67,4 +67,8 @@
     <string name="payment_CVV">CVV</string>
     <string name="payment_pay">Оплатить</string>
 
+    <!-- Страница пользователя -->
+    <string name="user_profile_title">Профиль</string>
+    <string name="refresh">Обновить</string>
+
 </resources>

@@ -10,7 +10,7 @@
         android:id="@+id/hotelSelectionFragment"
         android:name="com.example.booklyn.hotel_page.HotelSelectionFragment"
         android:label="fragment_hotel_selection"
-        tools:layout="@layout/fragment_hotel_selection" >
+        tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_hotelSelectionFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
