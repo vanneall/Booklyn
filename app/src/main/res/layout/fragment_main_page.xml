@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".hotel_page.MainPageFragment"
-    android:orientation="vertical"
-    android:theme="@style/Theme.BooklynNoActionBar">
+    android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/main_page_scrollbar"

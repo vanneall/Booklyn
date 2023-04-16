@@ -28,4 +28,16 @@
         <item name="android:textColor">@color/card_text_color</item>
     </style>
 
+    <style name="SettingsButton">
+        <item name="android:fontFamily">casual</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/settings_button_background</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:drawableRight">@drawable/settings_arrow</item>
+
+
+    </style>
+
 </resources>

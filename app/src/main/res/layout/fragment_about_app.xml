@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings_page.AboutAppFragment"
+    android:orientation="vertical"
+    android:theme="@style/Theme.Settings"
+    android:background="@color/setting_background">
+
+    <TextView
+        android:paddingTop="50dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:text="@string/about_the_app"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/text_color"
+        android:background="@color/white"/>
+
+    <FrameLayout
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="600dp"
+        android:background="@drawable/settings_background">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="320dp"
+            android:layout_height="560dp"
+            android:text="@string/about_the_app_text"/>
+
+    </FrameLayout>
+</LinearLayout>

@@ -45,7 +45,20 @@
         android:id="@+id/settingsPageFragment"
         android:name="com.example.booklyn.settings_page.SettingsPageFragment"
         android:label="fragment_settings_page"
-        tools:layout="@layout/fragment_settings_page" />
+        tools:layout="@layout/fragment_settings_page" >
+        <action
+            android:id="@+id/action_settingsPageFragment_to_policyAndPrivacyFragment"
+            app:destination="@id/policyAndPrivacyFragment" />
+        <action
+            android:id="@+id/action_settingsPageFragment_to_termsAndConditionsFragment"
+            app:destination="@id/termsAndConditionsFragment" />
+        <action
+            android:id="@+id/action_settingsPageFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment" />
+        <action
+            android:id="@+id/action_settingsPageFragment_to_supportFragment"
+            app:destination="@id/supportFragment" />
+    </fragment>
     <fragment
         android:id="@+id/orderInfoFragment"
         android:name="com.example.booklyn.making_order_page.OrderInfoFragment"
@@ -77,5 +90,25 @@
         android:name="com.example.booklyn.making_order_page.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/policyAndPrivacyFragment"
+        android:name="com.example.booklyn.settings_page.PolicyAndPrivacyFragment"
+        android:label="fragment_policy_and_privacy"
+        tools:layout="@layout/fragment_policy_and_privacy" />
+    <fragment
+        android:id="@+id/termsAndConditionsFragment"
+        android:name="com.example.booklyn.settings_page.TermsAndConditionsFragment"
+        android:label="fragment_terms_and_conditions"
+        tools:layout="@layout/fragment_terms_and_conditions" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.example.booklyn.settings_page.AboutAppFragment"
+        android:label="fragment_about_app"
+        tools:layout="@layout/fragment_about_app" />
+    <fragment
+        android:id="@+id/supportFragment"
+        android:name="com.example.booklyn.settings_page.SupportFragment"
+        android:label="fragment_support"
+        tools:layout="@layout/fragment_support" />
 
 </navigation>
