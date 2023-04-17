@@ -25,6 +25,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/main_textView_filters"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/filter"
@@ -32,6 +33,7 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/main_textView_sort"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/sort"
@@ -39,6 +41,13 @@
             android:gravity="right"
             android:layout_weight="1"/>
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/main_container_for_sort_and_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/setting_background"/>
 
     <ListView
         android:id="@+id/listView_main_hotels"

@@ -4,6 +4,12 @@
     <string name="filter">Фильтр</string>
     <string name="sort">Сортировать</string>
     <string name="chose">Выбрать</string>
+    <string name="sort_by_name">По имени</string>
+    <string name="sort_by_price">По цене</string>
+    <string name="sort_by_rate">По рейтингу</string>
+    <string name="in_ascending_order">По возрастанию</string>
+    <string name="in_descending_order">По убыванию</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -97,7 +103,6 @@
 \n\n\t6. Как лицо, делающее Бронирование, вы несете ответственность за действия и поведение (в отношении Туристического продукта) всех членов вашей группы. Вы также несете ответственность за получение согласия от этих лиц, прежде чем предоставлять нам их персональные данные.</string>
     <string name="about_the_app_text">\tРазработано соучередителем компании ..Point Демином Иваном Александровичем. Приложение Booklyn предназначено для бронирования гостиниц, просмотра их рейтинга, фотографий</string>
     <string name="support_text">По всем вопросам и предложениям https://vk.com/vanuuus</string>
-
 
 
 </resources>

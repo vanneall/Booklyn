@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".hotel_page.SortFragment"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <RadioGroup
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/sort_by_name"
+            android:text="@string/sort_by_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            />
+
+        <RadioButton
+            android:id="@+id/sort_by_rate"
+            android:text="@string/sort_by_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            />
+
+        <RadioButton
+            android:id="@+id/sort_by_price"
+            android:text="@string/sort_by_price"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/sort_radio_group"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp">
+
+        <RadioButton
+            android:id="@+id/sort_radio_button_descending"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/in_descending_order"
+            />
+
+        <RadioButton
+            android:id="@+id/sort_radio_button_ascending"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/in_ascending_order"
+            />
+    </RadioGroup>
+</LinearLayout>

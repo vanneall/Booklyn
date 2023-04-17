@@ -11,15 +11,18 @@ import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
+import com.example.booklyn.hotel_page.HotelSelectionFragment;
 import com.example.booklyn.hotel_page.MainPageFragment;
 import com.example.booklyn.hotel_page.PhotosFragment;
 import com.example.booklyn.hotel_page.ReviewFragment;
+import com.example.booklyn.hotel_page.SortFragment;
 import com.example.booklyn.hotel_page.TripDateFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter,
-        TripDateFragment.DateSetter, MainPageFragment.Transfer {
+        TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged, HotelSelectionFragment.MainPageSetter {
 
+    HotelSelectionFragment hotelSelectionFragment;
     ReviewFragment reviewFragment;
     PhotosFragment photosFragment;
     FeedbackFragment feedbackFragment;
@@ -94,5 +97,15 @@ public class MainActivity extends AppCompatActivity implements MainPageFragment.
     @Override
     public Room getRoom() {
         return reviewFragment.getRoom();
+    }
+
+    @Override
+    public void dataChanged() {
+        hotelSelectionFragment.dataChanged();
+    }
+
+    @Override
+    public void setMainPage(HotelSelectionFragment hotelSelectionFragment) {
+        this.hotelSelectionFragment = hotelSelectionFragment;
     }
 }

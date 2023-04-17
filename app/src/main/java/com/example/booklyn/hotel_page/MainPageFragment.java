@@ -179,4 +179,8 @@ public class MainPageFragment extends Fragment {
     public void onResume() {
         super.onResume();
     }
+
+    public void dataChanged() {
+
+    }
 }
