@@ -37,15 +37,14 @@
         <!-- Primary brand color. -->
         <item name="android:title">@color/primary_color</item>
         <item name="android:background">@color/white</item>
-        <item name="colorSecondary">@color/selected_day</item>
+        <item name="colorSecondary">@color/red</item>
     </style>
 
 
-    <!-- Тема календаря -->
     <style name="Theme.Settings" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
-        <item name="colorControlActivated">@android:color/holo_red_dark</item>
+        <item name="colorControlActivated">@color/red</item>
     </style>
 
 </resources>

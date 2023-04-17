@@ -34,6 +34,12 @@
             android:name="i"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_roomSelectionFragment"
+            app:destination="@id/roomSelectionFragment" />
+        <argument
+            android:name="selected_room"
+            android:defaultValue="-1" />
     </fragment>
 
     <fragment
@@ -110,5 +116,17 @@
         android:name="com.example.booklyn.settings_page.SupportFragment"
         android:label="fragment_support"
         tools:layout="@layout/fragment_support" />
+    <fragment
+        android:id="@+id/roomSelectionFragment"
+        android:name="com.example.booklyn.hotel_page.RoomSelectionFragment"
+        android:label="fragment_room_selection"
+        tools:layout="@layout/fragment_room_selection" >
+        <argument
+            android:name="i"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_roomSelectionFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+    </fragment>
 
 </navigation>

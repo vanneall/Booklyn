@@ -40,9 +40,9 @@ public class Hotel {
     // Дополнительные фотографии
     private ArrayList<Integer> additionalPictures;
 
-    public Hotel(String name, int price, int picture) {
+    public Hotel(String name, int minPrice, int picture) {
         this.name = name;
-        this.minPrice = price;
+        this.minPrice = minPrice;
         this.mainPicture = picture;
 
     }
@@ -61,7 +61,7 @@ public class Hotel {
             hotels.get(j).additionalPictures = new ArrayList<>(5);
             hotels.get(j).rooms = new ArrayList<>(5);
             for (int i = 0; i < 5; i++) {
-                hotels.get(j).rooms.add(new Room("1-комнатная с видом на море", hotels.get(j).minPrice));
+                hotels.get(j).rooms.add(new Room("Улучшенные апартаменты", "1-комнатная с видом на море", hotels.get(j).getMinPrice()));
                 hotels.get(j).addRate(((float) (10 + random.nextInt(40)) / 10), "Говно");
                 hotels.get(j).additionalPictures.add(hotels.get(j).mainPicture);
             }

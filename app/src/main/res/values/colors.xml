@@ -12,7 +12,7 @@
     <color name="text_color">#FF000000</color>
     <color name="primary_color">#0156BA</color>
     <color name="primary_variant_color">#0156BA</color>
-    <color name="selected_day">#D41616</color>
+    <color name="red">#D41616</color>
     <color name="card_text_color">#96B2D3</color>
     <color name="setting_background">#F0F4F6</color>
 </resources>

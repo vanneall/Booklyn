@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".hotel_page.RoomSelectActivity">
+    android:layout_height="wrap_content"
+    tools:context=".hotel_page.RoomSelectionFragment"
+    android:orientation="vertical">
 
     <TextView
         android:layout_alignParentTop="true"
@@ -27,4 +28,5 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
         android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>

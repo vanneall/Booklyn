@@ -26,13 +26,16 @@ public class ReviewFragment extends Fragment {
 
     Room room = null;
 
+    int i;
+
     TextView textViewSelectRoom;
 
     Hotel hotel;
     View main;
 
-    public ReviewFragment(Hotel hotel) {
+    public ReviewFragment(Hotel hotel, int i) {
         this.hotel = hotel;
+        this.i = i;
     }
 
     @Override
@@ -59,6 +62,7 @@ public class ReviewFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RoomSelectActivity.class);
+                intent.putExtra(Hotel.SELECTED_HOTEL, i);
                 mStartForResult.launch(intent);
             }
         });
@@ -76,10 +80,15 @@ public class ReviewFragment extends Fragment {
             if (result.getResultCode() == Activity.RESULT_OK) {
                 Intent intent = result.getData();
                 room = hotel.rooms.get(intent.getIntExtra(Room.SELECTED_ROOM, 0));
-                textViewSelectRoom.setText(room.getInfo());
+                textViewSelectRoom.setText(room.getName());
             }
         }
     });
+
+    //TODO сделать нормальное получение комнаты из фрагмента
+//    public void setRoom(Room room){
+//        this.room = room;
+//    }
 
     public void setDate(String checkIn, String checkOut) {
         ((TextView)main.findViewById(R.id.fragment_review_textView_check_in)).setText(checkIn);

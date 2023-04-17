@@ -87,7 +87,7 @@ public class TripDateFragment extends DialogFragment {
     }
 
     public void onApplyClick(View view){
-        if (checkIn.getInnerDate().before(checkOut.getInnerDate())) {
+        if (!checkIn.getInnerDate().after(checkOut.getInnerDate())) {
             dateSetter.setDate(checkIn, checkOut);
             getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
         } else {

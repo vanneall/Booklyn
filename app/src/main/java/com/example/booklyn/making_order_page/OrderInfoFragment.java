@@ -66,8 +66,11 @@ public class OrderInfoFragment extends Fragment {
         TextView textViewTitle = view.findViewById(R.id.order_info_textView_title);
         textViewTitle.setText(hotel.getName());
 
-        TextView textViewRoom = view.findViewById(R.id.order_info_room);
-        textViewRoom.setText(room.getInfo());
+        TextView textViewRoomName = view.findViewById(R.id.order_room_number);
+        textViewRoomName.setText(room.getName());
+
+        TextView textViewRoomInfo = view.findViewById(R.id.order_room_info);
+        textViewRoomInfo.setText(room.getInfo());
 
         TextView textViewDuration = view.findViewById(R.id.order_info_duration);
         int days = new Date(tripDates[1].getInnerDate().getTime() - tripDates[0].getInnerDate().getTime()).getDate();
@@ -76,7 +79,7 @@ public class OrderInfoFragment extends Fragment {
                 room.getPrice() + "₽ x " + days + " = " + (int)sum + "₽)");
 
         TextView textViewVAT = view.findViewById(R.id.order_info_VAT);
-        float vat = sum * 0.2f;
+        float vat = sum * 0.1f;
         textViewVAT.setText(Float.toString(vat) + "₽");
 
         TextView textViewResult = view.findViewById(R.id.order_info_result_sum);

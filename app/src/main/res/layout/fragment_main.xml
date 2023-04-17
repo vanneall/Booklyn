@@ -5,24 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".hotel_page.HotelSelectionFragment"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
     <TextView
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:text="@string/activity_hotel_selection_title"
         android:textSize="@dimen/title_size"
-        android:textColor="@color/text_color"/>
-
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textColor="@color/white"
+        android:fontFamily="casual"
+        android:background="@color/primary_color"
+        />
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <TextView
             android:id="@+id/main_textView_filters"
@@ -50,6 +52,8 @@
         android:background="@color/setting_background"/>
 
     <ListView
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:id="@+id/listView_main_hotels"
         android:paddingTop="10dp"
         android:layout_width="match_parent"

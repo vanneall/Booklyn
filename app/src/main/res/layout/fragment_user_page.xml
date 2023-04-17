@@ -5,103 +5,77 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".user_page.UserPageFragment"
-    android:padding="20dp"
     android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="350dp">
 
         <TextView
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:text="@string/user_profile_title"
             android:textSize="@dimen/title_size"
-            android:textColor="@color/text_color"/>
+            android:textColor="@color/white"
+            android:fontFamily="casual"
+            android:background="@color/primary_color"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="#C4C4C4"
             android:layout_gravity="center"/>
     </FrameLayout>
 
-    <LinearLayout
+    <EditText
+
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="35dp"
-        android:layout_width="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:hint="@string/full_name"
+        android:textColor="#C4C4C4"
+        android:backgroundTint="#C4C4C4"
+        android:textSize="@dimen/simple_size"
+        android:inputType="textPersonName"
+        android:drawableLeft="@drawable/customer_name"
+        android:drawablePadding="5dp"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/customer_name"
-            android:layout_gravity="center"/>
 
-        <EditText
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/full_name"
-            android:textColor="#C4C4C4"
-            android:backgroundTint="#C4C4C4"
-            android:textSize="@dimen/simple_size"
-            android:inputType="textPersonName"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:drawablePadding="5dp"
+        android:layout_gravity="center"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="35dp"
-        android:layout_width="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:hint="@string/telephone_number"
+        android:textColor="#C4C4C4"
+        android:backgroundTint="#C4C4C4"
+        android:textSize="@dimen/simple_size"
+        android:inputType="number"
+        android:layout_marginTop="25dp"
+        android:drawableLeft="@drawable/telephone"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/telephone"
-            android:layout_gravity="center"/>
-
-        <EditText
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/telephone_number"
-            android:textColor="#C4C4C4"
-            android:backgroundTint="#C4C4C4"
-            android:textSize="@dimen/simple_size"
-            android:inputType="number"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="35dp"
-        android:layout_width="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/email"
-            android:layout_gravity="center"/>
-
-        <EditText
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/mail"
-            android:textColor="#C4C4C4"
-            android:backgroundTint="#C4C4C4"
-            android:textSize="@dimen/simple_size"
-            android:inputType="textEmailAddress"/>
-    </LinearLayout>
+        android:hint="@string/mail"
+        android:textColor="#C4C4C4"
+        android:backgroundTint="#C4C4C4"
+        android:textSize="@dimen/simple_size"
+        android:inputType="textEmailAddress"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="5dp"/>
 
     <Button
         android:layout_marginTop="35dp"
@@ -110,4 +84,5 @@
         android:background="@drawable/big_blue_button"
         android:layout_gravity="center"
         android:text="@string/refresh"/>
+
 </LinearLayout>

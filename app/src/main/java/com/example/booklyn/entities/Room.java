@@ -9,11 +9,14 @@ public class Room implements Parcelable {
 
     public static final String SELECTED_ROOM = "selected_room";
 
+    private String name;
+
     private String info;
 
     private int price;
 
-    public Room(String info, int price){
+    public Room(String name, String info, int price){
+        this.name = name;
         this.info = info;
         this.price = price;
     }
@@ -21,6 +24,7 @@ public class Room implements Parcelable {
     protected Room(Parcel in) {
         info = in.readString();
         price = in.readInt();
+        name = in.readString();
     }
 
     public static final Creator<Room> CREATOR = new Creator<Room>() {
@@ -43,6 +47,10 @@ public class Room implements Parcelable {
         return price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -52,5 +60,6 @@ public class Room implements Parcelable {
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeString(info);
         parcel.writeInt(price);
+        parcel.writeString(name);
     }
 }

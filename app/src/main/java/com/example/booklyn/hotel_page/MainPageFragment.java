@@ -80,7 +80,7 @@ public class MainPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        pageController.createReviewPage(new ReviewFragment(hotel));
+        pageController.createReviewPage(new ReviewFragment(hotel, i));
         pageController.createFeedbackPage(new FeedbackFragment(hotel));
         pageController.createPhotosPage(new PhotosFragment(hotel.getAdditionalPictures()));
         return inflater.inflate(R.layout.fragment_main_page, container, false);

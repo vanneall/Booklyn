@@ -43,9 +43,10 @@
 
     <!-- Страница с информацией о брони -->
     <string name="information_about_order">Информация о заказе</string>
+    <string name="information_room_number">Выбранный тип номера</string>
     <string name="information_about_room">Информация о номере</string>
     <string name="information_about_trip_duration">Количество дней</string>
-    <string name="VAT">НДС</string>
+    <string name="VAT">Налоги и сборы (10%)</string>
     <string name="result_sum">Итог</string>
     <plurals name="days">
         <item quantity="one">день</item>

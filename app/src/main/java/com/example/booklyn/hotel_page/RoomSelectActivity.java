@@ -21,7 +21,7 @@ public class RoomSelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_select);
-        ArrayList<Room> rooms = Hotel.hotels.get(getIntent().getIntExtra(Room.SELECTED_ROOM, 0)).getRooms();
+        ArrayList<Room> rooms = Hotel.hotels.get(getIntent().getIntExtra(Hotel.SELECTED_HOTEL, 0)).getRooms();
         ListView listView = findViewById(R.id.room_select_listView);
         RoomsAdapter roomsAdapter = new RoomsAdapter(this, R.layout.room_selection_list_item, rooms);
         listView.setAdapter(roomsAdapter);

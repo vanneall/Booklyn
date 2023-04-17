@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -51,17 +52,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/geolocation_icon"/>
-
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/InteractText"
-                    android:text="@string/place"/>
+                    android:text="@string/place"
+                    android:drawablePadding="10dp"
+                    app:drawableLeftCompat="@drawable/geolocation_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -74,21 +71,16 @@
 
             <LinearLayout
                 android:padding="10dp"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/phone_number_icon"/>
-
                 <TextView
-                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/InteractText"
-                    android:text="@string/number"/>
+                    android:text="@string/number"
+                    app:drawableLeftCompat="@drawable/phone_number_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -102,79 +94,40 @@
 
             <LinearLayout
                 android:padding="10dp"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
-
-
-                    <ImageView
-                        android:layout_marginTop="2dp"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/check_in_icon"
-                        />
-
-                    <TextView
-                        android:id="@+id/fragment_review_textView_check_in"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/InteractText"
-                        android:text="@string/check_in" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:gravity="right">
-
-                    <ImageView
-                        android:layout_marginTop="2dp"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/check_out_icon"
-                        />
-
-                    <TextView
-                        android:id="@+id/fragment_review_textView_check_out"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/InteractText"
-                        android:text="@string/check_out" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_marginTop="2dp"
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/hotel_room"
-                    />
 
                 <TextView
-                    android:id="@+id/review_textView_room_select"
-                    android:layout_marginLeft="10dp"
+                    android:id="@+id/fragment_review_textView_check_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/InteractText"
-                    android:text="@string/hotel_room" />
+                    android:text="@string/check_in"
+                    android:drawablePadding="10dp"
+                    app:drawableLeftCompat="@drawable/check_in_icon" />
+
+                <TextView
+                    android:id="@+id/fragment_review_textView_check_out"
+                    android:layout_width="match_parent"
+                    android:gravity="right"
+                    android:layout_height="wrap_content"
+                    style="@style/InteractText"
+                    android:text="@string/check_out"
+                    android:drawablePadding="10dp"
+                    app:drawableRightCompat="@drawable/check_out_icon" />
+
             </LinearLayout>
+
+            <TextView
+                android:padding="10dp"
+                android:id="@+id/review_textView_room_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/InteractText"
+                android:text="@string/hotel_room"
+                android:drawablePadding="10dp"
+                app:drawableLeftCompat="@drawable/hotel_room" />
+
     </LinearLayout>
 </LinearLayout>
