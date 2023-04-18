@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".hotel_page.PhotoViewActivity">
 
-    <ImageView
-        android:id="@+id/activity_photo_view_photo"
+    <androidx.viewpager2.widget.ViewPager2
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@tools:sample/avatars"
-        />
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"  />
 
 </FrameLayout>

@@ -121,5 +121,19 @@
         android:name="com.example.booklyn.hotel_page.RoomSelectionFragment"
         android:label="fragment_room_selection"
         tools:layout="@layout/fragment_room_selection" />
+    <fragment
+        android:id="@+id/photosFragment"
+        android:name="com.example.booklyn.hotel_page.PhotosFragment"
+        android:label="fragment_photos"
+        tools:layout="@layout/fragment_photos" >
+        <action
+            android:id="@+id/action_photosFragment_to_photoViewItemFragment"
+            app:destination="@id/photoViewItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoViewItemFragment"
+        android:name="com.example.booklyn.hotel_page.PhotoViewItemFragment"
+        android:label="fragment_photo_view_item"
+        tools:layout="@layout/fragment_photo_view_item" />
 
 </navigation>

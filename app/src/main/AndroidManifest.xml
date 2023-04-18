@@ -27,7 +27,7 @@
         <activity
             android:name=".hotel_page.PhotoViewActivity"
             android:exported="false"
-            android:theme="@style/Theme.PhotoBackGround" />
+             />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"

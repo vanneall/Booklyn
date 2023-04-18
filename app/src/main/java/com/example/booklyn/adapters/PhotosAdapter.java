@@ -12,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PhotosAdapter extends ArrayAdapter<Integer> {
@@ -42,7 +45,7 @@ public class PhotosAdapter extends ArrayAdapter<Integer> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(imageView.getContext(), PhotoViewActivity.class);
-                intent.putExtra(PHOTO_KEY, hotelsImagies.get(i));
+                intent.putIntegerArrayListExtra(PHOTO_KEY, (ArrayList<Integer>) hotelsImagies);
                 imageView.getContext().startActivity(intent);
             }
         });
