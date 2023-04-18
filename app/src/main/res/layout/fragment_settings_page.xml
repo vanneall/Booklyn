@@ -12,11 +12,11 @@
         android:paddingLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:background="@color/primary_color"
         android:text="@string/settings_title"
         android:textSize="@dimen/title_size"
         android:textColor="@color/white"
-        android:fontFamily="casual"
-        android:background="@color/primary_color"/>
+        android:fontFamily="casual" />
 
     <LinearLayout
         android:layout_width="match_parent"

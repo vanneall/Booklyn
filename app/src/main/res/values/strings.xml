@@ -3,12 +3,23 @@
     <string name="activity_hotel_selection_title">Гостиницы</string>
     <string name="filter">Фильтр</string>
     <string name="sort">Сортировать</string>
-    <string name="chose">Выбрать</string>
+    <string name="chose">Перейти</string>
     <string name="sort_by_name">По имени</string>
     <string name="sort_by_price">По цене</string>
     <string name="sort_by_rate">По рейтингу</string>
     <string name="in_ascending_order">По возрастанию</string>
     <string name="in_descending_order">По убыванию</string>
+    <plurals name="feedbacks">
+        <item quantity="one">отзыв</item>
+        <item quantity="two">отзыва</item>
+        <item quantity="other">отзывов</item>
+    </plurals>
+
+    <string name="very_good">Очень хорошо</string>
+    <string name="good">Очень хорошо</string>
+    <string name="normal">Нормально</string>
+    <string name="not_bad">Приемлемо</string>
+    <string name="terrible">Ужасно</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

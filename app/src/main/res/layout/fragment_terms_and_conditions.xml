@@ -12,11 +12,11 @@
         android:paddingTop="50dp"
         android:paddingLeft="20dp"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="100dp"
+        android:background="@color/primary_color"
         android:text="@string/terms_and_conditions"
         android:textSize="@dimen/title_size"
-        android:textColor="@color/text_color"
-        android:background="@color/white" />
+        android:textColor="@color/white" />
 
     <ScrollView
         android:layout_width="wrap_content"

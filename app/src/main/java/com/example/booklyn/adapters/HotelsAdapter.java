@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,9 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         TextView textViewName = view.findViewById(R.id.textView_hotel_list_item_name);
         TextView textViewRate = view.findViewById(R.id.textView_hotel_list_item_rate);
         TextView textViewPrice = view.findViewById(R.id.textView_hotel_list_item_price);
+        RatingBar ratingBar = view.findViewById(R.id.ratingBar);
+        TextView textViewNumberOfFeedbacks = view.findViewById(R.id.number_of_feedbacks);
+        TextView textViewRatingEstimation = view.findViewById(R.id.rating_estimation);
         Button button = view.findViewById(R.id.button_selection_hotel);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,9 +61,23 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
 
         Hotel hotel = hotels.get(i);
         imageView.setImageResource(hotel.getMainPicture());
+        int num = (int) (hotel.getAvgRate() * 10);
+        if (num >= 45) {
+            textViewRatingEstimation.setText(view.getResources().getString(R.string.very_good));
+        } else if (num >= 35) {
+            textViewRatingEstimation.setText(view.getResources().getString(R.string.good));
+        } else if (num >= 30) {
+            textViewRatingEstimation.setText(view.getResources().getString(R.string.normal));
+        } else if (num > 20) {
+            textViewRatingEstimation.setText(view.getResources().getString(R.string.not_bad));
+        } else {
+            textViewRatingEstimation.setText(view.getResources().getString(R.string.terrible));
+        }
+        textViewNumberOfFeedbacks.setText("● " + hotel.getRates().size() + " " + view.getResources().getQuantityString(R.plurals.feedbacks, hotel.getRates().size()));
         textViewName.setText(hotel.getName());
         textViewRate.setText(String.valueOf(hotel.getAvgRate()));
-        textViewPrice.setText("от " + String.valueOf(hotel.getMinPrice()) + "₽");
+        textViewPrice.setText(hotel.getMinPrice() + "₽");
+        ratingBar.setRating(hotel.getAvgRate());
         return view;
     }
 }
