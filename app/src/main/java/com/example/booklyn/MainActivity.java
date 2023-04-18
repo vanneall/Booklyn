@@ -1,12 +1,14 @@
 package com.example.booklyn;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
 import com.example.booklyn.hotel_page.DialogAddFragment;
@@ -20,17 +22,22 @@ import com.example.booklyn.hotel_page.SortFragment;
 import com.example.booklyn.hotel_page.TripDateFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter,
-        TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged, HotelSelectionFragment.MainPageSetter{
-        //RoomSelectionFragment.SelectedRoomGetter {
+import java.util.ArrayList;
 
+public class MainActivity extends AppCompatActivity implements MainPageFragment.PageController, DialogAddFragment.NewRateGetter,
+        TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged, HotelSelectionFragment.MainPage,
+        ReviewFragment.SaveInfo, RoomSelectionFragment.SelectedRoomGetter {
+
+
+    public static TripDate tripDateCheckIn;
+    public static TripDate tripDateCheckOut;
+
+    public static Room room;
     HotelSelectionFragment hotelSelectionFragment;
     ReviewFragment reviewFragment;
     PhotosFragment photosFragment;
     FeedbackFragment feedbackFragment;
 
-    TripDate tripDateCheckIn;
-    TripDate tripDateCheckOut;
 
     BottomNavigationView menu;
     NavController navController;
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainPageFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Hotel.addHotels(Hotel.hotels);
     }
 
     @Override
@@ -109,6 +117,27 @@ public class MainActivity extends AppCompatActivity implements MainPageFragment.
     @Override
     public void setMainPage(HotelSelectionFragment hotelSelectionFragment) {
         this.hotelSelectionFragment = hotelSelectionFragment;
+    }
+
+    @Override
+    public ArrayList<Hotel> getHotels() {
+        return Hotel.hotels;
+    }
+
+    @Override
+    public TripDate[] getDates() {
+        if (tripDateCheckIn != null && tripDateCheckOut != null) return new TripDate[]{tripDateCheckIn, tripDateCheckOut};
+        else return null;
+    }
+
+    @Override
+    public Room getSelectedRoom() {
+        return room;
+    }
+
+    @Override
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
 //    @Override

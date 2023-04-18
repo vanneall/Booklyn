@@ -1,6 +1,7 @@
 package com.example.booklyn.hotel_page;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,9 +22,17 @@ import android.widget.TextView;
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
+import com.example.booklyn.entities.TripDate;
 
 public class ReviewFragment extends Fragment {
 
+    public interface SaveInfo {
+        TripDate[] getDates();
+
+        Room getSelectedRoom();
+    }
+
+    SaveInfo saveInfo;
     Room room = null;
 
     int i;
@@ -39,6 +48,12 @@ public class ReviewFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        saveInfo = (SaveInfo) context;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_review, container, false);
@@ -47,9 +62,18 @@ public class ReviewFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        main = view;
+        TripDate[] savedInfoTrips = saveInfo.getDates();
+        if (savedInfoTrips != null) {
+            setDate(savedInfoTrips[0].toString(), savedInfoTrips[1].toString());
+        }
+        if (saveInfo.getSelectedRoom() != null) {
+            this.room = saveInfo.getSelectedRoom();
+            ((TextView)(view.findViewById(R.id.review_textView_room_select))).setText(room.getName());
+        }
         TextView textViewInfo = view.findViewById(R.id.review_textView_info);
         textViewInfo.setText(hotel.getInfo());
-        main = view;
         TextView textViewCheckIn = view.findViewById(R.id.fragment_review_textView_check_in);
         textViewCheckIn.setOnClickListener(this::onCheckClick);
 
@@ -60,10 +84,10 @@ public class ReviewFragment extends Fragment {
         textViewSelectRoom = view.findViewById(R.id.review_textView_room_select);
         textViewSelectRoom.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomSelectActivity.class);
-                intent.putExtra(Hotel.SELECTED_HOTEL, i);
-                mStartForResult.launch(intent);
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt(Hotel.SELECTED_HOTEL, i);
+                Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_roomSelectionFragment);
             }
         });
     }
@@ -73,17 +97,7 @@ public class ReviewFragment extends Fragment {
         tripDateFragment.show(getFragmentManager(), "tag1");
     }
 
-    ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if (result.getResultCode() == Activity.RESULT_OK) {
-                Intent intent = result.getData();
-                room = hotel.rooms.get(intent.getIntExtra(Room.SELECTED_ROOM, 0));
-                textViewSelectRoom.setText(room.getName());
-            }
-        }
-    });
+
 
     //TODO сделать нормальное получение комнаты из фрагмента
 //    public void setRoom(Room room){

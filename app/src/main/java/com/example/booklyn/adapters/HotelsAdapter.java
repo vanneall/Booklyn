@@ -1,5 +1,6 @@
 package com.example.booklyn.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 
+import com.example.booklyn.MainActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 

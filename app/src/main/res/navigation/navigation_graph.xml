@@ -120,13 +120,6 @@
         android:id="@+id/roomSelectionFragment"
         android:name="com.example.booklyn.hotel_page.RoomSelectionFragment"
         android:label="fragment_room_selection"
-        tools:layout="@layout/fragment_room_selection" >
-        <argument
-            android:name="i"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_roomSelectionFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_room_selection" />
 
 </navigation>
