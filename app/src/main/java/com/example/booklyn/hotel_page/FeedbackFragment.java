@@ -24,10 +24,6 @@ public class FeedbackFragment extends Fragment {
 
     View homeView;
 
-    public FeedbackFragment(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,6 +33,9 @@ public class FeedbackFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        assert getArguments() != null;
+        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
+
         homeView = view;
         listView = view.findViewById(R.id.feedback_list_view);
         ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());

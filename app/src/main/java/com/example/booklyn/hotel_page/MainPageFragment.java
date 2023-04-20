@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
+import com.example.booklyn.adapters.RatingAdapter;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
@@ -42,7 +46,7 @@ public class MainPageFragment extends Fragment {
     Hotel hotel;
     TripDate[] check;
     Room room;
-    int i;
+    Integer i;
 
     public interface Transfer {
         TripDate[] getTripDate();
@@ -51,22 +55,10 @@ public class MainPageFragment extends Fragment {
     }
     Transfer transfer;
 
-    public interface PageController {
-        void switchPage(int page);
-
-        void createFeedbackPage(FeedbackFragment feedbackFragment);
-
-        void createReviewPage(ReviewFragment reviewFragment);
-
-        void createPhotosPage(PhotosFragment photosFragment);
-    }
-    PageController pageController;
-
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        pageController = (PageController) context;
         transfer = (Transfer) context;
     }
 
@@ -80,9 +72,6 @@ public class MainPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        pageController.createReviewPage(new ReviewFragment(hotel, i));
-        pageController.createFeedbackPage(new FeedbackFragment(hotel));
-        pageController.createPhotosPage(new PhotosFragment(hotel.getAdditionalPictures()));
         return inflater.inflate(R.layout.fragment_main_page, container, false);
     }
 
@@ -92,87 +81,49 @@ public class MainPageFragment extends Fragment {
         TextView textViewName = view.findViewById(R.id.main_page_textView_title);
         textViewName.setText(hotel.getName());
 
-        TextView textViewPrice = view.findViewById(R.id.main_page_textView_price_for_night);
-        textViewPrice.setText(hotel.getMinPrice() + "₽ за ночь");
+        TextView textViewInfo = view.findViewById(R.id.main_page_textView_info);
+        textViewInfo.setText(hotel.getInfo());
+
+        TextView textViewMinPrice = view.findViewById(R.id.textView_hotel_list_item_price);
+        textViewMinPrice.setText("Цена начинается от " + hotel.getMinPrice() + "₽");
 
         ImageView imageViewMain = view.findViewById(R.id.main_page_imageView_photo);
         imageViewMain.setImageResource(hotel.getMainPicture());
 
-        RadioButton radioButtonFeedback = view.findViewById(R.id.radio_button_feedback);
-        RadioButton radioButtonReview = view.findViewById(R.id.radio_button_review);
-        RadioButton radioButtonPhotos = view.findViewById(R.id.radio_button_photos);
-        radioButtonFeedback.setOnCheckedChangeListener(checkedChangeListener);
-        radioButtonReview.setOnCheckedChangeListener(checkedChangeListener);
-        radioButtonReview.toggle();
-        radioButtonPhotos.setOnCheckedChangeListener(checkedChangeListener);
+        TextView textViewAvgRating = view.findViewById(R.id.main_page_textView_avgRating);
+        textViewAvgRating.setText(String.valueOf(hotel.getAvgRate()));
 
-        ImageView imageViewBack = view.findViewById(R.id.main_page_imageView_back);
-        Button button = view.findViewById(R.id.main_page_switch_to_orderActivity);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView textViewAmountOfFeedbacks = view.findViewById(R.id.main_page_textView_amount_of_feedbacks);
+        textViewAmountOfFeedbacks.setText("● " + String.valueOf(hotel.getRates().size()) + " отзывов");
+
+        RatingBar ratingBar = view.findViewById(R.id.main_page_ratingBar_rating);
+        ratingBar.setRating(hotel.getAvgRate());
+
+
+        ListView listViewFeedbacks = view.findViewById(R.id.main_page_listView_feedbacks);
+        RatingAdapter ratingAdapter = new RatingAdapter(getActivity(), R.layout.feedback_list_item, hotel.getRates());
+        listViewFeedbacks.setAdapter(ratingAdapter);
+
+        TextView textViewAllFeedback = view.findViewById(R.id.main_page_textView_all_feedback);
+        textViewAllFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                check = transfer.getTripDate();
-                room = transfer.getRoom();
-                if (room != null && check[0] != null && check[1] != null){
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(SELECTED_HOTEL, i);
-                    bundle.putParcelable(SELECTED_ROOM, room);
-                    bundle.putLong(SELECTED_DATE_IN, check[0].getInnerDate().getTime());
-                    bundle.putLong(SELECTED_DATE_OUT, check[1].getInnerDate().getTime());
-                    Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_orderInfoFragment, bundle);
-                } else {
-                    Toast.makeText(getActivity(), "Некорректные данные", Toast.LENGTH_LONG).show();
-                }
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(Hotel.SELECTED_HOTEL, hotel);
+                Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_feedbackFragment, bundle);
             }
         });
 
-
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
+        LinearLayout layout = view.findViewById(R.id.my_linear);
+        layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(Hotel.SELECTED_HOTEL, hotel);
+                Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_roomSelectionFragment, bundle);
             }
         });
     }
-
-    CompoundButton.OnCheckedChangeListener checkedChangeListener = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            boolean isChecked = ((RadioButton) compoundButton).isChecked();
-            switch (compoundButton.getId()) {
-                case R.id.radio_button_feedback:
-                    if (isChecked) {
-                        compoundButton.setBackgroundResource(R.drawable.interactive_reactangle_fill_left);
-                        compoundButton.setTextColor(getResources().getColor(R.color.white));
-                        pageController.switchPage(FEEDBACK_PAGE);
-                    } else {
-                        compoundButton.setBackgroundResource(R.drawable.interactive_reactangle_left);
-                        compoundButton.setTextColor(getResources().getColor(R.color.primary_color));
-                    }
-                    break;
-                case R.id.radio_button_review:
-                    if (isChecked) {
-                        compoundButton.setBackgroundResource(R.drawable.interactive_reactangle_fill_middle);
-                        compoundButton.setTextColor(getResources().getColor(R.color.white));
-                        pageController.switchPage(REVIEW_PAGE);
-                    } else {
-                        compoundButton.setBackgroundResource(R.drawable.interactive_reactangle_middle);
-                        compoundButton.setTextColor(getResources().getColor(R.color.primary_color));
-                    }
-                    break;
-                case R.id.radio_button_photos:
-                    if (isChecked) {
-                        compoundButton.setBackgroundResource(R.drawable.interactive_reactangle_fill_right);
-                        compoundButton.setTextColor(getResources().getColor(R.color.white));
-                        pageController.switchPage(PHOTOS_PAGE);
-                    } else {
-                        compoundButton.setBackgroundResource(R.drawable.interactive_reactangle_right);
-                        compoundButton.setTextColor(getResources().getColor(R.color.primary_color));
-                    }
-                    break;
-            }
-        }
-    };
 
 
     @Override

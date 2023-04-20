@@ -27,19 +27,21 @@ import java.util.Date;
 public class OrderInfoFragment extends Fragment {
 
     Hotel hotel;
-
-    TripDate[] tripDates;
-
     Room room;
+
+    TripDate checkIn;
+    TripDate checkOut;
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
-        hotel = Hotel.hotels.get(bundle.getInt(MainPageFragment.SELECTED_HOTEL));
-        room = bundle.getParcelable(MainPageFragment.SELECTED_ROOM);
-        tripDates = new TripDate[]{ new TripDate(bundle.getLong(MainPageFragment.SELECTED_DATE_IN)),
-                new TripDate(bundle.getLong(MainPageFragment.SELECTED_DATE_OUT))};
+        hotel = bundle.getParcelable(Hotel.SELECTED_HOTEL);
+        room = bundle.getParcelable(Room.SELECTED_ROOM);
+        checkIn = bundle.getParcelable(TripDate.CHECK_IN);
+        checkOut = bundle.getParcelable(TripDate.CHECK_OUT);
     }
 
     @Override
@@ -73,7 +75,7 @@ public class OrderInfoFragment extends Fragment {
         textViewRoomInfo.setText(room.getInfo());
 
         TextView textViewDuration = view.findViewById(R.id.order_info_duration);
-        int days = new Date(tripDates[1].getInnerDate().getTime() - tripDates[0].getInnerDate().getTime()).getDate();
+        int days = new Date(checkOut.getInnerDate().getTime() - checkIn.getInnerDate().getTime()).getDate();
         float sum = days * room.getPrice();
         textViewDuration.setText(days + " " + getResources().getQuantityString(R.plurals.days, days) + " (" +
                 room.getPrice() + "₽ x " + days + " = " + (int)sum + "₽)");

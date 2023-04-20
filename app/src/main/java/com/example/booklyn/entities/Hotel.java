@@ -1,11 +1,17 @@
 package com.example.booklyn.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.example.booklyn.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
-public class Hotel {
+public class Hotel implements Parcelable {
 
     public static final String SELECTED_HOTEL = "SELECTED_HOTEL";
 
@@ -47,6 +53,29 @@ public class Hotel {
 
     }
 
+    protected Hotel(Parcel in) {
+        rooms = in.createTypedArrayList(Room.CREATOR);
+        allRatingSum = in.readFloat();
+        name = in.readString();
+        info = in.readString();
+        avgRate = in.readFloat();
+        rateCount = in.createIntArray();
+        minPrice = in.readInt();
+        mainPicture = in.readInt();
+    }
+
+    public static final Creator<Hotel> CREATOR = new Creator<Hotel>() {
+        @Override
+        public Hotel createFromParcel(Parcel in) {
+            return new Hotel(in);
+        }
+
+        @Override
+        public Hotel[] newArray(int size) {
+            return new Hotel[size];
+        }
+    };
+
     // TODO: Убрать
     public static void addHotels(ArrayList<Hotel> hotels) {
         hotels.add(new Hotel("Holiday Inn", 7000, R.drawable.holiday_inn));
@@ -62,7 +91,7 @@ public class Hotel {
             hotels.get(j).rooms = new ArrayList<>(5);
             for (int i = 0; i < 5; i++) {
                 hotels.get(j).rooms.add(new Room("Улучшенные апартаменты", "1-комнатная с видом на море", hotels.get(j).getMinPrice()));
-                hotels.get(j).addRate(((float) (10 + random.nextInt(40)) / 10), "Говно");
+                hotels.get(j).addRate(((float) (10 + random.nextInt(40)) / 10), "Какой-то комментарий");
                 hotels.get(j).additionalPictures.add(hotels.get(j).mainPicture);
             }
         }
@@ -93,7 +122,7 @@ public class Hotel {
     }
 
     public void addRate(float rate, String info) {
-        rates.add(new Rate(rate, info));
+        rates.add(new Rate(rate, info, new Date()));
 
         allRatingSum += rate;
         avgRate = (float) allRatingSum / rates.size();
@@ -114,5 +143,22 @@ public class Hotel {
 
     public ArrayList<Room> getRooms() {
         return rooms;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeTypedList(rooms);
+        parcel.writeFloat(allRatingSum);
+        parcel.writeString(name);
+        parcel.writeString(info);
+        parcel.writeFloat(avgRate);
+        parcel.writeIntArray(rateCount);
+        parcel.writeInt(minPrice);
+        parcel.writeInt(mainPicture);
     }
 }

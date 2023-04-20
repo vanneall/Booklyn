@@ -3,6 +3,7 @@ package com.example.booklyn.hotel_page;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.ParcelUuid;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +15,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
+import com.example.booklyn.entities.Hotel;
+import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
 
 import java.util.Date;
 
 
-public class TripDateFragment extends DialogFragment {
+public class TripDateFragment extends Fragment {
+    Room room;
+
+    Hotel hotel;
 
     public interface DateSetter{
         void setDate(TripDate date1, TripDate date2);
@@ -48,6 +56,8 @@ public class TripDateFragment extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        room = getArguments().getParcelable(Room.SELECTED_ROOM);
+        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
         checkIn = new TripDate();
         checkOut = new TripDate();
 
@@ -88,8 +98,12 @@ public class TripDateFragment extends DialogFragment {
 
     public void onApplyClick(View view){
         if (!checkIn.getInnerDate().after(checkOut.getInnerDate())) {
-            dateSetter.setDate(checkIn, checkOut);
-            getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(Hotel.SELECTED_HOTEL, hotel);
+            bundle.putParcelable(Room.SELECTED_ROOM, room);
+            bundle.putParcelable(TripDate.CHECK_IN, checkIn);
+            bundle.putParcelable(TripDate.CHECK_OUT, checkOut);
+            Navigation.findNavController(view).navigate(R.id.action_tripDateFragment_to_orderInfoFragment, bundle);
         } else {
             Toast.makeText(getActivity(), "Некорректная дата", Toast.LENGTH_LONG).show();
         }

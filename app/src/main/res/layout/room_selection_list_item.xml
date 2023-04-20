@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:maxHeight="300dp">
+    android:maxHeight="300dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/room_selection_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Улучшенные апартаменты"
+        android:textColor="@color/primary_color"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/cancelled_refund_icon"
+        android:drawablePadding="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Стоимость не возвращается"
+        android:textColor="@color/text_color" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/lock_icon"
+        android:drawablePadding="5dp"
+        android:text="Безопасная оплата заранее через\nприложение Booklyn"
+        android:textColor="@color/text_color" />
 
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/room_selection_item_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1"
+        android:text="info"
+        android:textColor="@color/black"
+        android:textSize="@dimen/simple_size" />
 
-        <TextView
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/room_selection_item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Улучшенные апартаменты"
-            android:textColor="@color/primary_color"
-            android:fontFamily="sans-serif-black"
-            android:textSize="18dp"/>
-
-        <TextView
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/cancelled_refund_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Стоимость не возвращается"
-            android:drawablePadding="5dp"
-            android:textColor="@color/text_color"
-            android:fontFamily="sans-serif-black"/>
-
-        <TextView
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/lock_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Безопасная оплата заранее через\nприложение Booklyn"
-            android:drawablePadding="5dp"
-            android:textColor="@color/text_color"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/line" />
 
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:id="@+id/room_selection_item_info"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/red"
+        android:padding="4dp"
+        android:text="Цена на мобильных устройствах"
+        android:textColor="@color/white"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/textView_hotel_list_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="price"
+        android:textColor="@color/black"
+        android:textSize="@dimen/simple_size" />
+
+        <Button
+            android:id="@+id/room_selection_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="info"
-            android:textSize="@dimen/simple_size"
-            android:textColor="@color/black"
-            />
+            android:text="ВЫБРАТЬ"
+            android:gravity="center"/>
 
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/line"
-            android:layout_gravity="center"/>
-
-
-        <TextView
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="Цена на мобильных устройствах"
-            android:textSize="13dp"
-            android:textColor="@color/white"
-            android:background="@color/red"/>
-
-        <TextView
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/textView_hotel_list_item_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="price"
-            android:textSize="@dimen/simple_size"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="sans-serif-black"/>
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

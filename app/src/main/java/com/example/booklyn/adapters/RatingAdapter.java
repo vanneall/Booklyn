@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,10 +38,30 @@ public class RatingAdapter extends ArrayAdapter<Rate> {
 
         Rate rate = rates.get(i);
 
-        TextView feedbackRating = view.findViewById(R.id.feedback_rating);
-        TextView feedbackCommentary = view.findViewById(R.id.feedback_commentary);
+        RatingBar ratingBar = view.findViewById(R.id.feedback_ratingBar);
+        ratingBar.setRating(rate.getRate());
 
+        TextView feedbackRating = view.findViewById(R.id.feedback_rating);
         feedbackRating.setText(String.valueOf(rate.getRate()));
+
+        TextView textViewEstimation = view.findViewById(R.id.feedback_rating_estimantion);
+        int num = (int) (rate.getRate() * 10);
+        if (num >= 45) {
+            textViewEstimation.setText(view.getResources().getString(R.string.very_good));
+        } else if (num >= 35) {
+            textViewEstimation.setText(view.getResources().getString(R.string.good));
+        } else if (num >= 30) {
+            textViewEstimation.setText(view.getResources().getString(R.string.normal));
+        } else if (num > 20) {
+            textViewEstimation.setText(view.getResources().getString(R.string.not_bad));
+        } else {
+            textViewEstimation.setText(view.getResources().getString(R.string.terrible));
+        }
+
+        TextView feedbackDate = view.findViewById(R.id.feedback_commentary_date);
+        feedbackDate.setText("Комментарий оставлен " + rate.getDate());
+
+        TextView feedbackCommentary = view.findViewById(R.id.feedback_commentary);
         feedbackCommentary.setText(rate.getInfo());
         return view;
     }

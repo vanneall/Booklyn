@@ -9,8 +9,12 @@ import java.util.Date;
 
 public class TripDate extends Date implements Parcelable {
 
-    private Date date;
+    public static String CHECK_IN = "check_in";
 
+    public static String CHECK_OUT = "check_out";
+
+
+    private Date date;
     private long milliseconds;
 
     public TripDate(){

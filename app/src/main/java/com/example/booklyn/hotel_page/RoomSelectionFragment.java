@@ -48,9 +48,10 @@ public class RoomSelectionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ArrayList<Room> rooms = Hotel.hotels.get(0).getRooms();
+        Hotel hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
+        ArrayList<Room> rooms = hotel.getRooms();
         ListView listView = view.findViewById(R.id.room_select_listView);
-        RoomsAdapter roomsAdapter = new RoomsAdapter(getActivity(), R.layout.room_selection_list_item, rooms);
+        RoomsAdapter roomsAdapter = new RoomsAdapter(getActivity(), R.layout.room_selection_list_item, rooms, hotel);
         listView.setAdapter(roomsAdapter);
         getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("fuck").commit();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

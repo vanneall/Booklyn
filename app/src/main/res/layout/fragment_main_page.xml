@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_above="@id/main_page_bottom_view"
         android:orientation="vertical"
         android:scrollbars="none">
 
@@ -22,7 +21,8 @@
             android:orientation="vertical">
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="250dp"
+                android:layout_marginBottom="10dp">
 
                 <ImageView
                     android:id="@+id/main_page_imageView_photo"
@@ -30,86 +30,244 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center_horizontal"
-                    />
-
-                <ImageView
-                    android:id="@+id/main_page_imageView_back"
-                    android:layout_marginTop="58dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/sign_back" />
-
-                <TextView
-                    android:layout_marginTop="50dp"
-                    android:layout_marginLeft="50dp"
-                    android:id="@+id/main_page_textView_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hotel_title"
-                    android:textSize="@dimen/title_size"
-                    android:textColor="@color/white"
-                    android:gravity="left|top"
-                    android:textStyle="bold"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="2"
-                    android:shadowColor="@color/black"/>
+                    android:src="@drawable/novotel" />
             </FrameLayout>
 
-
-            <RadioGroup
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:id="@+id/radio_group_category_selection"
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:id="@+id/radio_button_feedback"
-                    style="@style/InteractText"
+                <TextView
+                    android:id="@+id/main_page_textView_title"
                     android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:background="@drawable/interactive_reactangle_left"
-                    android:button="@android:color/transparent"
-                    android:text="@string/feedbacks"
-                    android:gravity="center"
-                    />
+                    android:layout_height="wrap_content"
+                    android:text="Novotel"
+                    android:textSize="30dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
 
-                <RadioButton
-                    android:id="@+id/radio_button_review"
-                    style="@style/InteractText"
+                <TextView
+                    android:id="@+id/main_page_textView_avgRating"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:background="@drawable/interactive_reactangle_middle"
-                    android:button="@android:color/transparent"
-                    android:text="@string/review"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:textSize="@dimen/title_size"
+                    android:textColor="@color/white"
+                    android:background="@color/primary_color"
+                    android:padding="3dp"
+                    android:layout_gravity="right"/>
+            </LinearLayout>
 
-                <RadioButton
-                    android:id="@+id/radio_button_photos"
-                    style="@style/InteractText"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RatingBar
+                    android:id="@+id/main_page_ratingBar_rating"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:background="@drawable/interactive_reactangle_right"
-                    android:button="@android:color/transparent"
-                    android:text="@string/photos_hotel"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:numStars="5"
+                    android:layout_marginRight="5dp"/>
 
-            </RadioGroup>
+                <TextView
+                    android:id="@+id/main_page_textView_amount_of_feedbacks"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="● 1532 отзывов"
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
 
             <ImageView
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/line"/>
+                android:src="@drawable/line"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/main_page_textView_info"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="200dp"
+                android:textSize="15dp"
+                android:text="\tНовотель (англ. Novotel сокращение Новгородский отель) — бренд, под которым работает французская гостиничная сеть, входящая в состав группы Accor. «Новотель» представляет собой бренд стандартизированных отелей верхнего сегмента среднего класса. Сеть включает около четырёхсот гостиниц в шестидесяти странах мира. Отели Новотель располагаются преимущественно в крупнейших мегаполисах мира, бизнес-центрах и туристических направлениях. Также существуют резорт-гостиницы под брендом Новотель (Novotel), расположенные на популярных курортах."/>
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/my_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Выбрать комнату"
+                        android:textSize="@dimen/title_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/textView_hotel_list_item_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Цена начинается от 7000₽"
+                        android:textSize="@dimen/simple_size"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="Цена на мобильных устройствах"
+                        android:textSize="13dp"
+                        android:textColor="@color/white"
+                        android:background="@color/red"/>
+                </LinearLayout>
 
                 <FrameLayout
-                    android:id="@+id/frame_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/button"
+                        android:layout_gravity="center"
+                        />
+                </FrameLayout>
             </LinearLayout>
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/InteractText"
+                    android:text="@string/place"
+                    android:drawablePadding="10dp"
+                    app:drawableLeftCompat="@drawable/geolocation_icon" />
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4-я сокольническая"
+                    style="@style/HotelDataString"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:drawablePadding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/InteractText"
+                    android:text="@string/number"
+                    app:drawableLeftCompat="@drawable/phone_number_icon" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="89150660353"
+                    style="@style/HotelDataString"
+                    android:autoLink="phone"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Рейтинг и отзыв пользователей"
+                    android:textColor="@color/text_color"
+                    android:layout_weight="1"
+                    android:textSize="16dp"/>
+
+                <TextView
+                    android:id="@+id/main_page_textView_all_feedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ просмотреть все отзывы"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    style="@style/InteractText"/>
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/main_page_listView_feedbacks"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
     </ScrollView>
 
     <ImageView
@@ -117,37 +275,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/line"
-        android:layout_above="@+id/main_page_bottom_view"
         android:background="@color/white"
         android:padding="1dp"/>
 
-    <LinearLayout
-        android:id="@+id/main_page_bottom_view"
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white">
-
-        <TextView
-            android:id="@+id/main_page_textView_price_for_night"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            style="@style/CategoryTitle"
-            android:textColor="@color/black"
-            android:text=""
-            android:gravity="center"
-            android:layout_weight="1"
-            android:background="@color/white"/>
-
-        <Button
-            android:id="@+id/main_page_switch_to_orderActivity"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="@string/book_button"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>
