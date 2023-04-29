@@ -16,7 +16,7 @@
     </plurals>
 
     <string name="very_good">Очень хорошо</string>
-    <string name="good">Очень хорошо</string>
+    <string name="good">Хорошо</string>
     <string name="normal">Нормально</string>
     <string name="not_bad">Приемлемо</string>
     <string name="terrible">Ужасно</string>

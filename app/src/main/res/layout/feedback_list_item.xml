@@ -33,7 +33,7 @@
         <TextView
             android:id="@+id/feedback_rating_estimantion"
             android:layout_marginLeft="5dp"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="Отзыв"
             android:textColor="@color/black"

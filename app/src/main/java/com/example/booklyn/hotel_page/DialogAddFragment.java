@@ -55,12 +55,10 @@ public class DialogAddFragment extends DialogFragment {
         float flt = Float.parseFloat(editTextRate.getText().toString());
         rateGetter.setRate(flt, str);
         Toast.makeText(getActivity(), "Комментарий добавлен", Toast.LENGTH_LONG).show();
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+        this.dismiss();
     }
 
     public void onClickCancel(View view) {
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+        this.dismiss();
     }
-
-
 }

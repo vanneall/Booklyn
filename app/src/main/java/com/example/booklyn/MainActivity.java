@@ -23,7 +23,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements DialogAddFragment.NewRateGetter,
-        TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged, HotelSelectionFragment.MainPage, RoomSelectionFragment.SelectedRoomGetter {
+        TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged,
+        HotelSelectionFragment.MainPage, RoomSelectionFragment.SelectedRoomGetter,
+        FeedbackFragment.FeedbackSetter {
 
 
     public static TripDate tripDateCheckIn;
@@ -94,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
         this.room = room;
     }
 
-//    @Override
-//    public void setRoom(Room room) {
-//        reviewFragment.setRoom(room);
-//    }
+    @Override
+    public void setFeedback(FeedbackFragment feedbackFragment) {
+        this.feedbackFragment = feedbackFragment;
+    }
 }

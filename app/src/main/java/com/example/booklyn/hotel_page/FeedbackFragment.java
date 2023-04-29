@@ -1,11 +1,16 @@
 package com.example.booklyn.hotel_page;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +29,18 @@ public class FeedbackFragment extends Fragment {
 
     View homeView;
 
+    public interface FeedbackSetter{
+        void setFeedback(FeedbackFragment feedbackFragment);
+    }
+
+    FeedbackSetter feedbackSetter;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        feedbackSetter = (FeedbackSetter) context;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,11 +50,19 @@ public class FeedbackFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        assert getArguments() != null;
-        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
+        feedbackSetter.setFeedback(this);
 
+        ImageView imageViewBack = view.findViewById(R.id.feedback_imageView_sign_back);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
         homeView = view;
         listView = view.findViewById(R.id.feedback_list_view);
+        setProgressBarRating(view);
         ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());
         listView.setAdapter(ratingAdapter);
         setRatingProcents(view);
@@ -54,7 +79,18 @@ public class FeedbackFragment extends Fragment {
     public void addRate(float rate, String info) {
         hotel.addRate(rate, info);
         setRatingProcents(homeView);
+        setProgressBarRating(homeView);
         ratingAdapter.notifyDataSetChanged();
+    }
+
+    private void setProgressBarRating(View view){
+        int[] rateCount = hotel.getRateCount();
+        int sum = hotel.getRates().size();
+        ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_five)).setProgress((int) (((float) rateCount[4] / sum) * 100));
+        ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_four)).setProgress((int) (((float) rateCount[3] / sum) * 100));
+        ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_three)).setProgress((int) (((float) rateCount[2] / sum) * 100));
+        ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_two)).setProgress((int) (((float) rateCount[1] / sum) * 100));
+        ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_one)).setProgress((int) (((float) rateCount[0] / sum) * 100));
     }
 
     private void setRatingProcents(View view) {
