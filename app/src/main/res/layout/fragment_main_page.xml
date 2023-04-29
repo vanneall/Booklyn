@@ -270,22 +270,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
 
-            <ImageView
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Фотографии"
+                    android:textColor="@color/text_color"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/main_page_textView_all_photos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ просмотреть все фотографии"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    style="@style/InteractText"/>
+            </LinearLayout>
+
+            <GridView
+                android:layout_gravity="center"
+                android:id="@+id/main_page_gridView_photos"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/line"
-                android:layout_marginBottom="5dp"/>
+                android:numColumns="3"/>
 
         </LinearLayout>
     </ScrollView>
-
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/line"
-        android:background="@color/white"
-        android:padding="1dp"/>
-
 </LinearLayout>

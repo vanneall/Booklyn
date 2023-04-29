@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_feedbackFragment"
             app:destination="@id/feedbackFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_viewPagerPhotosFragment2"
+            app:destination="@id/viewPagerPhotosFragment" />
     </fragment>
 
     <fragment
@@ -136,15 +139,15 @@
         android:name="com.example.booklyn.hotel_page.PhotosFragment"
         android:label="fragment_photos"
         tools:layout="@layout/fragment_photos" >
+        <argument
+            android:name="photos"
+            app:argType="integer[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
         <action
-            android:id="@+id/action_photosFragment_to_photoViewItemFragment"
-            app:destination="@id/photoViewItemFragment" />
+            android:id="@+id/action_photosFragment_to_viewPagerPhotosFragment"
+            app:destination="@id/viewPagerPhotosFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/photoViewItemFragment"
-        android:name="com.example.booklyn.hotel_page.PhotoViewItemFragment"
-        android:label="fragment_photo_view_item"
-        tools:layout="@layout/fragment_photo_view_item" />
     <fragment
         android:id="@+id/feedbackFragment"
         android:name="com.example.booklyn.hotel_page.FeedbackFragment"
@@ -174,6 +177,21 @@
             app:argType="com.example.booklyn.entities.Hotel"
             app:nullable="true"
             android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerPhotosFragment"
+        android:name="com.example.booklyn.hotel_page.ViewPagerPhotosFragment"
+        android:label="fragment_view_pager_photos"
+        tools:layout="@layout/fragment_view_pager_photos" >
+        <argument
+            android:name="photos"
+            app:argType="integer[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="i"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
 </navigation>

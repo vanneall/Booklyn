@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.RatingAdapter;
@@ -56,7 +57,7 @@ public class FeedbackFragment extends Fragment {
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStack();
+                Navigation.findNavController(view).popBackStack();
             }
         });
         hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);

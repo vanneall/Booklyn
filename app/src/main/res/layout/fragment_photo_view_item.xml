@@ -7,12 +7,21 @@
     android:background="@color/black">
 
     <ImageView
-        android:id="@+id/activity_photo_view_photo"
+        android:id="@+id/fragment_photo_view_photo"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:src="@tools:sample/avatars"
         />
+
+    <TextView
+        android:id="@+id/fragment_photo_view_textView_position"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 из 129"
+        android:textColor="@color/setting_background"/>
 
 
 </FrameLayout>

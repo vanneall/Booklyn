@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <FrameLayout
+        android:id="@+id/room_selection_title_container"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/primary_color">
@@ -35,7 +36,7 @@
 
 
     <ListView
-        android:layout_below="@id/text"
+        android:layout_below="@id/room_selection_title_container"
         android:id="@+id/room_select_listView"
         android:layout_width="409dp"
         android:layout_height="729dp"
@@ -43,4 +44,4 @@
         tools:layout_editor_absoluteY="1dp"
         android:layout_alignParentBottom="true"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -23,6 +25,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
+import com.example.booklyn.adapters.PhotosAdapter;
 import com.example.booklyn.adapters.RatingAdapter;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
@@ -112,6 +115,20 @@ public class MainPageFragment extends Fragment {
         RatingAdapter ratingAdapter = new RatingAdapter(getActivity(), R.layout.feedback_list_item, hotel.getRates());
         listViewFeedbacks.setAdapter(ratingAdapter);
 
+        GridView gridViewPhotos = view.findViewById(R.id.main_page_gridView_photos);
+        PhotosAdapter photosAdapter = new PhotosAdapter(getActivity(), R.layout.photos_list_item, hotel.getAdditionalPictures());
+        gridViewPhotos.setAdapter(photosAdapter);
+
+        TextView textViewAllPhotos = view.findViewById(R.id.main_page_textView_all_photos);
+        textViewAllPhotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putIntegerArrayList("ALL_PHOTOS", hotel.getAdditionalPictures());
+                Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_photosFragment, bundle);
+            }
+        });
+
         TextView textViewAllFeedback = view.findViewById(R.id.main_page_textView_all_feedback);
         textViewAllFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,9 +154,5 @@ public class MainPageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-    }
-
-    public void dataChanged() {
-
     }
 }

@@ -1,10 +1,9 @@
 package com.example.booklyn.adapters;
 
 import com.example.booklyn.R;
-import com.example.booklyn.hotel_page.PhotoViewActivity;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +42,16 @@ public class PhotosAdapter extends ArrayAdapter<Integer> {
         imageView.setImageResource(hotelsImagies.get(i));
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(imageView.getContext(), PhotoViewActivity.class);
-                intent.putIntegerArrayListExtra(PHOTO_KEY, (ArrayList<Integer>) hotelsImagies);
-                imageView.getContext().startActivity(intent);
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putIntegerArrayList("ALL_PHOTOS", (ArrayList<Integer>) hotelsImagies);
+                bundle.putInt("POSITION", i);
+                try {
+                    Navigation.findNavController(imageView).navigate(R.id.action_photosFragment_to_viewPagerPhotosFragment, bundle);
+                } catch (Exception e){
+                    Navigation.findNavController(imageView).navigate(R.id.action_mainPageFragment_to_viewPagerPhotosFragment2, bundle);
+                }
+
             }
         });
         return view;

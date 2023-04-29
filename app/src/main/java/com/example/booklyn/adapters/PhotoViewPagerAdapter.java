@@ -9,11 +9,11 @@ import com.example.booklyn.hotel_page.PhotoViewItemFragment;
 
 import java.util.ArrayList;
 
-public class PhotoAdapter extends FragmentStateAdapter {
+public class PhotoViewPagerAdapter extends FragmentStateAdapter {
 
     ArrayList<Integer> additionalPictures;
 
-    public PhotoAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Integer> additionalPictures) {
+    public PhotoViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Integer> additionalPictures) {
         super(fragmentActivity);
         this.additionalPictures = additionalPictures;
     }
@@ -21,7 +21,7 @@ public class PhotoAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return (PhotoViewItemFragment.newInstance(position, additionalPictures));
+        return (PhotoViewItemFragment.newInstance(position, additionalPictures, getItemCount()));
     }
 
     @Override

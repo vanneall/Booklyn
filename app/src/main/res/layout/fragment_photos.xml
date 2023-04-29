@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".hotel_page.PhotosFragment">
+    tools:context=".hotel_page.PhotosFragment"
+    android:orientation="vertical">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/primary_color">
+
+        <TextView
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="57dp"
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Фотографии"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="casual" />
+
+        <ImageView
+            android:id="@+id/photos_imageView_sign_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sign_back"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"/>
+    </FrameLayout>
 
     <GridView
-        android:layout_marginTop="15dp"
         android:id="@+id/feedback_fragment_gridView_photos"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
-        android:numColumns="4"
+        android:layout_height="wrap_content"
+        android:numColumns="3"
         android:gravity="center"
         android:stretchMode="columnWidth" />
 
-</FrameLayout>
+</LinearLayout>

@@ -23,14 +23,14 @@ public class PhotoViewItemFragment extends Fragment {
 
     private int pageNumber;
 
-    public PhotoViewItemFragment(){
-    }
+    private int allPages;
 
-    public static PhotoViewItemFragment newInstance(int page, ArrayList<Integer> pictures) {
+    public static PhotoViewItemFragment newInstance(int page, ArrayList<Integer> pictures, int allPages) {
         PhotoViewItemFragment fragment = new PhotoViewItemFragment();
         Bundle args = new Bundle();
-        args.putInt("num", page);
-        args.putIntegerArrayList("pictures", pictures);
+        args.putInt("POSITION", page);
+        args.putIntegerArrayList("ALL_PHOTOS", pictures);
+        args.putInt("ALL_PAGES", allPages);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,8 +38,9 @@ public class PhotoViewItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pageNumber = getArguments() != null ? getArguments().getInt("num") : 1;
-        additionalPictures = getArguments() != null ? getArguments().getIntegerArrayList("pictures") : null;
+        additionalPictures = getArguments() != null ? getArguments().getIntegerArrayList("ALL_PHOTOS") : null;
+        pageNumber = getArguments() != null ? getArguments().getInt("POSITION") : 1;
+        allPages = getArguments() != null ? getArguments().getInt("ALL_PAGES") : 0;
     }
 
     @Override
@@ -51,6 +52,7 @@ public class PhotoViewItemFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((ImageView)view.findViewById(R.id.activity_photo_view_photo)).setImageResource(additionalPictures.get(pageNumber));
+        ((TextView)view.findViewById(R.id.fragment_photo_view_textView_position)).setText((pageNumber + 1) + " из " + allPages);
+        ((ImageView)view.findViewById(R.id.fragment_photo_view_photo)).setImageResource(additionalPictures.get(pageNumber));
     }
 }
