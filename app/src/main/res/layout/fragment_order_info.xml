@@ -24,17 +24,18 @@
                 />
 
             <ImageView
-                android:id="@+id/order_info_imageView_back"
-                android:layout_marginTop="58dp"
-                android:layout_marginLeft="20dp"
+                android:id="@+id/order_info_imageView_sign_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/sign_back" />
+                android:src="@drawable/sign_back"
+                android:padding="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="10dp"/>
 
             <TextView
                 android:id="@+id/order_info_textView_title"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginLeft="55dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/hotel_title"

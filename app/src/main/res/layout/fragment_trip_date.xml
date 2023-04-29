@@ -7,17 +7,32 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:paddingTop="50dp"
-        android:paddingLeft="20dp"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="Выберите дату"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:fontFamily="casual"
-        android:background="@color/primary_color"
-        />
+        android:background="@color/primary_color">
+
+        <TextView
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="57dp"
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Выберите дату"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="casual" />
+
+        <ImageView
+            android:id="@+id/trip_date_imageView_sign_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sign_back"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"/>
+
+    </FrameLayout>
 
     <CalendarView
         android:id="@+id/fragment_trip_date_calendarView"

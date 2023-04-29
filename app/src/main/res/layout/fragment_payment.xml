@@ -6,30 +6,32 @@
     tools:context=".making_order_page.PaymentFragment"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/main_page_imageView_back"
-            android:layout_marginTop="58dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sign_back_black"/>
+        android:layout_height="100dp"
+        android:background="@color/white">
 
         <TextView
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/main_page_textView_title"
-            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="52dp"
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="casual"
             android:text="@string/payment_title"
             android:textSize="@dimen/title_size"
-            android:textColor="@color/black"
-            android:gravity="left"/>
-    </LinearLayout>
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/payment_imageView_back"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sign_back_black" />
+
+    </FrameLayout>
 
     <FrameLayout
         android:layout_marginTop="60dp"

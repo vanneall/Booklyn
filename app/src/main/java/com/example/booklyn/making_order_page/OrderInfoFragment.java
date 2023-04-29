@@ -54,11 +54,11 @@ public class OrderInfoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView imageViewBack = view.findViewById(R.id.order_info_imageView_back);
+        ImageView imageViewBack = view.findViewById(R.id.order_info_imageView_sign_back);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
+                Navigation.findNavController(view).popBackStack();;
             }
         });
 

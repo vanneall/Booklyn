@@ -12,7 +12,7 @@
         android:layout_height="350dp">
 
         <TextView
-            android:paddingTop="50dp"
+            android:paddingTop="52dp"
             android:paddingLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="100dp"

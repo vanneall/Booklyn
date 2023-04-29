@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.booklyn.MainActivity;
@@ -48,12 +49,19 @@ public class RoomSelectionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ImageView imageViewBack = view.findViewById(R.id.room_selection_imageView_sign_back);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).popBackStack();
+            }
+        });
+
         Hotel hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
         ArrayList<Room> rooms = hotel.getRooms();
         ListView listView = view.findViewById(R.id.room_select_listView);
         RoomsAdapter roomsAdapter = new RoomsAdapter(getActivity(), R.layout.room_selection_list_item, rooms, hotel);
         listView.setAdapter(roomsAdapter);
-        getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("fuck").commit();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View v, int i, long l) {

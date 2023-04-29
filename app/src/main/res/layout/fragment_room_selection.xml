@@ -6,18 +6,33 @@
     tools:context=".hotel_page.RoomSelectionFragment"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_alignParentTop="true"
-        android:paddingTop="50dp"
-        android:paddingLeft="20dp"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="Выберите апартаменты"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:fontFamily="casual"
-        android:background="@color/primary_color"
-        />
+        android:background="@color/primary_color">
+
+        <TextView
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="57dp"
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Выберите апартаменты"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="casual" />
+
+        <ImageView
+            android:id="@+id/room_selection_imageView_sign_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sign_back"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"/>
+
+    </FrameLayout>
+
 
     <ListView
         android:layout_below="@id/text"
