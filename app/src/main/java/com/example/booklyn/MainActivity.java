@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dataBaseHelperClass = new DataBaseHelper(this);
+        try {
+            dataBaseHelperClass.createDataBase();
+        } catch (Exception ex) {}
         dataBaseHelperClass.openDataBase();
         Hotel.hotels = dataBaseHelperClass.getHotelsFromDatabase();
         dataBaseHelperClass.close();

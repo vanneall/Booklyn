@@ -1,5 +1,6 @@
 package com.example.booklyn.database_classes;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -56,6 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * @return true if it exists, false if it doesn't
      */
     public boolean checkDataBase() {
+        String path = DB_PATH + DATABASE_NAME;
         File databaseFile = new File(DB_PATH + DATABASE_NAME);
         return databaseFile.exists();
     }
@@ -130,6 +132,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_IMAGES_KEY_PICTIRE = "picture";
 
 
+    @SuppressLint("Range")
     public ArrayList<Hotel> getHotelsFromDatabase() {
         ArrayList<Hotel> hotels = new ArrayList<>();
         Cursor cursor = sqliteDataBase.query(TABLE_HOTEL_NAME, null, null, null,
