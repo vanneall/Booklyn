@@ -37,8 +37,8 @@
     <!-- Меню услуг отеля -->
     <string name="place">Местоположение</string>
     <string name="number">Номер</string>
-    <string name="check_in">Заселение</string>
-    <string name="check_out">Выселение</string>
+    <string name="check_in">Заезд:</string>
+    <string name="check_out">Отъезд:</string>
     <string name="hotel_room">Номер</string>
 
     <!-- Бронь -->

@@ -41,75 +41,59 @@
         android:theme="@style/Theme.Calendar" />
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             style="@style/HotelDataString"
             android:text="@string/check_in"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:drawableLeft="@drawable/check_in_icon"/>
 
         <TextView
             android:id="@+id/textView_check_in_info"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/HotelDataString"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center" />
     </LinearLayout>
 
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             style="@style/HotelDataString"
             android:text="@string/check_out"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:drawableLeft="@drawable/check_out_icon"/>
 
         <TextView
             android:id="@+id/textView_check_out_info"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/HotelDataString"
-            android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center" />
+
     </LinearLayout>
 
-    <LinearLayout
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/trip_date_apply_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/trip_date_apply_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Забронировать"
-            android:layout_weight="1"
-            android:textSize="@dimen/little_size"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
-        <Button
-            android:id="@+id/trip_date_cancel_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel"
-            android:layout_weight="1"
-            android:textSize="@dimen/little_size"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-    </LinearLayout>
-
+        android:layout_height="55dp"
+        android:text="Выбрать даты"
+        android:textSize="@dimen/simple_size" />
 
 </LinearLayout>

@@ -67,8 +67,14 @@ public class TripDateFragment extends Fragment {
 
         room = getArguments().getParcelable(Room.SELECTED_ROOM);
         hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
-        checkIn = new TripDate();
-        checkOut = new TripDate();
+        checkIn = new TripDate(new Date().getTime());
+        Date temp = new Date();
+        setInnerDate(checkIn, temp.getDate(), temp.getMonth(), 2000 + temp.getYear() % 100);
+        ((TextView)view.findViewById(R.id.textView_check_in_info)).setText(checkIn.toString());
+
+        checkOut = new TripDate(new Date().getTime());
+        setInnerDate(checkOut, temp.getDate(), temp.getMonth(), 2000 + temp.getYear() % 100);
+        ((TextView)view.findViewById(R.id.textView_check_out_info)).setText(checkOut.toString());
 
         CalendarView calendarView = view.findViewById(R.id.fragment_trip_date_calendarView);
         calendarView.setMinDate((new Date()).getTime());
@@ -80,14 +86,10 @@ public class TripDateFragment extends Fragment {
                         .append(" ").toString();
                 if (isCheckInDay) {
                     ((TextView)view.findViewById(R.id.textView_check_in_info)).setText(selectedDate);
-                    checkIn.getInnerDate().setDate(i2);
-                    checkIn.getInnerDate().setMonth(i1+1);
-                    checkIn.getInnerDate().setYear(i);
+                    setInnerDate(checkIn, i2, i1, i);
                 } else {
                     ((TextView)view.findViewById(R.id.textView_check_out_info)).setText(selectedDate);
-                    checkOut.getInnerDate().setDate(i2);
-                    checkOut.getInnerDate().setMonth(i1+1);
-                    checkOut.getInnerDate().setYear(i);
+                    setInnerDate(checkOut, i2, i1, i);
                 }
                 isCheckInDay = !isCheckInDay;
             }
@@ -95,14 +97,12 @@ public class TripDateFragment extends Fragment {
 
         Button buttonApply = view.findViewById(R.id.trip_date_apply_button);
         buttonApply.setOnClickListener(this::onApplyClick);
-
-        Button buttonCancel = view.findViewById(R.id.trip_date_cancel_button);
-        buttonCancel.setOnClickListener(this::onCancelClick);
     }
 
-
-    public void onCancelClick(View view){
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+    public void setInnerDate(@NonNull TripDate date, int day, int month, int year){
+        date.getInnerDate().setDate(day);
+        date.getInnerDate().setMonth(month + 1);
+        date.getInnerDate().setYear(year);
     }
 
     public void onApplyClick(View view){
