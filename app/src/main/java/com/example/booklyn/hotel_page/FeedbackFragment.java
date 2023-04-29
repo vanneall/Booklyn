@@ -21,6 +21,9 @@ import androidx.navigation.Navigation;
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.RatingAdapter;
 import com.example.booklyn.entities.Hotel;
+import com.example.booklyn.entities.Rate;
+
+import java.util.Date;
 
 public class FeedbackFragment extends Fragment {
 
@@ -32,6 +35,8 @@ public class FeedbackFragment extends Fragment {
 
     public interface FeedbackSetter{
         void setFeedback(FeedbackFragment feedbackFragment);
+
+        void writeToDB(Rate rate, int hotelID);
     }
 
     FeedbackSetter feedbackSetter;
@@ -78,7 +83,9 @@ public class FeedbackFragment extends Fragment {
     }
 
     public void addRate(float rate, String info) {
-        hotel.addRate(rate, info);
+        Rate rate1 = new Rate(rate, info, new Date());
+        hotel.addRate(rate1);
+        feedbackSetter.writeToDB(rate1, hotel.getID());
         setRatingProcents(homeView);
         setProgressBarRating(homeView);
         ratingAdapter.notifyDataSetChanged();

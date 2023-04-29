@@ -7,7 +7,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.Hotel;
+import com.example.booklyn.entities.Rate;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
 import com.example.booklyn.hotel_page.DialogAddFragment;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
     HotelSelectionFragment hotelSelectionFragment;
     PhotosFragment photosFragment;
     FeedbackFragment feedbackFragment;
-
+    DataBaseHelper dataBaseHelperClass;
 
     BottomNavigationView menu;
     NavController navController;
@@ -44,7 +46,10 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Hotel.addHotels(Hotel.hotels);
+        dataBaseHelperClass = new DataBaseHelper(this);
+        dataBaseHelperClass.openDataBase();
+        Hotel.hotels = dataBaseHelperClass.getHotelsFromDatabase();
+        dataBaseHelperClass.close();
     }
 
     @Override
@@ -99,5 +104,12 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
     @Override
     public void setFeedback(FeedbackFragment feedbackFragment) {
         this.feedbackFragment = feedbackFragment;
+    }
+
+    @Override
+    public void writeToDB(Rate rate, int hotelID) {
+        dataBaseHelperClass.openDataBase();
+        dataBaseHelperClass.writeFeedbackToDatabase(rate, hotelID);
+        dataBaseHelperClass.close();
     }
 }

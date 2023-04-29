@@ -47,9 +47,6 @@ public class MainPageFragment extends Fragment {
     public static final String SELECTED_DATE_OUT = "date_out";
 
     Hotel hotel;
-    TripDate[] check;
-    Room room;
-    Integer i;
 
     public interface Transfer {
         TripDate[] getTripDate();
@@ -68,8 +65,7 @@ public class MainPageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        i = getArguments().getInt(Hotel.SELECTED_HOTEL);
-        hotel = Hotel.hotels.get(i);
+        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
     }
 
     @Override

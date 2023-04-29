@@ -27,10 +27,6 @@
         android:name="com.example.booklyn.hotel_page.MainPageFragment"
         android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" >
-        <argument
-            android:name="i"
-            app:argType="integer"
-            android:defaultValue="0" />
         <action
             android:id="@+id/action_mainPageFragment_to_roomSelectionFragment"
             app:destination="@id/roomSelectionFragment" />
@@ -43,6 +39,11 @@
         <action
             android:id="@+id/action_mainPageFragment_to_viewPagerPhotosFragment2"
             app:destination="@id/viewPagerPhotosFragment" />
+        <argument
+            android:name="hotel"
+            app:argType="com.example.booklyn.entities.Hotel"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <fragment

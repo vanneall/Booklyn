@@ -53,8 +53,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
 
-                //TODO: поменять
-                bundle.putInt(Hotel.SELECTED_HOTEL, i);
+                bundle.putParcelable(Hotel.SELECTED_HOTEL, hotels.get(i));
                 Navigation.findNavController(button).navigate(R.id.action_hotelSelectionFragment_to_mainPageFragment, bundle);
             }
         });
@@ -73,7 +72,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         } else {
             textViewRatingEstimation.setText(view.getResources().getString(R.string.terrible));
         }
-        textViewNumberOfFeedbacks.setText("● " + hotel.getRates().size() + " " + view.getResources().getQuantityString(R.plurals.feedbacks, hotel.getRates().size()));
+        //textViewNumberOfFeedbacks.setText("● " + hotel.getRates().size() + " " + view.getResources().getQuantityString(R.plurals.feedbacks, hotel.getRates().size()));
         textViewName.setText(hotel.getName());
         textViewRate.setText(String.valueOf(hotel.getAvgRate()));
         textViewPrice.setText(hotel.getMinPrice() + "₽");
