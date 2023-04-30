@@ -31,7 +31,7 @@
     </FrameLayout>
 
     <EditText
-
+        android:id="@+id/user_page_textView_full_name"
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
@@ -39,8 +39,6 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:hint="@string/full_name"
-        android:textColor="#C4C4C4"
-        android:backgroundTint="#C4C4C4"
         android:textSize="@dimen/simple_size"
         android:inputType="textPersonName"
         android:drawableLeft="@drawable/customer_name"
@@ -48,6 +46,7 @@
 
 
     <EditText
+        android:id="@+id/user_page_textView_telephone"
         android:drawablePadding="5dp"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
@@ -55,14 +54,13 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:hint="@string/telephone_number"
-        android:textColor="#C4C4C4"
-        android:backgroundTint="#C4C4C4"
         android:textSize="@dimen/simple_size"
         android:inputType="number"
         android:layout_marginTop="25dp"
         android:drawableLeft="@drawable/telephone"/>
 
     <EditText
+        android:id="@+id/user_page_textView_email"
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
@@ -70,18 +68,18 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:hint="@string/mail"
-        android:textColor="#C4C4C4"
-        android:backgroundTint="#C4C4C4"
         android:textSize="@dimen/simple_size"
         android:inputType="textEmailAddress"
         android:drawableLeft="@drawable/email"
         android:drawablePadding="5dp"/>
 
     <Button
+        android:id="@+id/user_page_upload_new_data"
         android:layout_marginTop="35dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/big_blue_button"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="55dp"
         android:layout_gravity="center"
         android:text="@string/refresh"/>
 

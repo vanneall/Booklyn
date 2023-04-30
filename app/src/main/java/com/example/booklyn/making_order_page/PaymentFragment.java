@@ -1,9 +1,13 @@
 package com.example.booklyn.making_order_page;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -12,6 +16,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,6 +25,9 @@ import com.example.booklyn.R;
 
 public class PaymentFragment extends Fragment {
 
+    public static final String BOOKING_CHANNEL = "BOOKING_CHANNEL";
+
+    public static final int NOTIFY_ID = 2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,5 +64,38 @@ public class PaymentFragment extends Fragment {
 
             }
         });
+
+        Button button = view.findViewById(R.id.payment_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getBookingMessage();
+            }
+        });
+    }
+
+
+    void getBookingMessage(){
+        Bundle bundle = getArguments();
+        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getActivity(), BOOKING_CHANNEL)
+                .setAutoCancel(false)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("Уведомление о бронировании")
+                .setContentText("Был забронирован номер")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(
+                        "Забронирова номер \"" +  bundle.getString("ROOM_NAME") + "\" в отеле \"" +
+                                bundle.getString("HOTEL_NAME") + "\" на " + bundle.getString("NAME") +
+                                " с " + bundle.getString("CHECK_IN") + " по " + bundle.getString("CHECK_OUT")
+                ));
+        createChannelIfNeeded(notificationManager, BOOKING_CHANNEL);
+        notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
+    }
+
+    public static void createChannelIfNeeded(NotificationManager manager, String CHANNEL){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL, CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
+            manager.createNotificationChannel(notificationChannel);
+        }
     }
 }

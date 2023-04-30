@@ -7,11 +7,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.booklyn.authorization.AuthorizationFragment;
 import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Rate;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
+import com.example.booklyn.entities.User;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
 import com.example.booklyn.hotel_page.HotelSelectionFragment;
@@ -20,6 +22,9 @@ import com.example.booklyn.hotel_page.PhotosFragment;
 import com.example.booklyn.hotel_page.RoomSelectionFragment;
 import com.example.booklyn.hotel_page.SortFragment;
 import com.example.booklyn.hotel_page.TripDateFragment;
+import com.example.booklyn.making_order_page.OrderInfoFragment;
+import com.example.booklyn.settings_page.SettingsPageFragment;
+import com.example.booklyn.user_page.UserPageFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -27,7 +32,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements DialogAddFragment.NewRateGetter,
         TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged,
         HotelSelectionFragment.MainPage, RoomSelectionFragment.SelectedRoomGetter,
-        FeedbackFragment.FeedbackSetter {
+        FeedbackFragment.FeedbackSetter, AuthorizationFragment.BottomNavigationSetInvisable,
+        SettingsPageFragment.UserGetter, UserPageFragment.UserGetter,
+        OrderInfoFragment.UserGetter {
 
 
     public static TripDate tripDateCheckIn;
@@ -41,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
 
     BottomNavigationView menu;
     NavController navController;
+
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +109,17 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
     }
 
     @Override
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public void setVisible() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setVisibility(BottomNavigationView.VISIBLE);
+    }
+
+    @Override
     public void setRoom(Room room) {
         this.room = room;
     }
@@ -114,5 +134,17 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
         dataBaseHelperClass.openDataBase();
         dataBaseHelperClass.writeFeedbackToDatabase(rate, hotelID);
         dataBaseHelperClass.close();
+    }
+
+    @Override
+    public void setInvisible() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setVisibility(BottomNavigationView.GONE);
+    }
+
+
+    @Override
+    public User getUser() {
+        return user;
     }
 }

@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="25dp"
+            android:textSize="16dp"
             android:hint="@string/payment_card_number"
             style="@style/CardEditText"
             android:inputType="number"
@@ -75,6 +76,7 @@
             android:layout_gravity="center_horizontal"
             android:hint="@string/payment_card_holder_name"
             style="@style/CardEditText"
+            android:textSize="16dp"
             android:inputType="textPersonName"
             android:maxLength="25"/>
 
@@ -87,6 +89,7 @@
             android:layout_marginBottom="20dp"
             style="@style/CardEditText"
             android:hint="@string/payment_card_date"
+            android:textSize="16dp"
             android:inputType="date"
             android:maxLength="5"/>
 
@@ -98,18 +101,20 @@
             android:layout_marginBottom="20dp"
             style="@style/CardEditText"
             android:hint="@string/payment_CVV"
+            android:textSize="16dp"
             android:inputType="number"
             android:maxLength="3"/>
     </FrameLayout>
 
     <Button
         android:layout_marginTop="70dp"
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/payment_button"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:text="@string/payment_pay"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/big_blue_button" />
+        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

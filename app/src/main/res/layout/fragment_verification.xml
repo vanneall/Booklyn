@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authorization.VerificationFragment"
+    android:background="@drawable/start_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/white"
+        android:text="Верификация"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/settings_background"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Верификация с помощью мобильного телефона"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Код был отправлено на ваш номер мобильного телефона"/>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/verification_editText_code_1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="40dp"
+                android:gravity="center"
+                android:maxLength="1"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/verification_editText_code_2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="40dp"
+                android:gravity="center"
+                android:maxLength="1"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/verification_editText_code_3"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="40dp"
+                android:gravity="center"
+                android:maxLength="1"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/verification_editText_code_4"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="40dp"
+                android:gravity="center"
+                android:maxLength="1"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Не получили код?"
+            android:layout_gravity="center_horizontal"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:id="@+id/verification_button_remessage"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="Отправить заново через 30с"
+                android:layout_weight="1"
+                android:backgroundTint="@color/faded_green"
+                android:textSize="@dimen/little_size"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/verification_change_phone"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="Изменить номер"
+                android:layout_weight="1"
+                android:backgroundTint="@color/faded_blue"
+                android:textSize="@dimen/little_size"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

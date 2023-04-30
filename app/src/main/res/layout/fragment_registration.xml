@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authorization.RegistrationFragment"
+    android:background="@drawable/start_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/white"
+        android:text="Регистрация"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/settings_background"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/registration_editText_full_name"
+            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ФИО"
+            android:textSize="@dimen/simple_size"
+            android:drawableLeft="@drawable/user_icon"
+            android:drawablePadding="10dp"
+            android:inputType="textCapWords"/>
+
+        <EditText
+            android:id="@+id/registration_editText_email"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Почта"
+            android:textSize="@dimen/simple_size"
+            android:drawableLeft="@drawable/email"
+            android:drawablePadding="10dp"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/registration_editText_telephone"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Номер телефона"
+            android:textSize="@dimen/simple_size"
+            android:drawableLeft="@drawable/telephone"
+            android:drawablePadding="10dp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/registration_editText_password"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Пароль"
+            android:textSize="@dimen/simple_size"
+            android:drawableLeft="@drawable/lock_sign"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"/>
+
+
+
+        <Button
+            android:id="@+id/registration_button_enter"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Создать аккаунт"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Создавая учетную запись, вы соглашаетесь с нашими условиями"
+            android:padding="15dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="bottom|center"
+            android:text="У вас уже есть учетная запись?"/>
+
+        <TextView
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/lime"
+            android:text="Войдите в систему" />
+
+    </LinearLayout>
+</FrameLayout>

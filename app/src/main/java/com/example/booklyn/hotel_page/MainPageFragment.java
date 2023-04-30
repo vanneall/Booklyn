@@ -101,7 +101,7 @@ public class MainPageFragment extends Fragment {
         textViewAvgRating.setText(String.valueOf(hotel.getAvgRate()));
 
         TextView textViewAmountOfFeedbacks = view.findViewById(R.id.main_page_textView_amount_of_feedbacks);
-        textViewAmountOfFeedbacks.setText("● " + String.valueOf(hotel.getRates().size()) + " отзывов");
+        textViewAmountOfFeedbacks.setText("● " + hotel.getRates().size() + " " + getResources().getQuantityString(R.plurals.feedbacks, hotel.getRates().size()));
 
         RatingBar ratingBar = view.findViewById(R.id.main_page_ratingBar_rating);
         ratingBar.setRating(hotel.getAvgRate());

@@ -15,4 +15,7 @@
     <color name="red">#D41616</color>
     <color name="card_text_color">#96B2D3</color>
     <color name="setting_background">#F0F4F6</color>
+    <color name="lime">#00F919</color>
+    <color name="faded_green">#00BD6B</color>
+    <color name="faded_blue">#0090FF</color>
 </resources>

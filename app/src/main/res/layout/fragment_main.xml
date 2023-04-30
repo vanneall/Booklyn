@@ -52,6 +52,13 @@
         android:layout_height="wrap_content"
         android:background="@color/setting_background"/>
 
+    <TextView
+        android:id="@+id/fucking_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text=""/>
+
     <ImageView
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"

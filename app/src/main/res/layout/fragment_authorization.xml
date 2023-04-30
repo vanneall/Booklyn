@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authorization.AuthorizationFragment"
+    android:background="@drawable/start_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/white"
+        android:text="Авторизация"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/settings_background"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/authorization_editText_telephone"
+            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Номер телефона"
+            android:textSize="@dimen/simple_size"
+            android:drawableLeft="@drawable/telephone"
+            android:drawablePadding="10dp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/authorization_editText_password"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Пароль"
+            android:textSize="@dimen/simple_size"
+            android:drawableLeft="@drawable/lock_sign"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"/>
+
+
+
+        <Button
+            android:id="@+id/authorization_button_enter"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Войти"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/red"
+            android:text="Забыли пароль?"
+            android:padding="15dp"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="bottom"
+            android:text="У вас нет учетной записи?"/>
+
+        <TextView
+            android:id="@+id/authorization_textView_create_account"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Создайте ее"
+            android:textColor="@color/lime"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+</FrameLayout>

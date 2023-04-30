@@ -72,7 +72,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         } else {
             textViewRatingEstimation.setText(view.getResources().getString(R.string.terrible));
         }
-        //textViewNumberOfFeedbacks.setText("● " + hotel.getRates().size() + " " + view.getResources().getQuantityString(R.plurals.feedbacks, hotel.getRates().size()));
+        textViewNumberOfFeedbacks.setText("● " + hotel.getRates().size() + " " + view.getResources().getQuantityString(R.plurals.feedbacks, hotel.getRates().size()));
         textViewName.setText(hotel.getName());
         textViewRate.setText(String.valueOf(hotel.getAvgRate()));
         textViewPrice.setText(hotel.getMinPrice() + "₽");

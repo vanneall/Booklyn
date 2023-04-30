@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +17,7 @@ import com.example.booklyn.MainActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.HotelsAdapter;
 import com.example.booklyn.entities.Hotel;
+import com.example.booklyn.entities.User;
 
 import java.util.ArrayList;
 
@@ -27,6 +27,10 @@ public class HotelSelectionFragment extends Fragment{
     public interface MainPage {
         void setMainPage(HotelSelectionFragment hotelSelectionFragment);
         ArrayList<Hotel> getHotels();
+
+        void setUser(User user);
+
+        void setVisible();
     }
     MainPage mainPageFragment;
 
@@ -57,18 +61,20 @@ public class HotelSelectionFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainPageFragment.setVisible();
         MainActivity.tripDateCheckOut = null;
         MainActivity.tripDateCheckIn = null;
         MainActivity.room = null;
-        if (savedInstanceState == null) {
-            listViewMainHotels = view.findViewById(R.id.listView_main_hotels);
-
-            adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageFragment.getHotels());
-            listViewMainHotels.setAdapter(adapter);
-        }
+        listViewMainHotels = view.findViewById(R.id.listView_main_hotels);
+        adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageFragment.getHotels());
+        listViewMainHotels.setAdapter(adapter);
+        mainPageFragment.setUser(getArguments().getParcelable("USER"));
         mainPageFragment.setMainPage(this);
 
-
+        TextView textView = view.findViewById(R.id.fucking_test);
+//        textView.setText((int)R.drawable.cosmos + " " + (int)R.drawable.cosmos_1 + " "
+//    + (int)R.drawable.cosmos_2 + " " + (int)R.drawable.cosmos_3 + " " + (int)R.drawable.cosmos_4 + " "
+//        + (int)R.drawable.cosmos_5 + " ");
         SortFragment sortFragment = new SortFragment();
         getActivity().getSupportFragmentManager().beginTransaction().add(R.id.main_container_for_sort_and_filter, sortFragment).commit();
         getActivity().getSupportFragmentManager().beginTransaction().hide(sortFragment).commit();

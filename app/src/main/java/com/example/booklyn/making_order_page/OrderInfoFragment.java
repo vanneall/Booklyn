@@ -1,6 +1,7 @@
 package com.example.booklyn.making_order_page;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -20,7 +21,9 @@ import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
+import com.example.booklyn.entities.User;
 import com.example.booklyn.hotel_page.MainPageFragment;
+import com.example.booklyn.user_page.UserPageFragment;
 
 import java.util.Date;
 
@@ -32,7 +35,18 @@ public class OrderInfoFragment extends Fragment {
     TripDate checkIn;
     TripDate checkOut;
 
+    User user;
 
+    public interface UserGetter {
+        User getUser();
+    }
+    UserGetter userGetter;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        userGetter = (UserGetter) context;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,16 +96,32 @@ public class OrderInfoFragment extends Fragment {
 
         TextView textViewVAT = view.findViewById(R.id.order_info_VAT);
         float vat = sum * 0.1f;
-        textViewVAT.setText(Float.toString(vat) + "₽");
+        textViewVAT.setText((vat) + "₽");
 
         TextView textViewResult = view.findViewById(R.id.order_info_result_sum);
-        textViewResult.setText(Float.toString(sum + vat) + "₽");
+        textViewResult.setText((sum + vat) + "₽");
+
+
+        user = userGetter.getUser();
+        TextView textViewFullName = view.findViewById(R.id.order_info_full_name);
+        textViewFullName.setText(user.getFullName());
+        TextView textViewFullEmail = view.findViewById(R.id.order_info_mail);
+        textViewFullEmail.setText(user.getEmail());
+        TextView textViewFullTelephone = view.findViewById(R.id.order_info_telephone_number);
+        textViewFullTelephone.setText(user.getTelephone());
 
         Button button = view.findViewById(R.id.order_info_button);
         button.setOnClickListener(this::onClick);
     }
 
     public void onClick(View view){
-        Navigation.findNavController(view).navigate(R.id.action_orderInfoFragment_to_paymentFragment);
+        Bundle bundle = new Bundle();
+        bundle.putString("NAME", user.getFullName());
+        bundle.putInt("PRICE", room.getPrice() + room.getPrice()/10);
+        bundle.putString("CHECK_IN", checkIn.toString());
+        bundle.putString("CHECK_OUT", checkOut.toString());
+        bundle.putString("ROOM_NAME", room.getName());
+        bundle.putString("HOTEL_NAME", hotel.getName());
+        Navigation.findNavController(view).navigate(R.id.action_orderInfoFragment_to_paymentFragment, bundle);
     }
 }

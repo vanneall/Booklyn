@@ -1,5 +1,6 @@
 package com.example.booklyn.settings_page;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,8 +14,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.booklyn.R;
+import com.example.booklyn.database_classes.DataBaseHelper;
+import com.example.booklyn.entities.User;
 
 public class SettingsPageFragment extends Fragment {
+
+    public interface UserGetter{
+        public User getUser();
+    }
+
+    UserGetter userGetter;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        userGetter = (UserGetter) context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,6 +37,8 @@ public class SettingsPageFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings_page, container, false);
     }
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -56,6 +73,18 @@ public class SettingsPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(button3).navigate(R.id.action_settingsPageFragment_to_supportFragment);
+            }
+        });
+
+        Button buttonLeave = view.findViewById(R.id.leave_button);
+        buttonLeave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity());
+                dataBaseHelper.openDataBase();
+                dataBaseHelper.leftFromAccount(userGetter.getUser().getID());
+                dataBaseHelper.close();
+                getActivity().finish();
             }
         });
     }

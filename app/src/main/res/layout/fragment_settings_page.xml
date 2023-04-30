@@ -94,6 +94,16 @@
             android:text="@string/rate"
             android:textColor="@color/black" />
 
+        <Button
+            android:id="@+id/leave_button"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SettingsButton"
+            android:text="Выйти из аккаунта"
+            android:textColor="@color/red" />
+
     </LinearLayout>
 
 </LinearLayout>

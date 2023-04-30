@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Rate;
 import com.example.booklyn.entities.Room;
+import com.example.booklyn.entities.User;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -131,6 +132,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_IMAGES_NAME = "AdditionalImages";
     private static final String TABLE_IMAGES_KEY_PICTIRE = "picture";
 
+    private static final String TABLE_USER_NAME = "User";
+
 
     @SuppressLint("Range")
     public ArrayList<Hotel> getHotelsFromDatabase() {
@@ -185,6 +188,68 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(TABLE_RATE_KEY_RATE, rate.getRate());
         cv.put("parent_id", hoteLID);
         sqliteDataBase.insert(TABLE_RATE_NAME, null, cv);
+    }
+
+    @SuppressLint("Range")
+    public User checkActiveUser(){
+        Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "is_activated = ?",
+                new String[]{"1"}, null, null, null);
+        User user = null;
+        if (cursor.moveToNext()){
+            user = new User(cursor.getInt(cursor.getColumnIndex("_id")),
+                    cursor.getString(cursor.getColumnIndex("full_name")),
+                    cursor.getString(cursor.getColumnIndex("email")),
+                    cursor.getString(cursor.getColumnIndex("telephone")),
+                    cursor.getString(cursor.getColumnIndex("password")));
+        }
+        cursor.close();
+        return user;
+    }
+
+    @SuppressLint("Range")
+    public User getUser(String telephone, String password){
+        Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "telephone = ? and password = ?",
+                new String[]{telephone, password}, null, null, null);
+        User user = null;
+        if (cursor.moveToNext()){
+            user = new User(cursor.getInt(cursor.getColumnIndex("_id")),
+                    cursor.getString(cursor.getColumnIndex("full_name")),
+                    cursor.getString(cursor.getColumnIndex("email")),
+                    telephone, password);
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("is_activated", "1");
+            sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" +  cursor.getInt(cursor.getColumnIndex("_id")), null);
+        }
+        cursor.close();
+        return user;
+    }
+
+    public User createUser(String fullName, String email, String telephone, String password){
+        ContentValues cv = new ContentValues();
+        cv.put("full_name", fullName);
+        cv.put("telephone", telephone);
+        cv.put("email", email);
+        cv.put("password", password);
+        cv.put("is_activated", "1");
+        long id = sqliteDataBase.insert(TABLE_USER_NAME, null, cv);
+        return new User((int) id, fullName, email, telephone, password);
+    }
+
+    @SuppressLint("Range")
+    public void leftFromAccount(int id){
+        Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "_id = ?",
+                new String[]{id+""}, null, null, null);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("is_activated", "0");
+        sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" +  id, null);
+    }
+
+    public void userUpdate(int id, String fullName, String email, String telephone){
+        ContentValues cv = new ContentValues();
+        cv.put("full_name", fullName);
+        cv.put("telephone", telephone);
+        cv.put("email", email);
+        sqliteDataBase.update(TABLE_USER_NAME, cv, "_id" + "=" + id, null);
     }
 
     @Override
