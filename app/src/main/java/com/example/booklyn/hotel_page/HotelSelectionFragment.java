@@ -25,11 +25,8 @@ public class HotelSelectionFragment extends Fragment {
 
     public interface MainPageController {
         void setMainPage(HotelSelectionFragment hotelSelectionFragment);
-
         ArrayList<Hotel> getHotels();
-
         void setUser(User user);
-
         void setVisible();
     }
 

@@ -111,6 +111,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_USER_NAME = "User";
 
+    private static final String TABLE_ALL_PARENT_ID = "parent_id";
 
     @SuppressLint("Range")
     public ArrayList<Hotel> getHotelsFromDatabase() {
@@ -163,13 +164,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(TABLE_RATE_KEY_INFO, rate.getInfo());
         cv.put(TABLE_RATE_KEY_RATE, rate.getRate());
-        cv.put("parent_id", hoteLID);
+        cv.put(TABLE_ALL_PARENT_ID, hoteLID);
         sqliteDataBase.insert(TABLE_RATE_NAME, null, cv);
     }
 
     public void deleteFeedbackFromDatabase(Rate rate, int hotelID){
         sqliteDataBase.delete(TABLE_RATE_NAME, "parent_id = ? and info = ? and rate = ?", new String[]{String.valueOf(hotelID),
                 rate.getInfo(), String.valueOf(rate.getRate())});
+    }
+
+    public void writeRoomToDatabase(Room room, int hotelID){
+        ContentValues cv = new ContentValues();
+        cv.put(TABLE_ROOM_KEY_NAME, room.getName());
+        cv.put(TABLE_ROOM_KEY_INFO, room.getInfo());
+        cv.put(TABLE_ROOM_KEY_PRICE, room.getPrice());
+        cv.put(TABLE_ALL_PARENT_ID, hotelID);
+        sqliteDataBase.insert(TABLE_ROOM_NAME, null, cv);
+    }
+
+    public void deleteRoomFromDatabase(Room room, int hotelID){
+        sqliteDataBase.delete(TABLE_ROOM_NAME, "parent_id = ? and info = ? and name = ? and price = ?", new String[]{String.valueOf(hotelID),
+        room.getInfo(), room.getName(), String.valueOf(room.getPrice())});
     }
 
     @SuppressLint("Range")

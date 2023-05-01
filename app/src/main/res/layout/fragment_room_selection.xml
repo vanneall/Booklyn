@@ -34,10 +34,20 @@
 
     </FrameLayout>
 
+    <TextView
+        android:layout_below="@id/room_selection_title_container"
+        android:id="@+id/room_selection_textView_add_new_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+Добавить комнату"
+        android:textSize="15dp"
+        android:gravity="right"
+        android:padding="10dp"
+        android:textColor="@color/faded_green"/>
 
     <ListView
         android:id="@+id/room_selection_listView_apartaments"
-        android:layout_below="@id/room_selection_title_container"
+        android:layout_below="@id/room_selection_textView_add_new_room"
         android:layout_width="409dp"
         android:layout_height="729dp"
         tools:layout_editor_absoluteX="1dp"

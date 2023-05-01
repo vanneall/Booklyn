@@ -169,6 +169,9 @@
             app:argType="com.example.booklyn.entities.Hotel"
             android:defaultValue="@null"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_roomSelectionFragment_to_addNewRoomFragment"
+            app:destination="@id/addNewRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/photosFragment"
@@ -278,6 +281,17 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewRoomFragment"
+        android:name="com.example.booklyn.hotel_page.AddNewRoomFragment"
+        android:label="fragment_add_new_room"
+        tools:layout="@layout/fragment_add_new_room" >
+        <argument
+            android:name="hotel"
+            app:argType="com.example.booklyn.entities.Hotel"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
 </navigation>

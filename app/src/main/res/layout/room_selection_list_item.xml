@@ -83,9 +83,16 @@
 
     <Button
         android:layout_gravity="center"
-        android:id="@+id/room_selection_list_item_button"
+        android:id="@+id/room_selection_list_item_button_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ВЫБРАТЬ" />
+
+    <Button
+        android:id="@+id/room_selection_list_item_button_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Удалить"
+        android:backgroundTint="@color/red"/>
 
 </LinearLayout>

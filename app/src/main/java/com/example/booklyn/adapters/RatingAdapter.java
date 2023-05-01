@@ -72,7 +72,7 @@ public class RatingAdapter extends ArrayAdapter<Rate> {
             viewHolder.textViewEstimation.setText(view.getResources().getString(R.string.terrible));
         }
         if (!isAdmin) {
-            viewHolder.buttonDelete.setVisibility(View.INVISIBLE);
+            viewHolder.buttonDelete.setVisibility(View.GONE);
         } else {
             viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -9,6 +9,8 @@ public class Room implements Parcelable {
 
     public static final String SELECTED_ROOM = "selected_room";
 
+    public static final String ALL_ROOMS = "ALL_ROOMS";
+
     private String name;
 
     private String info;

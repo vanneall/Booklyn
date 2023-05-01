@@ -12,6 +12,7 @@ import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Rate;
 import com.example.booklyn.entities.User;
+import com.example.booklyn.entities.UserGetter;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
 import com.example.booklyn.hotel_page.HotelSelectionFragment;
@@ -28,7 +29,8 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
         SortFragment.GetNotifyDataChanged, HotelSelectionFragment.MainPageController,
         FeedbackFragment.FeedbackController, AuthorizationFragment.BottomNavigationVisibaleController,
         SettingsPageFragment.UserGetter, UserPageFragment.UserGetter,
-        OrderInfoFragment.UserGetter, ViewPagerPhotosFragment.BottomNavigationVisibaleController {
+        OrderInfoFragment.UserGetter, ViewPagerPhotosFragment.BottomNavigationVisibaleController,
+        UserGetter {
 
     HotelSelectionFragment hotelSelectionFragment;
     FeedbackFragment feedbackFragment;

@@ -5,11 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import com.example.booklyn.R;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
 
 public class Hotel implements Parcelable {
 
@@ -65,10 +61,7 @@ public class Hotel implements Parcelable {
         this.allRatingSum = makeAllRate(rates);
         this.avgRate =  (float) allRatingSum / rates.size();
         this.additionalPictures = images;
-        minPrice = Integer.MAX_VALUE;
-        for (Room r : rooms) {
-            minPrice = r.getPrice() < minPrice ? r.getPrice() : minPrice;
-        }
+        resetMinPrice();
     }
 
     protected Hotel(Parcel in) {
@@ -108,6 +101,13 @@ public class Hotel implements Parcelable {
 
     public int getMainPicture() {
         return mainPicture;
+    }
+
+    public void resetMinPrice() {
+        minPrice = Integer.MAX_VALUE;
+        for (Room r : rooms) {
+            minPrice = r.getPrice() < minPrice ? r.getPrice() : minPrice;
+        }
     }
 
     public int getMinPrice() {

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".hotel_page.AddNewRoomFragment"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/add_new_room_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/primary_color">
+
+        <TextView
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="57dp"
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавление номера"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="casual" />
+
+        <ImageView
+            android:id="@+id/add_new_room_imageView_sign_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sign_back"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"/>
+
+    </FrameLayout>
+
+    <EditText
+        android:layout_below="@id/add_new_room_title_container"
+        android:layout_marginTop="20dp"
+        android:id="@+id/add_new_room_editText_room_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:maxLength="20"
+        android:hint="Название номера*" />
+
+    <EditText
+        android:layout_below="@id/add_new_room_editText_room_title"
+        android:layout_marginTop="20dp"
+        android:id="@+id/add_new_room_editText_room_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Цена в ₽*"
+        android:maxLength="5"/>
+
+    <EditText
+        android:layout_below="@id/add_new_room_editText_room_price"
+        android:id="@+id/add_new_room_editText_room_info"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Описание*"
+        android:layout_above="@id/add_new_room_button_apply"
+        android:gravity="top"/>
+
+    <Button
+        android:id="@+id/add_new_room_button_apply"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить"/>
+
+</RelativeLayout>
