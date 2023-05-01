@@ -32,10 +32,14 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements DialogAddFragment.NewRateGetter,
         TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged,
         HotelSelectionFragment.MainPage, RoomSelectionFragment.SelectedRoomGetter,
-        FeedbackFragment.FeedbackSetter, AuthorizationFragment.BottomNavigationSetInvisable,
+        FeedbackFragment.FeedbackSetter, AuthorizationFragment.BottomNavigationVisibaleController,
         SettingsPageFragment.UserGetter, UserPageFragment.UserGetter,
         OrderInfoFragment.UserGetter {
 
+    interface BottomNavigationVisibaleController{
+        void show();
+        void hide();
+    }
 
     public static TripDate tripDateCheckIn;
     public static TripDate tripDateCheckOut;

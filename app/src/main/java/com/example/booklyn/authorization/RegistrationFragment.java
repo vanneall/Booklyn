@@ -20,39 +20,49 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class RegistrationFragment extends Fragment {
 
+    public static final String USER_NAME = "NAME";
+    public static final String USER_EMAIL = "EMAIL";
+    public static final String USER_TELEPHONE = "TELEPHONE";
+    public static final String USER_PASSWORD = "PASSWORD";
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_registration, container, false);
     }
 
+    EditText editTextFullName;
+    EditText editTextEmail;
+    EditText editTextTelephone;
+    EditText editTextPassword;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        EditText editTextFullName = view.findViewById(R.id.registration_editText_full_name);
-        EditText editTextEmail = view.findViewById(R.id.registration_editText_email);
-        EditText editTextTelephone = view.findViewById(R.id.registration_editText_telephone);
-        EditText editTextPassword = view.findViewById(R.id.registration_editText_password);
+
+        //Поля для данных пользователя
+        editTextFullName = view.findViewById(R.id.registration_editText_full_name);
+        editTextEmail = view.findViewById(R.id.registration_editText_email);
+        editTextTelephone = view.findViewById(R.id.registration_editText_telephone);
+        editTextPassword = view.findViewById(R.id.registration_editText_password);
+
         Button buttonEnter = view.findViewById(R.id.registration_button_enter);
-        buttonEnter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!editTextFullName.getText().toString().equals("") &&
-                        !editTextEmail.getText().toString().equals("") &&
-                        !editTextTelephone.getText().toString().equals("") &&
-                        !editTextPassword.getText().toString().equals("")){
-                    Bundle bundle = new Bundle();
-                    bundle.putString("name", editTextFullName.getText().toString());
-                    bundle.putString("email",editTextEmail.getText().toString());
-                    bundle.putString("telephone", editTextTelephone.getText().toString());
-                    bundle.putString("password", editTextPassword.getText().toString());
-                    Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_verificationFragment, bundle);
-                }
-                else {
-                    Snackbar.make(view, "Необходимо заполнить все поля для продолжения", Snackbar.LENGTH_LONG).show();
-                }
-            }
-        });
+        buttonEnter.setOnClickListener(this::clickRegistrate);
+    }
+
+    private void clickRegistrate(View view) {
+        if (!editTextFullName.getText().toString().equals("") &&
+                !editTextEmail.getText().toString().equals("") &&
+                !editTextTelephone.getText().toString().equals("") &&
+                !editTextPassword.getText().toString().equals("")){
+
+            Bundle bundle = new Bundle();
+            bundle.putString(USER_NAME, editTextFullName.getText().toString());
+            bundle.putString(USER_EMAIL,editTextEmail.getText().toString());
+            bundle.putString(USER_TELEPHONE, editTextTelephone.getText().toString());
+            bundle.putString(USER_PASSWORD, editTextPassword.getText().toString());
+            Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_verificationFragment, bundle);
+        }
+        else {
+            Snackbar.make(view, "Необходимо заполнить все поля для продолжения", Snackbar.LENGTH_LONG).show();
+        }
     }
 }

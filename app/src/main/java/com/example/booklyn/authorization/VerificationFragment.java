@@ -45,11 +45,12 @@ public class VerificationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         code = getVerificationCode();
-        String name = getArguments().getString("name");
-        String email = getArguments().getString("email");
-        String telephone = getArguments().getString("telephone");
-        String password = getArguments().getString("password");
+        String name = getArguments().getString(RegistrationFragment.USER_NAME);
+        String email = getArguments().getString(RegistrationFragment.USER_EMAIL);
+        String telephone = getArguments().getString(RegistrationFragment.USER_TELEPHONE);
+        String password = getArguments().getString(RegistrationFragment.USER_PASSWORD);
 
+        //Поля для воода кода
         EditText editTextCode1 = view.findViewById(R.id.verification_editText_code_1);
         EditText editTextCode2 = view.findViewById(R.id.verification_editText_code_2);
         EditText editTextCode3 = view.findViewById(R.id.verification_editText_code_3);
@@ -133,24 +134,24 @@ public class VerificationFragment extends Fragment {
             }
         });
 
+        //Кнопка для повторной отправки кода
         Button buttonRemessage = view.findViewById(R.id.verification_button_remessage);
-        buttonRemessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                code = getVerificationCode();
-            }
-        });
+        buttonRemessage.setOnClickListener(this::clickRemessage);
 
+        //Кнопка для смены телефона
         Button buttonChangeNumber = view.findViewById(R.id.verification_button_change_phone);
-        buttonChangeNumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
-        });
+        buttonChangeNumber.setOnClickListener(this::clickChangeTelephone);
     }
 
-    int getVerificationCode(){
+    private void clickRemessage(View view) {
+        code = getVerificationCode();
+    }
+
+    private void clickChangeTelephone(View view) {
+        Navigation.findNavController(view).popBackStack();
+    }
+
+    private int getVerificationCode(){
           int code = getNewCode();
           notificationManager = (NotificationManager) getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
           NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getActivity(), REGISTRATION_CHANNEL)
@@ -163,14 +164,12 @@ public class VerificationFragment extends Fragment {
           return code;
     }
 
-    int getNewCode(){
+    private int getNewCode(){
         return 1000 + new Random().nextInt(9000);
     }
 
     public static void createChannelIfNeeded(NotificationManager manager, String CHANNEL){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL, CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
-            manager.createNotificationChannel(notificationChannel);
-        }
+        NotificationChannel notificationChannel = new NotificationChannel(CHANNEL, CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
+        manager.createNotificationChannel(notificationChannel);
     }
 }

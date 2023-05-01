@@ -14,7 +14,6 @@ import java.util.Random;
 public class Hotel implements Parcelable {
 
     public static final String SELECTED_HOTEL = "SELECTED_HOTEL";
-
     public static ArrayList<Hotel> hotels = new ArrayList<>(10);
 
     public ArrayList<Room> rooms;
