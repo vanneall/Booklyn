@@ -35,25 +35,37 @@ public class PhotosAdapter extends ArrayAdapter<Integer> {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
         if (view == null) {
             view = inflater.inflate(layout, viewGroup, false);
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
-        ImageView imageView = view.findViewById(R.id.photos_list_item_imageView);
-        imageView.setImageResource(hotelsImagies.get(i));
-        imageView.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.imageView.setImageResource(hotelsImagies.get(i));
+        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putIntegerArrayList(ALL_HOTEL_PHOTOS, (ArrayList<Integer>) hotelsImagies);
                 bundle.putInt(PHOTO_POSITION, i);
                 try {
-                    Navigation.findNavController(imageView).navigate(R.id.action_photosFragment_to_viewPagerPhotosFragment, bundle);
+                    Navigation.findNavController(v).navigate(R.id.action_photosFragment_to_viewPagerPhotosFragment, bundle);
                 } catch (Exception e) {
-                    Navigation.findNavController(imageView).navigate(R.id.action_mainPageFragment_to_viewPagerPhotosFragment2, bundle);
+                    Navigation.findNavController(v).navigate(R.id.action_mainPageFragment_to_viewPagerPhotosFragment2, bundle);
                 }
 
             }
         });
         return view;
+    }
+
+    private class ViewHolder {
+        final ImageView imageView;
+        private ViewHolder(View view) {
+            this.imageView = view.findViewById(R.id.photos_list_item_imageView);
+        }
     }
 }

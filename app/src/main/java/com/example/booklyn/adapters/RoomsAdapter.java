@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.booklyn.R;
@@ -36,20 +38,20 @@ public class RoomsAdapter extends ArrayAdapter<Room> {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
         if (view == null) {
             view = inflater.inflate(layout, viewGroup, false);
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
 
         Room room = rooms.get(i);
-        TextView textViewName = view.findViewById(R.id.room_selection_list_item_name);
-        TextView textViewInfo = view.findViewById(R.id.room_selection_list_item_info);
-        TextView textViewPrice = view.findViewById(R.id.main_page_textView_min_price);
-        textViewName.setText(room.getName());
-        textViewInfo.setText("Информация: " + room.getInfo());
-        textViewPrice.setText("Цена: " +String.valueOf(room.getPrice()) + "₽");
-
-        Button button = view.findViewById(R.id.room_selection_list_item_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        viewHolder.textViewName.setText(room.getName());
+        viewHolder.textViewInfo.setText("Информация: " + room.getInfo());
+        viewHolder.textViewPrice.setText("Цена: " + room.getPrice() + "₽");
+        viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
@@ -59,5 +61,18 @@ public class RoomsAdapter extends ArrayAdapter<Room> {
             }
         });
         return view;
+    }
+
+    private class ViewHolder{
+        final TextView textViewName;
+        final TextView textViewInfo;
+        final TextView textViewPrice;
+        final Button button;
+        ViewHolder(View view){
+            textViewName = view.findViewById(R.id.room_selection_list_item_name);
+            textViewInfo = view.findViewById(R.id.room_selection_list_item_info);
+            textViewPrice = view.findViewById(R.id.main_page_textView_min_price);
+            button = view.findViewById(R.id.room_selection_list_item_button);
+        }
     }
 }
