@@ -2,7 +2,6 @@ package com.example.booklyn.making_order_page;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,21 +27,17 @@ public class PaymentFragment extends Fragment {
 
     public static final int NOTIFY_ID = 2;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_payment, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Кнопка назад
         ImageView imageView = view.findViewById(R.id.payment_imageView_back);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
-        });
+        imageView.setOnClickListener(this::clickBack);
 
         EditText editTextCardNumber = view.findViewById(R.id.payment_editText_card_number);
         editTextCardNumber.addTextChangedListener(new TextWatcher() {
@@ -64,17 +59,16 @@ public class PaymentFragment extends Fragment {
             }
         });
 
+        //Кнопка бронирования
         Button button = view.findViewById(R.id.payment_button_pay);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getBookingMessage();
-            }
-        });
+        button.setOnClickListener(this::clickGetBookingMessage);
     }
 
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
+    }
 
-    void getBookingMessage(){
+    private void clickGetBookingMessage(View view){
         Bundle bundle = getArguments();
         NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getActivity(), BOOKING_CHANNEL)
@@ -91,10 +85,8 @@ public class PaymentFragment extends Fragment {
         notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
     }
 
-    public static void createChannelIfNeeded(NotificationManager manager, String CHANNEL){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL, CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
-            manager.createNotificationChannel(notificationChannel);
-        }
+    private static void createChannelIfNeeded(NotificationManager manager, String CHANNEL){
+        NotificationChannel notificationChannel = new NotificationChannel(CHANNEL, CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
+        manager.createNotificationChannel(notificationChannel);
     }
 }

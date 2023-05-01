@@ -28,10 +28,8 @@ public class OrderInfoFragment extends Fragment {
 
     Hotel hotel;
     Room room;
-
     TripDate checkIn;
     TripDate checkOut;
-
     User user;
 
     public interface UserGetter {
@@ -56,8 +54,7 @@ public class OrderInfoFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_order_info, container, false);
     }
 
@@ -65,14 +62,12 @@ public class OrderInfoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView imageViewBack = view.findViewById(R.id.order_info_imageView_sign_back);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();;
-            }
-        });
 
+        //Кнопка назад
+        ImageView imageViewBack = view.findViewById(R.id.order_info_imageView_sign_back);
+        imageViewBack.setOnClickListener(this::clickBack);
+
+        //Основная информация на странице
         ImageView imageView = view.findViewById(R.id.order_info_imageView_photo);
         imageView.setImageResource(hotel.getMainPicture());
 
@@ -88,8 +83,7 @@ public class OrderInfoFragment extends Fragment {
         TextView textViewDuration = view.findViewById(R.id.order_room_textView_duration);
         int days = new Date(checkOut.getInnerDate().getTime() - checkIn.getInnerDate().getTime()).getDate();
         float sum = days * room.getPrice();
-        textViewDuration.setText(days + " " + getResources().getQuantityString(R.plurals.days, days) + " (" +
-                room.getPrice() + "₽ x " + days + " = " + (int)sum + "₽)");
+        textViewDuration.setText(days + " " + getResources().getQuantityString(R.plurals.days, days) + " (" + room.getPrice() + "₽ x " + days + " = " + (int)sum + "₽)");
 
         TextView textViewVAT = view.findViewById(R.id.order_room_textView_VAT);
         float vat = sum * 0.1f;
@@ -98,7 +92,7 @@ public class OrderInfoFragment extends Fragment {
         TextView textViewResult = view.findViewById(R.id.order_room_textView_result_sum);
         textViewResult.setText((sum + vat) + "₽");
 
-
+        //Заполнение раздела о клиенте
         user = userGetter.getUser();
         TextView textViewFullName = view.findViewById(R.id.order_room_textView_full_name);
         textViewFullName.setText(user.getFullName());
@@ -108,10 +102,14 @@ public class OrderInfoFragment extends Fragment {
         textViewFullTelephone.setText(user.getTelephone());
 
         Button button = view.findViewById(R.id.order_room_textView_button_book);
-        button.setOnClickListener(this::onClick);
+        button.setOnClickListener(this::clickActionToPayment);
     }
 
-    public void onClick(View view){
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
+    }
+
+    private void clickActionToPayment(View view){
         Bundle bundle = new Bundle();
         bundle.putString("NAME", user.getFullName());
         bundle.putInt("PRICE", room.getPrice() + room.getPrice()/10);
@@ -120,5 +118,11 @@ public class OrderInfoFragment extends Fragment {
         bundle.putString("ROOM_NAME", room.getName());
         bundle.putString("HOTEL_NAME", hotel.getName());
         Navigation.findNavController(view).navigate(R.id.action_orderInfoFragment_to_paymentFragment, bundle);
+    }
+
+    @Override
+    public void onDetach() {
+        userGetter = null;
+        super.onDetach();
     }
 }
