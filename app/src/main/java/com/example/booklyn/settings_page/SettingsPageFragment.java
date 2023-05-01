@@ -20,7 +20,7 @@ import com.example.booklyn.entities.User;
 public class SettingsPageFragment extends Fragment {
 
     public interface UserGetter{
-        public User getUser();
+        User getUser();
     }
 
     UserGetter userGetter;
@@ -32,60 +32,67 @@ public class SettingsPageFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_settings_page, container, false);
     }
-
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Переход к политике и приватности
         Button button = view.findViewById(R.id.settings_page_button_privacy_and_policy);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(button).navigate(R.id.action_settingsPageFragment_to_policyAndPrivacyFragment);
-            }
-        });
+        button.setOnClickListener(this::clickActionTo);
 
+        //Переход к правилам и условиям
         Button button1 = view.findViewById(R.id.settings_page_button_terms_and_conditions);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(button1).navigate(R.id.action_settingsPageFragment_to_termsAndConditionsFragment);
-            }
-        });
+        button1.setOnClickListener(this::clickActionTo);
 
+        //Переход к информации об приложении
         Button button2 = view.findViewById(R.id.settings_page_button_about_the_app);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(button2).navigate(R.id.action_settingsPageFragment_to_aboutAppFragment);
-            }
-        });
+        button2.setOnClickListener(this::clickActionTo);
 
+        //Переход к поддержке
         Button button3 = view.findViewById(R.id.settings_page_button_support);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(button3).navigate(R.id.action_settingsPageFragment_to_supportFragment);
-            }
-        });
+        button3.setOnClickListener(this::clickActionTo);
 
+        //Выход из аккаунта
         Button buttonLeave = view.findViewById(R.id.settings_page_button_leave);
-        buttonLeave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        buttonLeave.setOnClickListener(this::clickActionTo);
+    }
+
+    public void clickActionTo(View view){
+        switch (view.getId()){
+            case R.id.settings_page_button_privacy_and_policy:{
+                Navigation.findNavController(view).navigate(R.id.action_settingsPageFragment_to_policyAndPrivacyFragment);
+                break;
+            }
+            case R.id.settings_page_button_terms_and_conditions:{
+                Navigation.findNavController(view).navigate(R.id.action_settingsPageFragment_to_termsAndConditionsFragment);
+                break;
+            }
+            case R.id.settings_page_button_about_the_app:{
+                Navigation.findNavController(view).navigate(R.id.action_settingsPageFragment_to_aboutAppFragment);
+                break;
+            }
+            case R.id.settings_page_button_support:{
+                Navigation.findNavController(view).navigate(R.id.action_settingsPageFragment_to_supportFragment);
+                break;
+            }
+            case R.id.settings_page_button_leave:{
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity());
                 dataBaseHelper.openDataBase();
                 dataBaseHelper.leftFromAccount(userGetter.getUser().getID());
                 dataBaseHelper.close();
                 getActivity().finish();
+                break;
             }
-        });
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        userGetter = null;
+        super.onDetach();
     }
 }

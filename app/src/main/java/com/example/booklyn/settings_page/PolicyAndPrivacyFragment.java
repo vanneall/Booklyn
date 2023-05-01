@@ -17,21 +17,19 @@ import com.example.booklyn.R;
 public class PolicyAndPrivacyFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_policy_and_privacy, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Кнопка назад
         ImageView imageViewBack = view.findViewById(R.id.policy_and_privacy_imageView_sign_back);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
-        });
+        imageViewBack.setOnClickListener(this::clickBack);
+    }
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
     }
 }
