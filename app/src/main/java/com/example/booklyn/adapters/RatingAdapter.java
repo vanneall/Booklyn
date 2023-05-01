@@ -20,11 +20,16 @@ import java.util.List;
 
 public class RatingAdapter extends ArrayAdapter<Rate> {
 
+    public interface RateSetter {
+        void updateRate();
+    }
+
     private LayoutInflater inflater;
     private List<Rate> rates;
     private int layout;
     private boolean isAdmin;
-    private int hotelID;
+    private Hotel hotel;
+    RateSetter rateSetter;
 
     public RatingAdapter(@NonNull Context context, int resource, @NonNull List<Rate> objects) {
         super(context, resource, objects);
@@ -32,15 +37,17 @@ public class RatingAdapter extends ArrayAdapter<Rate> {
         layout = resource;
         rates = objects;
         this.isAdmin = false;
+
     }
 
-    public RatingAdapter(@NonNull Context context, int resource, @NonNull List<Rate> objects, boolean isAdmin, int hotelID) {
+    public RatingAdapter(@NonNull Context context, int resource, @NonNull List<Rate> objects, boolean isAdmin, Hotel hotel) {
         super(context, resource, objects);
         inflater = LayoutInflater.from(context);
         layout = resource;
         rates = objects;
         this.isAdmin = isAdmin;
-        this.hotelID = hotelID;
+        this.hotel = hotel;
+        rateSetter = (RateSetter) context;
     }
 
     @Override
@@ -79,9 +86,11 @@ public class RatingAdapter extends ArrayAdapter<Rate> {
                 public void onClick(View view) {
                     DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
                     dataBaseHelper.openDataBase();
-                    dataBaseHelper.deleteFeedbackFromDatabase(rate, hotelID);
+                    dataBaseHelper.deleteFeedbackFromDatabase(rate, hotel.getID());
                     dataBaseHelper.close();
-                    rates.remove(i);
+                    rates.remove(rate);
+                    hotel.resetRate();
+                    rateSetter.updateRate();
                     notifyDataSetChanged();
                 }
             });

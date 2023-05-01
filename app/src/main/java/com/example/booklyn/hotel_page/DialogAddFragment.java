@@ -20,16 +20,16 @@ public class DialogAddFragment extends DialogFragment {
 
     View mainView;
 
-    public interface RateGetter {
+    public interface RateSetter {
         void setRate(float rate, String info);
     }
 
-    RateGetter rateGetter;
+    RateSetter rateSetter;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        rateGetter = (RateGetter) context;
+        rateSetter = (RateSetter) context;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class DialogAddFragment extends DialogFragment {
         EditText editTextMsg = mainView.findViewById(R.id.dialog_editText_msg);
         String str = editTextMsg.getText().toString();
         float flt = Float.parseFloat(editTextRate.getText().toString());
-        rateGetter.setRate(flt, str);
+        rateSetter.setRate(flt, str);
 
         Toast.makeText(getActivity(), "Комментарий добавлен", Toast.LENGTH_LONG).show();
         this.dismiss();
@@ -65,7 +65,7 @@ public class DialogAddFragment extends DialogFragment {
 
     @Override
     public void onDetach() {
-        rateGetter = null;
+        rateSetter = null;
         super.onDetach();
     }
 }

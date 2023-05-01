@@ -57,9 +57,7 @@ public class Hotel implements Parcelable {
         this.mainPicture = picture;
         this.rates = rates;
         this.rooms = rooms;
-        this.rateCount = makeRateCount(rates);
-        this.allRatingSum = makeAllRate(rates);
-        this.avgRate =  (float) allRatingSum / rates.size();
+        resetRate();
         this.additionalPictures = images;
         resetMinPrice();
     }
@@ -106,16 +104,12 @@ public class Hotel implements Parcelable {
     public void resetMinPrice() {
         minPrice = Integer.MAX_VALUE;
         for (Room r : rooms) {
-            minPrice = r.getPrice() < minPrice ? r.getPrice() : minPrice;
+            minPrice = Math.min(r.getPrice(), minPrice);
         }
     }
 
     public int getMinPrice() {
         return minPrice;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
     }
 
     public String getInfo() {
@@ -136,6 +130,12 @@ public class Hotel implements Parcelable {
             allRate += r.getRate();
         }
         return allRate;
+    }
+
+    public void resetRate(){
+        this.rateCount = makeRateCount(rates);
+        this.allRatingSum = makeAllRate(rates);
+        this.avgRate =  (float) allRatingSum / rates.size();
     }
 
     public void addRate(Rate rate) {

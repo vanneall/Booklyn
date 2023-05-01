@@ -72,7 +72,7 @@ public class RoomsAdapter extends ArrayAdapter<Room> {
                     dataBaseHelper.openDataBase();
                     dataBaseHelper.deleteRoomFromDatabase(room, hotel.getID());
                     dataBaseHelper.close();
-                    hotel.getRooms().remove(i);
+                    hotel.getRooms().remove(room);
                     hotel.resetMinPrice();
                     notifyDataSetChanged();
                 }

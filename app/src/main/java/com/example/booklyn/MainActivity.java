@@ -7,6 +7,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.booklyn.adapters.RatingAdapter;
 import com.example.booklyn.authorization.AuthorizationFragment;
 import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.Hotel;
@@ -25,12 +26,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements DialogAddFragment.RateGetter,
+public class MainActivity extends AppCompatActivity implements DialogAddFragment.RateSetter,
         SortFragment.GetNotifyDataChanged, HotelSelectionFragment.MainPageController,
         FeedbackFragment.FeedbackController, AuthorizationFragment.BottomNavigationVisibaleController,
         SettingsPageFragment.UserGetter, UserPageFragment.UserGetter,
         OrderInfoFragment.UserGetter, ViewPagerPhotosFragment.BottomNavigationVisibaleController,
-        UserGetter {
+        UserGetter, RatingAdapter.RateSetter {
 
     HotelSelectionFragment hotelSelectionFragment;
     FeedbackFragment feedbackFragment;
@@ -113,5 +114,10 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
     @Override
     public User getUser() {
         return user;
+    }
+
+    @Override
+    public void updateRate() {
+        feedbackFragment.updateData();
     }
 }

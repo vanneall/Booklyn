@@ -74,6 +74,7 @@ public class AddNewRoomFragment extends Fragment {
             dataBaseHelper.writeRoomToDatabase(hotel.rooms.get(hotel.rooms.size() - 1), hotel.getID());
             dataBaseHelper.close();
 
+            hotel.resetMinPrice();
             Toast.makeText(getActivity(), "Комната успешно добавлена", Toast.LENGTH_LONG).show();
             Navigation.findNavController(view).popBackStack();
         } else {

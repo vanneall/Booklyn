@@ -67,7 +67,7 @@ public class FeedbackFragment extends Fragment {
         //Список для вывода комментариев
         listView = view.findViewById(R.id.feedback_listView_feedbacks);
         ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates(),
-                feedbackController.getUser().getID() == User.ADMIN_ID, hotel.getID());
+                feedbackController.getUser().getID() == User.ADMIN_ID, hotel);
         listView.setAdapter(ratingAdapter);
 
         //Добавление комментария
@@ -101,6 +101,11 @@ public class FeedbackFragment extends Fragment {
         ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_three)).setProgress((int) (((float) rateCount[2] / sum) * 100));
         ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_two)).setProgress((int) (((float) rateCount[1] / sum) * 100));
         ((ProgressBar)view.findViewById(R.id.feedback_ProgressBar_one)).setProgress((int) (((float) rateCount[0] / sum) * 100));
+    }
+
+    public void updateData(){
+        setRatingProcents(homeView);
+        setProgressBarRating(homeView);
     }
 
     private void setRatingProcents(View view) {
