@@ -21,7 +21,7 @@ public class PhotoViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return (PhotoViewItemFragment.newInstance(position, additionalPictures, getItemCount()));
+        return (PhotoViewItemFragment.newInstance(position, additionalPictures));
     }
 
     @Override

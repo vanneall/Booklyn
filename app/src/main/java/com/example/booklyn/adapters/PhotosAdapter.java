@@ -20,6 +20,7 @@ public class PhotosAdapter extends ArrayAdapter<Integer> {
 
     public static final String ALL_HOTEL_PHOTOS = "ALL_PHOTOS";
     public static final String PHOTO_POSITION = "POSITION";
+    public static final String AMOUNT_OF_PAGES = "AMOUNT_OF_PAGES";
 
     public static List<Integer> hotelsImagies;
     int layout;

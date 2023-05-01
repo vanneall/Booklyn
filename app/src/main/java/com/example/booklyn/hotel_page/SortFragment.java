@@ -2,18 +2,15 @@ package com.example.booklyn.hotel_page;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
@@ -25,12 +22,10 @@ import java.util.Collections;
 
 public class SortFragment extends Fragment {
 
-
     RadioButton radioButtonName;
-
     RadioButton radioButtonByPrice;
-
     RadioButton radioButtonByRate;
+    RadioButton radioButtonDescending;
 
     public interface GetNotifyDataChanged{
         void dataChanged();
@@ -44,56 +39,57 @@ public class SortFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_sort, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RadioButton radioButton = view.findViewById(R.id.sort_radio_button_descending);
-
-        radioButton.setChecked(true);
+        //Сортировка по имени
         radioButtonName = view.findViewById(R.id.sort_by_name);
-        radioButtonName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Hotel.hotels.sort(new HotelNameComparator());
-                if (!radioButton.isChecked()) {
-                    Collections.reverse(Hotel.hotels);
-                }
-                dataChanged.dataChanged();
-            }
-        });
+        radioButtonName.setOnClickListener(this::clickSort);
 
+        //Сортировка по цене
         radioButtonByPrice = view.findViewById(R.id.sort_by_price);
-        radioButtonByPrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Hotel.hotels.sort(new HotelPriceComparator());
-                if (radioButton.isChecked()) {
-                    Collections.reverse(Hotel.hotels);
-                }
-                dataChanged.dataChanged();
-            }
-        });
+        radioButtonByPrice.setOnClickListener(this::clickSort);
 
+        //Сортировка по рейтингу
         radioButtonByRate = view.findViewById(R.id.sort_by_rate);
-        radioButtonByRate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Hotel.hotels.sort(new HotelRateComparator());
-                if (radioButton.isChecked()) {
+        radioButtonByRate.setOnClickListener(this::clickSort);
+
+
+        //Кнопка сортировки по возрастанию/убыванию
+        radioButtonDescending = view.findViewById(R.id.sort_radio_button_descending);
+        radioButtonDescending.setOnCheckedChangeListener(checkedChangeListener);
+        radioButtonDescending.setChecked(true);
+    }
+
+    private void clickSort(View view){
+        switch (view.getId()){
+            case R.id.sort_by_name:{
+                Hotel.hotels.sort(new HotelNameComparator());
+                if (!radioButtonDescending.isChecked()) {
                     Collections.reverse(Hotel.hotels);
                 }
-                dataChanged.dataChanged();
-
+                break;
             }
-        });
-
-        radioButton.setOnCheckedChangeListener(checkedChangeListener);
+            case R.id.sort_by_price:{
+                Hotel.hotels.sort(new HotelPriceComparator());
+                if (radioButtonDescending.isChecked()) {
+                    Collections.reverse(Hotel.hotels);
+                }
+                break;
+            }
+            case R.id.sort_by_rate:{
+                Hotel.hotels.sort(new HotelRateComparator());
+                if (radioButtonDescending.isChecked()) {
+                    Collections.reverse(Hotel.hotels);
+                }
+                break;
+            }
+        }
+        dataChanged.dataChanged();
     }
 
     CompoundButton.OnCheckedChangeListener checkedChangeListener = new CompoundButton.OnCheckedChangeListener() {
@@ -104,4 +100,19 @@ public class SortFragment extends Fragment {
              else if (radioButtonByRate.isChecked()) radioButtonByRate.callOnClick();
         }
     };
+
+    @Override
+    public void onDestroyView() {
+        radioButtonName = null;
+        radioButtonByPrice = null;
+        radioButtonByRate = null;
+        radioButtonDescending = null;
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDetach() {
+        dataChanged = null;
+        super.onDetach();
+    }
 }

@@ -36,7 +36,6 @@ public class FeedbackFragment extends Fragment {
 
         void writeToDB(Rate rate, int hotelID);
     }
-
     FeedbackSetter feedbackSetter;
 
     @Override
@@ -46,8 +45,7 @@ public class FeedbackFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_feedback, container, false);
     }
 
@@ -56,28 +54,32 @@ public class FeedbackFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         feedbackSetter.setFeedback(this);
 
+        //Кнопка выхода
         ImageView imageViewBack = view.findViewById(R.id.feedback_imageView_sign_back);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
-        });
-        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
+        imageViewBack.setOnClickListener(this::clickBack);
+
         homeView = view;
-        listView = view.findViewById(R.id.feedback_listView_feedbacks);
+        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
+        setRatingProcents(view);
         setProgressBarRating(view);
+
+        //Список для вывода комментариев
+        listView = view.findViewById(R.id.feedback_listView_feedbacks);
         ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());
         listView.setAdapter(ratingAdapter);
-        setRatingProcents(view);
+
+        //Добавление комментария
         TextView textViewAddFeedback = view.findViewById(R.id.feedback_textView_add_feedback);
-        textViewAddFeedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogFragment dialogFragment = new DialogAddFragment();
-                dialogFragment.show(getFragmentManager(), "tag1");
-            }
-        });
+        textViewAddFeedback.setOnClickListener(this::clickAddFeedback);
+    }
+
+    private void clickAddFeedback(View view){
+        DialogFragment dialogFragment = new DialogAddFragment();
+        dialogFragment.show(getFragmentManager(), "tag1");
+    }
+
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
     }
 
     public void addRate(float rate, String info) {
@@ -113,5 +115,18 @@ public class FeedbackFragment extends Fragment {
         textView3stars.setText((int) (((float) rateCount[2] / sum) * 100) + "%");
         textView2stars.setText((int) (((float) rateCount[1] / sum) * 100) + "%");
         textView1stars.setText((int) (((float) rateCount[0] / sum) * 100) + "%");
+    }
+
+    @Override
+    public void onDestroyView() {
+        listView = null;
+        ratingAdapter = null;
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDetach() {
+        feedbackSetter = null;
+        super.onDetach();
     }
 }

@@ -1,7 +1,6 @@
 package com.example.booklyn.hotel_page;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,62 +25,40 @@ import java.util.Date;
 
 
 public class TripDateFragment extends Fragment {
-    Room room;
-
-    Hotel hotel;
-
-    public interface DateSetter{
-        void setDate(TripDate date1, TripDate date2);
-    }
-
-    DateSetter dateSetter;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        dateSetter = (DateSetter) context;
-    }
 
     TripDate checkIn;
     TripDate checkOut;
     boolean isCheckInDay = true;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_trip_date, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView imageViewBack = view.findViewById(R.id.trip_date_imageView_sign_back);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
-        });
 
-        room = getArguments().getParcelable(Room.SELECTED_ROOM);
-        hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
+        //Кнопка назад
+        ImageView imageViewBack = view.findViewById(R.id.trip_date_imageView_sign_back);
+        imageViewBack.setOnClickListener(this::clickBack);
+
+        //Установка сегодняшней даты
         checkIn = new TripDate(new Date().getTime());
         Date temp = new Date();
         setInnerDate(checkIn, temp.getDate(), temp.getMonth(), 2000 + temp.getYear() % 100);
         ((TextView)view.findViewById(R.id.trip_date_textView_check_in_info)).setText(checkIn.toString());
-
         checkOut = new TripDate(new Date().getTime());
         setInnerDate(checkOut, temp.getDate(), temp.getMonth(), 2000 + temp.getYear() % 100);
         ((TextView)view.findViewById(R.id.trip_date_textView_check_out_info)).setText(checkOut.toString());
 
+        //Работа с календарем
         CalendarView calendarView = view.findViewById(R.id.fragment_trip_date_calendarView);
         calendarView.setMinDate((new Date()).getTime());
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String selectedDate = new StringBuilder().append(i2)
-                        .append("/").append(i1 + 1).append("/").append(i)
-                        .append(" ").toString();
+                String selectedDate = i2 + "/" + (i1 + 1) + "/" + i;
                 if (isCheckInDay) {
                     ((TextView)view.findViewById(R.id.trip_date_textView_check_in_info)).setText(selectedDate);
                     setInnerDate(checkIn, i2, i1, i);
@@ -93,21 +70,26 @@ public class TripDateFragment extends Fragment {
             }
         });
 
+        //Кнопка перехода к информации о заказе
         Button buttonApply = view.findViewById(R.id.trip_date_button_apply);
         buttonApply.setOnClickListener(this::onApplyClick);
     }
 
-    public void setInnerDate(@NonNull TripDate date, int day, int month, int year){
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
+    }
+
+    private void setInnerDate(@NonNull TripDate date, int day, int month, int year){
         date.getInnerDate().setDate(day);
         date.getInnerDate().setMonth(month + 1);
         date.getInnerDate().setYear(year);
     }
 
-    public void onApplyClick(View view){
+    private void onApplyClick(View view){
         if (!checkIn.getInnerDate().after(checkOut.getInnerDate())) {
             Bundle bundle = new Bundle();
-            bundle.putParcelable(Hotel.SELECTED_HOTEL, hotel);
-            bundle.putParcelable(Room.SELECTED_ROOM, room);
+            bundle.putParcelable(Hotel.SELECTED_HOTEL, getArguments().getParcelable(Hotel.SELECTED_HOTEL));
+            bundle.putParcelable(Room.SELECTED_ROOM, getArguments().getParcelable(Room.SELECTED_ROOM));
             bundle.putParcelable(TripDate.CHECK_IN, checkIn);
             bundle.putParcelable(TripDate.CHECK_OUT, checkOut);
             Navigation.findNavController(view).navigate(R.id.action_tripDateFragment_to_orderInfoFragment, bundle);

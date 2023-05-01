@@ -12,16 +12,12 @@ import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Rate;
 import com.example.booklyn.entities.Room;
-import com.example.booklyn.entities.TripDate;
 import com.example.booklyn.entities.User;
 import com.example.booklyn.hotel_page.DialogAddFragment;
 import com.example.booklyn.hotel_page.FeedbackFragment;
 import com.example.booklyn.hotel_page.HotelSelectionFragment;
-import com.example.booklyn.hotel_page.MainPageFragment;
-import com.example.booklyn.hotel_page.PhotosFragment;
-import com.example.booklyn.hotel_page.RoomSelectionFragment;
 import com.example.booklyn.hotel_page.SortFragment;
-import com.example.booklyn.hotel_page.TripDateFragment;
+import com.example.booklyn.hotel_page.ViewPagerPhotosFragment;
 import com.example.booklyn.making_order_page.OrderInfoFragment;
 import com.example.booklyn.settings_page.SettingsPageFragment;
 import com.example.booklyn.user_page.UserPageFragment;
@@ -29,30 +25,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements DialogAddFragment.NewRateGetter,
-        TripDateFragment.DateSetter, MainPageFragment.Transfer, SortFragment.GetNotifyDataChanged,
-        HotelSelectionFragment.MainPage, RoomSelectionFragment.SelectedRoomGetter,
+public class MainActivity extends AppCompatActivity implements DialogAddFragment.RateGetter,
+        SortFragment.GetNotifyDataChanged, HotelSelectionFragment.MainPageController,
         FeedbackFragment.FeedbackSetter, AuthorizationFragment.BottomNavigationVisibaleController,
         SettingsPageFragment.UserGetter, UserPageFragment.UserGetter,
-        OrderInfoFragment.UserGetter {
+        OrderInfoFragment.UserGetter, ViewPagerPhotosFragment.BottomNavigationVisibaleController {
 
-    interface BottomNavigationVisibaleController{
-        void show();
-        void hide();
-    }
-
-    public static TripDate tripDateCheckIn;
-    public static TripDate tripDateCheckOut;
-
-    public static Room room;
     HotelSelectionFragment hotelSelectionFragment;
-    PhotosFragment photosFragment;
     FeedbackFragment feedbackFragment;
     DataBaseHelper dataBaseHelperClass;
-
     BottomNavigationView menu;
     NavController navController;
-
     User user;
 
     @Override
@@ -81,21 +64,6 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
         feedbackFragment.addRate(rate, info);
     }
 
-    @Override
-    public void setDate(TripDate date1, TripDate date2) {
-        tripDateCheckIn = date1;
-        tripDateCheckOut = date2;
-    }
-
-    @Override
-    public TripDate[] getTripDate() {
-        return new TripDate[]{tripDateCheckIn, tripDateCheckOut};
-    }
-
-    @Override
-    public Room getRoom() {
-        return null;
-    }
 
     @Override
     public void dataChanged() {
@@ -124,11 +92,6 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
     }
 
     @Override
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    @Override
     public void setFeedback(FeedbackFragment feedbackFragment) {
         this.feedbackFragment = feedbackFragment;
     }
@@ -145,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements DialogAddFragment
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setVisibility(BottomNavigationView.GONE);
     }
-
 
     @Override
     public User getUser() {

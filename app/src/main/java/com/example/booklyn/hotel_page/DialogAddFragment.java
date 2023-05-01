@@ -20,21 +20,20 @@ public class DialogAddFragment extends DialogFragment {
 
     View mainView;
 
-    public interface NewRateGetter {
+    public interface RateGetter {
         void setRate(float rate, String info);
     }
 
-    NewRateGetter rateGetter;
+    RateGetter rateGetter;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        rateGetter = (NewRateGetter) context;
+        rateGetter = (RateGetter) context;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_dialog, container, false);
     }
 
@@ -49,16 +48,24 @@ public class DialogAddFragment extends DialogFragment {
     }
 
     public void onClickApply(View view) {
+        //Поля для ввода комментария
         EditText editTextRate = mainView.findViewById(R.id.dialog_editText_rate);
         EditText editTextMsg = mainView.findViewById(R.id.dialog_editText_msg);
         String str = editTextMsg.getText().toString();
         float flt = Float.parseFloat(editTextRate.getText().toString());
         rateGetter.setRate(flt, str);
+
         Toast.makeText(getActivity(), "Комментарий добавлен", Toast.LENGTH_LONG).show();
         this.dismiss();
     }
 
     public void onClickCancel(View view) {
         this.dismiss();
+    }
+
+    @Override
+    public void onDetach() {
+        rateGetter = null;
+        super.onDetach();
     }
 }

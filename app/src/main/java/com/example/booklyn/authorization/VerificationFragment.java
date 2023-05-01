@@ -2,15 +2,7 @@ package com.example.booklyn.authorization;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -19,6 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
 import com.example.booklyn.database_classes.DataBaseHelper;
@@ -34,9 +32,7 @@ public class VerificationFragment extends Fragment {
     public static final String REGISTRATION_CHANNEL = "REGISTRATION_CHANNEL";
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_verification, container, false);
     }
 
@@ -50,7 +46,7 @@ public class VerificationFragment extends Fragment {
         String telephone = getArguments().getString(RegistrationFragment.USER_TELEPHONE);
         String password = getArguments().getString(RegistrationFragment.USER_PASSWORD);
 
-        //Поля для воода кода
+        //Поля для ввода кода
         EditText editTextCode1 = view.findViewById(R.id.verification_editText_code_1);
         EditText editTextCode2 = view.findViewById(R.id.verification_editText_code_2);
         EditText editTextCode3 = view.findViewById(R.id.verification_editText_code_3);

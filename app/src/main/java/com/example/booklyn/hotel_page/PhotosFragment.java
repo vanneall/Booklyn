@@ -15,28 +15,27 @@ import androidx.navigation.Navigation;
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.PhotosAdapter;
 
-import java.util.ArrayList;
-
 public class PhotosFragment extends Fragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_photos, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Кнопка назад
         ImageView imageViewBack = view.findViewById(R.id.photos_imageView_sign_back);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
-        });
-        ArrayList<Integer> photos = getArguments().getIntegerArrayList("ALL_PHOTOS");
+        imageViewBack.setOnClickListener(this::clickBack);
+
+        //Список фотографий
         GridView gridView = view.findViewById(R.id.photos_gridView_photos);
-        PhotosAdapter photosAdapter = new PhotosAdapter(getActivity(), R.layout.photos_list_item, photos);
+        PhotosAdapter photosAdapter = new PhotosAdapter(getActivity(), R.layout.photos_list_item, getArguments().getIntegerArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS));
         gridView.setAdapter(photosAdapter);
+    }
+
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
     }
 }

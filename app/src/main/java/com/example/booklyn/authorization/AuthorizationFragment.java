@@ -23,14 +23,14 @@ public class AuthorizationFragment extends Fragment {
 
     public interface BottomNavigationVisibaleController {
         void setInvisible();
+        void setVisible();
     }
-
-    BottomNavigationVisibaleController bottomNavigationSetInvisable;
+    BottomNavigationVisibaleController bottomNavigationVisibaleController;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        bottomNavigationSetInvisable = (BottomNavigationVisibaleController) context;
+        bottomNavigationVisibaleController = (BottomNavigationVisibaleController) context;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AuthorizationFragment extends Fragment {
         }
 
         super.onViewCreated(view, savedInstanceState);
-        bottomNavigationSetInvisable.setInvisible();
+        bottomNavigationVisibaleController.setInvisible();
         //Переход на создание аккаунта
         TextView textViewCreateAccount = view.findViewById(R.id.authorization_textView_create_account);
         textViewCreateAccount.setOnClickListener(this::clickActionToRegiastration);
@@ -69,6 +69,7 @@ public class AuthorizationFragment extends Fragment {
     private void clickActionToHotelSelection(User user, View view) {
         Bundle bundle = new Bundle();
         bundle.putParcelable(User.SELECTED_USER, user);
+        bottomNavigationVisibaleController.setVisible();
         Navigation.findNavController(view).navigate(R.id.action_authorizationFragment_to_hotelSelectionFragment, bundle);
     }
 
@@ -86,5 +87,17 @@ public class AuthorizationFragment extends Fragment {
         } else {
             Toast.makeText(getActivity(), "Такого пользователя не существует", Toast.LENGTH_LONG).show();
         }
+    }
+    @Override
+    public void onDetach() {
+        bottomNavigationVisibaleController = null;
+        super.onDetach();
+    }
+
+    @Override
+    public void onDestroyView() {
+        editTextPassword = null;
+        editTextTelephone = null;
+        super.onDestroyView();
     }
 }

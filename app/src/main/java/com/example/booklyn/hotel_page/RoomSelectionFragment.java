@@ -1,72 +1,50 @@
 package com.example.booklyn.hotel_page;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
-
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.RoomsAdapter;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 
 public class RoomSelectionFragment extends Fragment {
 
-    public interface SelectedRoomGetter {
-        void setRoom(Room room);
-    }
-    SelectedRoomGetter selectedRoomGetter;
-
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        selectedRoomGetter = (SelectedRoomGetter) context;
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_room_selection, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Кнопка назад
         ImageView imageViewBack = view.findViewById(R.id.room_selection_imageView_sign_back);
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
-        });
+        imageViewBack.setOnClickListener(this::clickBack);
 
         Hotel hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
         ArrayList<Room> rooms = hotel.getRooms();
+
+        //Список доступных комнат
         ListView listView = view.findViewById(R.id.room_selection_listView_apartaments);
         RoomsAdapter roomsAdapter = new RoomsAdapter(getActivity(), R.layout.room_selection_list_item, rooms, hotel);
         listView.setAdapter(roomsAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View v, int i, long l) {
-                selectedRoomGetter.setRoom(rooms.get(i));
-                Snackbar.make(getActivity(), v, "Номер выбран", Snackbar.LENGTH_LONG).show();
-            }
-        });
+    }
 
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
     }
 }

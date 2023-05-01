@@ -1,21 +1,18 @@
 package com.example.booklyn.authorization;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import com.example.booklyn.R;
-import com.example.booklyn.database_classes.DataBaseHelper;
-import com.example.booklyn.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 
 public class RegistrationFragment extends Fragment {
@@ -34,6 +31,7 @@ public class RegistrationFragment extends Fragment {
     EditText editTextEmail;
     EditText editTextTelephone;
     EditText editTextPassword;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -64,5 +62,14 @@ public class RegistrationFragment extends Fragment {
         else {
             Snackbar.make(view, "Необходимо заполнить все поля для продолжения", Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        editTextFullName = null;
+        editTextEmail = null;
+        editTextTelephone = null;
+        editTextPassword = null;
+        super.onDestroyView();
     }
 }
