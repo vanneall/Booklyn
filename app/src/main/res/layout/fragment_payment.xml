@@ -58,7 +58,7 @@
 
 
         <EditText
-            android:id="@+id/payment_card_number"
+            android:id="@+id/payment_editText_card_number"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -70,6 +70,7 @@
             android:maxLength="16"/>
 
         <EditText
+            android:id="@+id/payment_editText_holder_name"
             android:layout_marginTop="100dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -94,6 +95,7 @@
             android:maxLength="5"/>
 
         <EditText
+            android:id="@+id/payment_editText_cvv"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
@@ -107,8 +109,8 @@
     </FrameLayout>
 
     <Button
+        android:id="@+id/payment_button_pay"
         android:layout_marginTop="70dp"
-        android:id="@+id/payment_button"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_width="match_parent"

@@ -2,14 +2,12 @@ package com.example.booklyn.authorization;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -143,7 +141,7 @@ public class VerificationFragment extends Fragment {
             }
         });
 
-        Button buttonChangeNumber = view.findViewById(R.id.verification_change_phone);
+        Button buttonChangeNumber = view.findViewById(R.id.verification_button_change_phone);
         buttonChangeNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

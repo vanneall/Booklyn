@@ -1,11 +1,9 @@
 package com.example.booklyn.hotel_page;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -37,7 +35,7 @@ public class PhotosFragment extends Fragment {
             }
         });
         ArrayList<Integer> photos = getArguments().getIntegerArrayList("ALL_PHOTOS");
-        GridView gridView = view.findViewById(R.id.feedback_fragment_gridView_photos);
+        GridView gridView = view.findViewById(R.id.photos_gridView_photos);
         PhotosAdapter photosAdapter = new PhotosAdapter(getActivity(), R.layout.photos_list_item, photos);
         gridView.setAdapter(photosAdapter);
     }

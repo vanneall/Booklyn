@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.PhotoViewPagerAdapter;
-import com.example.booklyn.adapters.PhotosAdapter;
 
 import java.util.ArrayList;
 
@@ -32,7 +31,7 @@ public class ViewPagerPhotosFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ArrayList<Integer> photos = getArguments().getIntegerArrayList("ALL_PHOTOS");
         int position = getArguments().getInt("POSITION");
-        ViewPager2 pager = view.findViewById(R.id.pager);
+        ViewPager2 pager = view.findViewById(R.id.view_pager_photos_viewPager);
         PhotoViewPagerAdapter adapter = new PhotoViewPagerAdapter(getActivity(), photos);
         pager.setAdapter(adapter);
         pager.setCurrentItem(position, false);

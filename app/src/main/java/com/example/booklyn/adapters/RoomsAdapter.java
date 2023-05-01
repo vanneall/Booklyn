@@ -1,7 +1,6 @@
 package com.example.booklyn.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.booklyn.MainActivity;
 import com.example.booklyn.R;
 
 import androidx.annotation.NonNull;
@@ -18,9 +16,6 @@ import androidx.navigation.Navigation;
 
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
-import com.example.booklyn.hotel_page.TripDateFragment;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -46,14 +41,14 @@ public class RoomsAdapter extends ArrayAdapter<Room> {
         }
 
         Room room = rooms.get(i);
-        TextView textViewName = view.findViewById(R.id.room_selection_item_name);
-        TextView textViewInfo = view.findViewById(R.id.room_selection_item_info);
-        TextView textViewPrice = view.findViewById(R.id.textView_hotel_list_item_price);
+        TextView textViewName = view.findViewById(R.id.room_selection_list_item_name);
+        TextView textViewInfo = view.findViewById(R.id.room_selection_list_item_info);
+        TextView textViewPrice = view.findViewById(R.id.main_page_textView_min_price);
         textViewName.setText(room.getName());
         textViewInfo.setText("Информация: " + room.getInfo());
         textViewPrice.setText("Цена: " +String.valueOf(room.getPrice()) + "₽");
 
-        Button button = view.findViewById(R.id.room_selection_button);
+        Button button = view.findViewById(R.id.room_selection_list_item_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -36,8 +36,8 @@
 
 
     <ListView
+        android:id="@+id/room_selection_listView_apartaments"
         android:layout_below="@id/room_selection_title_container"
-        android:id="@+id/room_select_listView"
         android:layout_width="409dp"
         android:layout_height="729dp"
         tools:layout_editor_absoluteX="1dp"

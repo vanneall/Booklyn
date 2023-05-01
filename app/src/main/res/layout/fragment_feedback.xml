@@ -42,8 +42,8 @@
         android:orientation="horizontal">
 
         <RatingBar
-            android:layout_marginLeft="5dp"
             android:id="@+id/feedback_ratingbar_five"
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
@@ -52,7 +52,7 @@
             android:rating="5"/>
 
         <TextView
-            android:id="@+id/feedback_percent5"
+            android:id="@+id/feedback_textView_percent5"
             android:layout_width="match_parent"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -63,9 +63,9 @@
     </LinearLayout>
 
     <ProgressBar
+        android:id="@+id/feedback_ProgressBar_five"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:id="@+id/feedback_ProgressBar_five"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal" />
@@ -89,7 +89,7 @@
             android:rating="4"/>
 
         <TextView
-            android:id="@+id/feedback_percent4"
+            android:id="@+id/feedback_textView_percent4"
             android:layout_width="match_parent"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
             android:rating="3"/>
 
         <TextView
-            android:id="@+id/feedback_percent3"
+            android:id="@+id/feedback_textView_percent3"
             android:layout_width="match_parent"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             android:rating="2"/>
 
         <TextView
-            android:id="@+id/feedback_percent2"
+            android:id="@+id/feedback_textView_percent2"
             android:layout_width="match_parent"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
             android:rating="1"/>
 
         <TextView
-            android:id="@+id/feedback_percent1"
+            android:id="@+id/feedback_textView_percent1"
             android:layout_width="match_parent"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal" />
 
     <TextView
-        android:id="@+id/feedback_add_feedback"
+        android:id="@+id/feedback_textView_add_feedback"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
@@ -238,7 +238,7 @@
         android:src="@drawable/line"/>
 
     <ListView
-        android:id="@+id/feedback_list_view"
+        android:id="@+id/feedback_listView_feedbacks"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

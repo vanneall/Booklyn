@@ -38,13 +38,13 @@ public class RatingAdapter extends ArrayAdapter<Rate> {
 
         Rate rate = rates.get(i);
 
-        RatingBar ratingBar = view.findViewById(R.id.feedback_ratingBar);
+        RatingBar ratingBar = view.findViewById(R.id.feedback_list_item_ratingBar_rate);
         ratingBar.setRating(rate.getRate());
 
-        TextView feedbackRating = view.findViewById(R.id.feedback_rating);
+        TextView feedbackRating = view.findViewById(R.id.feedback_list_item_textView_rating);
         feedbackRating.setText(String.valueOf(rate.getRate()));
 
-        TextView textViewEstimation = view.findViewById(R.id.feedback_rating_estimantion);
+        TextView textViewEstimation = view.findViewById(R.id.feedback_list_item_textView_rating_estimantion);
         int num = (int) (rate.getRate() * 10);
         if (num >= 45) {
             textViewEstimation.setText(view.getResources().getString(R.string.very_good));
@@ -58,10 +58,10 @@ public class RatingAdapter extends ArrayAdapter<Rate> {
             textViewEstimation.setText(view.getResources().getString(R.string.terrible));
         }
 
-        TextView feedbackDate = view.findViewById(R.id.feedback_commentary_date);
+        TextView feedbackDate = view.findViewById(R.id.feedback_list_item_textView_commentary_date);
         feedbackDate.setText("Комментарий оставлен " + rate.getDate());
 
-        TextView feedbackCommentary = view.findViewById(R.id.feedback_commentary);
+        TextView feedbackCommentary = view.findViewById(R.id.feedback_list_item_textView_commentary);
         feedbackCommentary.setText(rate.getInfo());
         return view;
     }

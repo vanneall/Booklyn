@@ -42,15 +42,15 @@ public class DialogAddFragment extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainView = view;
-        Button buttonApply = view.findViewById(R.id.feedback_add_button_apply);
-        Button buttonCancel = view.findViewById(R.id.feedback_add_button_cancel);
+        Button buttonApply = view.findViewById(R.id.dialog_button_apply);
+        Button buttonCancel = view.findViewById(R.id.dialog_button_cancel);
         buttonApply.setOnClickListener(this::onClickApply);
         buttonCancel.setOnClickListener(this::onClickCancel);
     }
 
     public void onClickApply(View view) {
-        EditText editTextRate = mainView.findViewById(R.id.feedback_add_editText_rate);
-        EditText editTextMsg = mainView.findViewById(R.id.feedback_add_editText_msg);
+        EditText editTextRate = mainView.findViewById(R.id.dialog_editText_rate);
+        EditText editTextMsg = mainView.findViewById(R.id.dialog_editText_msg);
         String str = editTextMsg.getText().toString();
         float flt = Float.parseFloat(editTextRate.getText().toString());
         rateGetter.setRate(flt, str);

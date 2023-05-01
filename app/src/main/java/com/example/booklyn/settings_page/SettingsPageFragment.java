@@ -44,7 +44,7 @@ public class SettingsPageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button button = view.findViewById(R.id.privacy_and_policy_button);
+        Button button = view.findViewById(R.id.settings_page_button_privacy_and_policy);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +52,7 @@ public class SettingsPageFragment extends Fragment {
             }
         });
 
-        Button button1 = view.findViewById(R.id.terms_and_conditions_button);
+        Button button1 = view.findViewById(R.id.settings_page_button_terms_and_conditions);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +60,7 @@ public class SettingsPageFragment extends Fragment {
             }
         });
 
-        Button button2 = view.findViewById(R.id.about_the_app_button);
+        Button button2 = view.findViewById(R.id.settings_page_button_about_the_app);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +68,7 @@ public class SettingsPageFragment extends Fragment {
             }
         });
 
-        Button button3 = view.findViewById(R.id.support_button);
+        Button button3 = view.findViewById(R.id.settings_page_button_support);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +76,7 @@ public class SettingsPageFragment extends Fragment {
             }
         });
 
-        Button buttonLeave = view.findViewById(R.id.leave_button);
+        Button buttonLeave = view.findViewById(R.id.settings_page_button_leave);
         buttonLeave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

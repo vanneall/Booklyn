@@ -7,7 +7,7 @@
     android:background="@color/black">
 
     <ImageView
-        android:id="@+id/fragment_photo_view_photo"
+        android:id="@+id/photo_view_imageView_photo"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         />
 
     <TextView
-        android:id="@+id/fragment_photo_view_textView_position"
+        android:id="@+id/photo_view_textView_position"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
         android:layout_width="wrap_content"

@@ -98,6 +98,7 @@
             android:text="У вас уже есть учетная запись?"/>
 
         <TextView
+            android:id="@+id/registration_textView_enter_the_system"
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

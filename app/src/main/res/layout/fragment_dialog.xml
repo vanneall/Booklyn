@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".hotel_page.DialogAddFragment"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +19,7 @@
             android:textColor="@color/text_color"/>
 
         <EditText
-            android:id="@+id/feedback_add_editText_rate"
+            android:id="@+id/dialog_editText_rate"
             android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +39,7 @@
             android:textColor="@color/text_color"/>
 
         <EditText
-            android:id="@+id/feedback_add_editText_msg"
+            android:id="@+id/dialog_editText_msg"
             android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +58,7 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/feedback_add_button_apply"
+                android:id="@+id/dialog_button_apply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/apply"
@@ -76,7 +75,7 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/feedback_add_button_cancel"
+                android:id="@+id/dialog_button_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"

@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/room_selection_item_name"
+        android:id="@+id/room_selection_list_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -39,7 +39,7 @@
 
 
     <TextView
-        android:id="@+id/room_selection_item_info"
+        android:id="@+id/room_selection_list_item_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -70,7 +70,7 @@
         android:textSize="13dp" />
 
     <TextView
-        android:id="@+id/textView_hotel_list_item_price"
+        android:id="@+id/main_page_textView_min_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -81,11 +81,11 @@
         android:textColor="@color/black"
         android:textSize="@dimen/simple_size" />
 
-        <Button
-            android:layout_gravity="center"
-            android:id="@+id/room_selection_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ВЫБРАТЬ" />
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/room_selection_list_item_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ВЫБРАТЬ" />
 
 </LinearLayout>

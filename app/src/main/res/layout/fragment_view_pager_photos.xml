@@ -8,7 +8,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:layout_gravity="center"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pager"
+        android:id="@+id/view_pager_photos_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"  />
 

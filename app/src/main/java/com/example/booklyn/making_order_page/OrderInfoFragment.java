@@ -2,7 +2,6 @@ package com.example.booklyn.making_order_page;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,8 +21,6 @@ import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Room;
 import com.example.booklyn.entities.TripDate;
 import com.example.booklyn.entities.User;
-import com.example.booklyn.hotel_page.MainPageFragment;
-import com.example.booklyn.user_page.UserPageFragment;
 
 import java.util.Date;
 
@@ -82,35 +79,35 @@ public class OrderInfoFragment extends Fragment {
         TextView textViewTitle = view.findViewById(R.id.order_info_textView_title);
         textViewTitle.setText(hotel.getName());
 
-        TextView textViewRoomName = view.findViewById(R.id.order_room_number);
+        TextView textViewRoomName = view.findViewById(R.id.order_room_textView_number);
         textViewRoomName.setText(room.getName());
 
-        TextView textViewRoomInfo = view.findViewById(R.id.order_room_info);
+        TextView textViewRoomInfo = view.findViewById(R.id.order_room_textView_info);
         textViewRoomInfo.setText(room.getInfo());
 
-        TextView textViewDuration = view.findViewById(R.id.order_info_duration);
+        TextView textViewDuration = view.findViewById(R.id.order_room_textView_duration);
         int days = new Date(checkOut.getInnerDate().getTime() - checkIn.getInnerDate().getTime()).getDate();
         float sum = days * room.getPrice();
         textViewDuration.setText(days + " " + getResources().getQuantityString(R.plurals.days, days) + " (" +
                 room.getPrice() + "₽ x " + days + " = " + (int)sum + "₽)");
 
-        TextView textViewVAT = view.findViewById(R.id.order_info_VAT);
+        TextView textViewVAT = view.findViewById(R.id.order_room_textView_VAT);
         float vat = sum * 0.1f;
         textViewVAT.setText((vat) + "₽");
 
-        TextView textViewResult = view.findViewById(R.id.order_info_result_sum);
+        TextView textViewResult = view.findViewById(R.id.order_room_textView_result_sum);
         textViewResult.setText((sum + vat) + "₽");
 
 
         user = userGetter.getUser();
-        TextView textViewFullName = view.findViewById(R.id.order_info_full_name);
+        TextView textViewFullName = view.findViewById(R.id.order_room_textView_full_name);
         textViewFullName.setText(user.getFullName());
-        TextView textViewFullEmail = view.findViewById(R.id.order_info_mail);
+        TextView textViewFullEmail = view.findViewById(R.id.order_room_textView_mail);
         textViewFullEmail.setText(user.getEmail());
-        TextView textViewFullTelephone = view.findViewById(R.id.order_info_telephone_number);
+        TextView textViewFullTelephone = view.findViewById(R.id.order_room_textView_telephone_number);
         textViewFullTelephone.setText(user.getTelephone());
 
-        Button button = view.findViewById(R.id.order_info_button);
+        Button button = view.findViewById(R.id.order_room_textView_button_book);
         button.setOnClickListener(this::onClick);
     }
 

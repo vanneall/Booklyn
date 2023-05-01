@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.booklyn.R;
-import com.example.booklyn.entities.Hotel;
 
 import java.util.ArrayList;
 
@@ -52,7 +51,7 @@ public class PhotoViewItemFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((TextView)view.findViewById(R.id.fragment_photo_view_textView_position)).setText((pageNumber + 1) + " из " + allPages);
-        ((ImageView)view.findViewById(R.id.fragment_photo_view_photo)).setImageResource(additionalPictures.get(pageNumber));
+        ((TextView)view.findViewById(R.id.photo_view_textView_position)).setText((pageNumber + 1) + " из " + allPages);
+        ((ImageView)view.findViewById(R.id.photo_view_imageView_photo)).setImageResource(additionalPictures.get(pageNumber));
     }
 }

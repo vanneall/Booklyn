@@ -1,7 +1,6 @@
 package com.example.booklyn.hotel_page;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.booklyn.MainActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.adapters.RoomsAdapter;
 import com.example.booklyn.entities.Hotel;
@@ -59,7 +57,7 @@ public class RoomSelectionFragment extends Fragment {
 
         Hotel hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
         ArrayList<Room> rooms = hotel.getRooms();
-        ListView listView = view.findViewById(R.id.room_select_listView);
+        ListView listView = view.findViewById(R.id.room_selection_listView_apartaments);
         RoomsAdapter roomsAdapter = new RoomsAdapter(getActivity(), R.layout.room_selection_list_item, rooms, hotel);
         listView.setAdapter(roomsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

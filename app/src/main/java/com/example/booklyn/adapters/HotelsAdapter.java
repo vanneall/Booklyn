@@ -1,6 +1,5 @@
 package com.example.booklyn.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 
-import com.example.booklyn.MainActivity;
 import com.example.booklyn.R;
 import com.example.booklyn.entities.Hotel;
 
@@ -40,14 +38,14 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         if (view == null) {
             view = inflater.inflate(layout, viewGroup, false);
         }
-        ImageView imageView = view.findViewById(R.id.imageView_hotel_list_item_picture);
-        TextView textViewName = view.findViewById(R.id.textView_hotel_list_item_name);
-        TextView textViewRate = view.findViewById(R.id.textView_hotel_list_item_rate);
-        TextView textViewPrice = view.findViewById(R.id.textView_hotel_list_item_price);
-        RatingBar ratingBar = view.findViewById(R.id.ratingBar);
-        TextView textViewNumberOfFeedbacks = view.findViewById(R.id.number_of_feedbacks);
-        TextView textViewRatingEstimation = view.findViewById(R.id.rating_estimation);
-        Button button = view.findViewById(R.id.button_selection_hotel);
+        ImageView imageView = view.findViewById(R.id.hotel_list_item_imageView_picture);
+        TextView textViewName = view.findViewById(R.id.hotel_list_item_textView_name);
+        TextView textViewRate = view.findViewById(R.id.hotel_list_item_textView_rate);
+        TextView textViewPrice = view.findViewById(R.id.main_page_textView_min_price);
+        RatingBar ratingBar = view.findViewById(R.id.hote_list_item_ratingBar);
+        TextView textViewNumberOfFeedbacks = view.findViewById(R.id.hotel_list_item_textView_number_of_feedbacks);
+        TextView textViewRatingEstimation = view.findViewById(R.id.hotel_list_item_textView_rating_estimation);
+        Button button = view.findViewById(R.id.hotel_list_item_button_selection_hotel);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

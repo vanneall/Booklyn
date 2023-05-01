@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <RatingBar
-        android:id="@+id/feedback_ratingBar"
+        android:id="@+id/feedback_list_item_ratingBar_rate"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/feedback_rating"
+            android:id="@+id/feedback_list_item_textView_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4.4"
@@ -31,7 +31,7 @@
             android:padding="3dp"/>
 
         <TextView
-            android:id="@+id/feedback_rating_estimantion"
+            android:id="@+id/feedback_list_item_textView_rating_estimantion"
             android:layout_marginLeft="5dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -45,7 +45,7 @@
 
     <TextView
         android:layout_marginLeft="10dp"
-        android:id="@+id/feedback_commentary"
+        android:id="@+id/feedback_list_item_textView_commentary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxHeight="50dp"
@@ -55,7 +55,7 @@
 
     <TextView
         android:layout_marginLeft="10dp"
-        android:id="@+id/feedback_commentary_date"
+        android:id="@+id/feedback_list_item_textView_commentary_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxHeight="50dp"

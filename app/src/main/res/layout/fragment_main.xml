@@ -67,10 +67,10 @@
         android:layout_gravity="bottom"/>
 
     <ListView
+        android:id="@+id/main_listView_hotels"
         android:layout_marginTop="1dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:id="@+id/listView_main_hotels"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

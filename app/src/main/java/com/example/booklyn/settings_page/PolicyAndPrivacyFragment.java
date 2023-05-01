@@ -26,7 +26,7 @@ public class PolicyAndPrivacyFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView imageViewBack = view.findViewById(R.id.policy_and_privacy_sign_back);
+        ImageView imageViewBack = view.findViewById(R.id.policy_and_privacy_imageView_sign_back);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

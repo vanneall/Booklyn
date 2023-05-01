@@ -14,7 +14,7 @@
         android:background="@color/primary_color">
 
         <ImageView
-            android:id="@+id/policy_and_privacy_sign_back"
+            android:id="@+id/policy_and_privacy_imageView_sign_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/sign_back"

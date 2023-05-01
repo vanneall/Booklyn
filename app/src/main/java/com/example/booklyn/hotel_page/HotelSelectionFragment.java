@@ -65,7 +65,7 @@ public class HotelSelectionFragment extends Fragment{
         MainActivity.tripDateCheckOut = null;
         MainActivity.tripDateCheckIn = null;
         MainActivity.room = null;
-        listViewMainHotels = view.findViewById(R.id.listView_main_hotels);
+        listViewMainHotels = view.findViewById(R.id.main_listView_hotels);
         adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageFragment.getHotels());
         listViewMainHotels.setAdapter(adapter);
         mainPageFragment.setUser(getArguments().getParcelable("USER"));

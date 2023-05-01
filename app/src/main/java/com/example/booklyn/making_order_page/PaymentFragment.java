@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.booklyn.R;
 
@@ -45,7 +44,7 @@ public class PaymentFragment extends Fragment {
             }
         });
 
-        EditText editTextCardNumber = view.findViewById(R.id.payment_card_number);
+        EditText editTextCardNumber = view.findViewById(R.id.payment_editText_card_number);
         editTextCardNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -65,7 +64,7 @@ public class PaymentFragment extends Fragment {
             }
         });
 
-        Button button = view.findViewById(R.id.payment_button);
+        Button button = view.findViewById(R.id.payment_button_pay);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

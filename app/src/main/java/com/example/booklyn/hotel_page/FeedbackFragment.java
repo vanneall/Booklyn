@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -67,12 +65,12 @@ public class FeedbackFragment extends Fragment {
         });
         hotel = getArguments().getParcelable(Hotel.SELECTED_HOTEL);
         homeView = view;
-        listView = view.findViewById(R.id.feedback_list_view);
+        listView = view.findViewById(R.id.feedback_listView_feedbacks);
         setProgressBarRating(view);
         ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());
         listView.setAdapter(ratingAdapter);
         setRatingProcents(view);
-        TextView textViewAddFeedback = view.findViewById(R.id.feedback_add_feedback);
+        TextView textViewAddFeedback = view.findViewById(R.id.feedback_textView_add_feedback);
         textViewAddFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,11 +100,11 @@ public class FeedbackFragment extends Fragment {
     }
 
     private void setRatingProcents(View view) {
-        TextView textView5stars = view.findViewById(R.id.feedback_percent5);
-        TextView textView4stars = view.findViewById(R.id.feedback_percent4);
-        TextView textView3stars = view.findViewById(R.id.feedback_percent3);
-        TextView textView2stars = view.findViewById(R.id.feedback_percent2);
-        TextView textView1stars = view.findViewById(R.id.feedback_percent1);
+        TextView textView5stars = view.findViewById(R.id.feedback_textView_percent5);
+        TextView textView4stars = view.findViewById(R.id.feedback_textView_percent4);
+        TextView textView3stars = view.findViewById(R.id.feedback_textView_percent3);
+        TextView textView2stars = view.findViewById(R.id.feedback_textView_percent2);
+        TextView textView1stars = view.findViewById(R.id.feedback_textView_percent1);
 
         int[] rateCount = hotel.getRateCount();
         int sum = hotel.getRates().size();

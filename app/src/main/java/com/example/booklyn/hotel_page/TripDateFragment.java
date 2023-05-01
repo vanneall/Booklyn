@@ -3,7 +3,6 @@ package com.example.booklyn.hotel_page;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.ParcelUuid;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -70,11 +68,11 @@ public class TripDateFragment extends Fragment {
         checkIn = new TripDate(new Date().getTime());
         Date temp = new Date();
         setInnerDate(checkIn, temp.getDate(), temp.getMonth(), 2000 + temp.getYear() % 100);
-        ((TextView)view.findViewById(R.id.textView_check_in_info)).setText(checkIn.toString());
+        ((TextView)view.findViewById(R.id.trip_date_textView_check_in_info)).setText(checkIn.toString());
 
         checkOut = new TripDate(new Date().getTime());
         setInnerDate(checkOut, temp.getDate(), temp.getMonth(), 2000 + temp.getYear() % 100);
-        ((TextView)view.findViewById(R.id.textView_check_out_info)).setText(checkOut.toString());
+        ((TextView)view.findViewById(R.id.trip_date_textView_check_out_info)).setText(checkOut.toString());
 
         CalendarView calendarView = view.findViewById(R.id.fragment_trip_date_calendarView);
         calendarView.setMinDate((new Date()).getTime());
@@ -85,17 +83,17 @@ public class TripDateFragment extends Fragment {
                         .append("/").append(i1 + 1).append("/").append(i)
                         .append(" ").toString();
                 if (isCheckInDay) {
-                    ((TextView)view.findViewById(R.id.textView_check_in_info)).setText(selectedDate);
+                    ((TextView)view.findViewById(R.id.trip_date_textView_check_in_info)).setText(selectedDate);
                     setInnerDate(checkIn, i2, i1, i);
                 } else {
-                    ((TextView)view.findViewById(R.id.textView_check_out_info)).setText(selectedDate);
+                    ((TextView)view.findViewById(R.id.trip_date_textView_check_out_info)).setText(selectedDate);
                     setInnerDate(checkOut, i2, i1, i);
                 }
                 isCheckInDay = !isCheckInDay;
             }
         });
 
-        Button buttonApply = view.findViewById(R.id.trip_date_apply_button);
+        Button buttonApply = view.findViewById(R.id.trip_date_button_apply);
         buttonApply.setOnClickListener(this::onApplyClick);
     }
 
