@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 public class User implements Parcelable {
     public static final String SELECTED_USER = "USER";
 
+    public static final int ADMIN_ID = 1;
     private int ID;
     private String fullName;
     private String email;

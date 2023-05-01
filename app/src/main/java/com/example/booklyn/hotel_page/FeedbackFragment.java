@@ -20,6 +20,7 @@ import com.example.booklyn.R;
 import com.example.booklyn.adapters.RatingAdapter;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.Rate;
+import com.example.booklyn.entities.User;
 
 import java.util.Date;
 
@@ -31,17 +32,17 @@ public class FeedbackFragment extends Fragment {
 
     View homeView;
 
-    public interface FeedbackSetter{
+    public interface FeedbackController {
         void setFeedback(FeedbackFragment feedbackFragment);
-
         void writeToDB(Rate rate, int hotelID);
+        User getUser();
     }
-    FeedbackSetter feedbackSetter;
+    FeedbackController feedbackController;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        feedbackSetter = (FeedbackSetter) context;
+        feedbackController = (FeedbackController) context;
     }
 
     @Override
@@ -52,7 +53,7 @@ public class FeedbackFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        feedbackSetter.setFeedback(this);
+        feedbackController.setFeedback(this);
 
         //Кнопка выхода
         ImageView imageViewBack = view.findViewById(R.id.feedback_imageView_sign_back);
@@ -65,7 +66,8 @@ public class FeedbackFragment extends Fragment {
 
         //Список для вывода комментариев
         listView = view.findViewById(R.id.feedback_listView_feedbacks);
-        ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates());
+        ratingAdapter = new RatingAdapter(view.getContext(), R.layout.feedback_list_item, hotel.getRates(),
+                feedbackController.getUser().getID() == User.ADMIN_ID, hotel.getID());
         listView.setAdapter(ratingAdapter);
 
         //Добавление комментария
@@ -85,7 +87,7 @@ public class FeedbackFragment extends Fragment {
     public void addRate(float rate, String info) {
         Rate rate1 = new Rate(rate, info, new Date());
         hotel.addRate(rate1);
-        feedbackSetter.writeToDB(rate1, hotel.getID());
+        feedbackController.writeToDB(rate1, hotel.getID());
         setRatingProcents(homeView);
         setProgressBarRating(homeView);
         ratingAdapter.notifyDataSetChanged();
@@ -126,7 +128,7 @@ public class FeedbackFragment extends Fragment {
 
     @Override
     public void onDetach() {
-        feedbackSetter = null;
+        feedbackController = null;
         super.onDetach();
     }
 }

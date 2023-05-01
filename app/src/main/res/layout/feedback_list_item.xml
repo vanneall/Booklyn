@@ -16,7 +16,8 @@
     <LinearLayout
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -33,13 +34,23 @@
         <TextView
             android:id="@+id/feedback_list_item_textView_rating_estimantion"
             android:layout_marginLeft="5dp"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:text="Отзыв"
             android:textColor="@color/black"
             android:textSize="@dimen/simple_size"
             android:gravity="center_vertical"
             android:fontFamily="sans-serif-black"/>
+
+        <Button
+            android:id="@+id/feedback_list_item_button_delete_feedback"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:text="Удалить"
+            android:backgroundTint="@color/red"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textSize="@dimen/little_size"/>
 
     </LinearLayout>
 

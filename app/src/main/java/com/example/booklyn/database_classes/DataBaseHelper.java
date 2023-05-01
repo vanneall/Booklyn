@@ -52,22 +52,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }// end if else dbExist
     } // end createDataBase().
 
-    /**
-     * Check if the database already exist to avoid re-copying the file each time you open the application.
-     *
-     * @return true if it exists, false if it doesn't
-     */
     public boolean checkDataBase() {
         String path = DB_PATH + DATABASE_NAME;
         File databaseFile = new File(DB_PATH + DATABASE_NAME);
         return databaseFile.exists();
     }
 
-    /**
-     * Copies your database from your local assets-folder to the just created empty database in the
-     * system folder, from where it can be accessed and handled.
-     * This is done by transferring byte stream.
-     */
     private void copyDataBase() throws IOException {
         //Open your local db as the input stream
         InputStream myInput = context.getAssets().open(DATABASE_NAME);
@@ -88,31 +78,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         myInput.close();
     }
 
-    /**
-     * This method opens the data base connection.
-     * First it create the path up till data base of the device.
-     * Then create connection with data base.
-     */
     public void openDataBase() throws SQLException {
         //Open the database
         String myPath = DB_PATH + DATABASE_NAME;
         sqliteDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
     }
 
-    /**
-     * This Method is used to close the data base connection.
-     */
     @Override
     public synchronized void close() {
         if (sqliteDataBase != null)
             sqliteDataBase.close();
         super.close();
     }
-
-    /**
-     * Apply your methods and class to fetch data using raw or queries on data base using
-     * following demo example code as:
-     */
 
     private static final String TABLE_HOTEL_NAME = "Hotel";
     private static final String TABLE_HOTEL_KEY_ID = "_id";
@@ -188,6 +165,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(TABLE_RATE_KEY_RATE, rate.getRate());
         cv.put("parent_id", hoteLID);
         sqliteDataBase.insert(TABLE_RATE_NAME, null, cv);
+    }
+
+    public void deleteFeedbackFromDatabase(Rate rate, int hotelID){
+        sqliteDataBase.delete(TABLE_RATE_NAME, "parent_id = ? and info = ? and rate = ?", new String[]{String.valueOf(hotelID),
+                rate.getInfo(), String.valueOf(rate.getRate())});
     }
 
     @SuppressLint("Range")
