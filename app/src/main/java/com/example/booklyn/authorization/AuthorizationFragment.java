@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 import com.example.booklyn.R;
 import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.User;
+import com.example.booklyn.text_watchers.TelephoneTextWatcher;
 
 public class AuthorizationFragment extends Fragment {
 
@@ -60,6 +61,7 @@ public class AuthorizationFragment extends Fragment {
 
         //Поля для ввода данных
         editTextTelephone = view.findViewById(R.id.authorization_editText_telephone);
+        editTextTelephone.addTextChangedListener(new TelephoneTextWatcher());
         editTextPassword = view.findViewById(R.id.authorization_editText_password);
 
         Button button = view.findViewById(R.id.authorization_button_enter);

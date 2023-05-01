@@ -66,8 +66,8 @@
             android:textSize="16dp"
             android:hint="@string/payment_card_number"
             style="@style/CardEditText"
-            android:inputType="number"
-            android:maxLength="16"/>
+            android:inputType="text"
+            android:maxLength="20"/>
 
         <EditText
             android:id="@+id/payment_editText_holder_name"
@@ -79,7 +79,8 @@
             style="@style/CardEditText"
             android:textSize="16dp"
             android:inputType="textPersonName"
-            android:maxLength="25"/>
+            android:maxLength="25"
+            />
 
         <EditText
             android:id="@+id/payment_editText_date"

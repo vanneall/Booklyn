@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
+import com.example.booklyn.text_watchers.TelephoneTextWatcher;
 import com.google.android.material.snackbar.Snackbar;
 
 public class RegistrationFragment extends Fragment {
@@ -40,6 +41,7 @@ public class RegistrationFragment extends Fragment {
         editTextFullName = view.findViewById(R.id.registration_editText_full_name);
         editTextEmail = view.findViewById(R.id.registration_editText_email);
         editTextTelephone = view.findViewById(R.id.registration_editText_telephone);
+        editTextTelephone.addTextChangedListener(new TelephoneTextWatcher());
         editTextPassword = view.findViewById(R.id.registration_editText_password);
 
         Button buttonEnter = view.findViewById(R.id.registration_button_enter);

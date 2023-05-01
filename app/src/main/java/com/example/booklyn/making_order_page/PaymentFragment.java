@@ -20,6 +20,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.booklyn.R;
+import com.example.booklyn.text_watchers.CardDataTextWatcher;
+import com.example.booklyn.text_watchers.CardHolderTextWatcher;
+import com.example.booklyn.text_watchers.CardNumberTextWatcher;
+import com.google.android.material.snackbar.Snackbar;
 
 public class PaymentFragment extends Fragment {
 
@@ -31,6 +35,11 @@ public class PaymentFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_payment, container, false);
     }
 
+    EditText editTextCVV;
+    EditText editTextCardNumber;
+    EditText editTextDate;
+    EditText editTextHolderName;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -39,25 +48,20 @@ public class PaymentFragment extends Fragment {
         ImageView imageView = view.findViewById(R.id.payment_imageView_back);
         imageView.setOnClickListener(this::clickBack);
 
-        EditText editTextCardNumber = view.findViewById(R.id.payment_editText_card_number);
-        editTextCardNumber.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        //Ввод номера карты
+        editTextCardNumber = view.findViewById(R.id.payment_editText_card_number);
+        editTextCardNumber.addTextChangedListener(new CardNumberTextWatcher(view));
 
-            }
+        //Ввод срока действия карты
+        editTextDate = view.findViewById(R.id.payment_editText_date);
+        editTextDate.addTextChangedListener(new CardDataTextWatcher());
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().startsWith("2")) ((ImageView)view.findViewById(R.id.payment_card_image_type)).setImageResource(R.drawable.mir_logo);
-                else if (charSequence.toString().startsWith("4")) ((ImageView)view.findViewById(R.id.payment_card_image_type)).setImageResource(R.drawable.visa_logo);
-                else if (charSequence.toString().startsWith("5")) ((ImageView)view.findViewById(R.id.payment_card_image_type)).setImageResource(R.drawable.mastercard_logo);
-            }
+        //Ввод имени держателя карты
+        editTextHolderName = view.findViewById(R.id.payment_editText_holder_name);
+        editTextHolderName.addTextChangedListener(new CardHolderTextWatcher());
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        //Ввод CVV карты
+        editTextCVV = view.findViewById(R.id.payment_editText_cvv);
 
         //Кнопка бронирования
         Button button = view.findViewById(R.id.payment_button_pay);
@@ -69,24 +73,41 @@ public class PaymentFragment extends Fragment {
     }
 
     private void clickGetBookingMessage(View view){
-        Bundle bundle = getArguments();
-        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getActivity(), BOOKING_CHANNEL)
-                .setAutoCancel(false)
-                .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("Уведомление о бронировании")
-                .setContentText("Был забронирован номер")
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(
-                        "Забронирова номер \"" +  bundle.getString("ROOM_NAME") + "\" в отеле \"" +
-                                bundle.getString("HOTEL_NAME") + "\" на " + bundle.getString("NAME") +
-                                " с " + bundle.getString("CHECK_IN") + " по " + bundle.getString("CHECK_OUT")
-                ));
-        createChannelIfNeeded(notificationManager, BOOKING_CHANNEL);
-        notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
+        if (editTextCVV.getText().toString().length() == 3 &&
+                editTextCardNumber.getText().toString().length() == 19 &&
+                editTextDate.getText().toString().length() == 5 &&
+                !editTextHolderName.getText().toString().equals("")) {
+            Bundle bundle = getArguments();
+            NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getActivity(), BOOKING_CHANNEL)
+                    .setAutoCancel(false)
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
+                    .setContentTitle("Уведомление о бронировании")
+                    .setContentText("Был забронирован номер")
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(
+                            "Забронирова номер \"" +  bundle.getString("ROOM_NAME") + "\" в отеле \"" +
+                                    bundle.getString("HOTEL_NAME") + "\" на " + bundle.getString("NAME") +
+                                    " с " + bundle.getString("CHECK_IN") + " по " + bundle.getString("CHECK_OUT")
+                    ));
+            createChannelIfNeeded(notificationManager, BOOKING_CHANNEL);
+            notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
+        } else {
+            Snackbar.make(view, "Есть незаполненные поля!", Snackbar.LENGTH_LONG).show();
+        }
+
     }
 
     private static void createChannelIfNeeded(NotificationManager manager, String CHANNEL){
         NotificationChannel notificationChannel = new NotificationChannel(CHANNEL, CHANNEL, NotificationManager.IMPORTANCE_DEFAULT);
         manager.createNotificationChannel(notificationChannel);
+    }
+
+    @Override
+    public void onDestroyView() {
+        editTextCardNumber = null;
+        editTextCVV = null;
+        editTextDate = null;
+        editTextHolderName = null;
+        super.onDestroyView();
     }
 }

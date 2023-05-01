@@ -35,7 +35,8 @@
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/telephone"
             android:drawablePadding="10dp"
-            android:inputType="number"/>
+            android:inputType="text"
+            android:maxLength="18"/>
 
         <EditText
             android:id="@+id/authorization_editText_password"
