@@ -35,7 +35,8 @@
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/user_icon"
             android:drawablePadding="10dp"
-            android:inputType="textCapWords"/>
+            android:inputType="textCapWords"
+            android:maxLength="25"/>
 
         <EditText
             android:id="@+id/registration_editText_email"
@@ -46,7 +47,8 @@
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/email"
             android:drawablePadding="10dp"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:maxLength="25"/>
 
         <EditText
             android:id="@+id/registration_editText_telephone"
@@ -69,8 +71,8 @@
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/lock_sign"
             android:drawablePadding="10dp"
-            android:inputType="textPassword"/>
-
+            android:inputType="textPassword"
+            android:maxLength="25"/>
 
 
         <Button

@@ -44,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:minWidth="5000dp"/>
+            android:minWidth="10000dp"
+            android:maxLength="100"/>
     </LinearLayout>
 
     <LinearLayout

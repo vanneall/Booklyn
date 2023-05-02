@@ -47,7 +47,8 @@
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/lock_sign"
             android:drawablePadding="10dp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:maxLength="25"/>
 
 
 

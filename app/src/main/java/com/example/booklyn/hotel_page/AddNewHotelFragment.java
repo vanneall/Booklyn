@@ -17,8 +17,11 @@ import android.widget.ImageView;
 import com.example.booklyn.R;
 import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.Hotel;
+import com.example.booklyn.entities.User;
 import com.example.booklyn.text_watchers.TelephoneTextWatcher;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.regex.Pattern;
 
 public class AddNewHotelFragment extends Fragment {
 
@@ -57,8 +60,9 @@ public class AddNewHotelFragment extends Fragment {
     private void clickAddNewHotel(View view) {
         if (!editTextName.getText().toString().equals("") &&
                 !editTextLocation.getText().toString().equals("") &&
-                !editTextTelephone.getText().toString().equals("") &&
-                !editTextInfo.getText().toString().equals("")) {
+                editTextTelephone.getText().toString().length() == 18 &&
+                !editTextInfo.getText().toString().equals("") &&
+                (editTextEmail.getText().toString().equals("") || Pattern.matches(User.EMAIL_PATTERN, editTextEmail.getText().toString()))) {
             Hotel.hotels.add(new Hotel(editTextName.getText().toString(), editTextInfo.getText().toString(),
                     editTextLocation.getText().toString(), editTextTelephone.getText().toString(),
                     editTextEmail.getText().toString()));
@@ -67,6 +71,9 @@ public class AddNewHotelFragment extends Fragment {
             dataBaseHelper.writeHotelToDatabase(Hotel.hotels.get(Hotel.hotels.size() - 1));
             dataBaseHelper.close();
             Navigation.findNavController(view).popBackStack();
+        } else if (!editTextEmail.getText().toString().equals("") &&
+                !Pattern.matches(User.EMAIL_PATTERN, editTextEmail.getText().toString())){
+            Snackbar.make(view, "Некорректные данные почты!", Snackbar.LENGTH_LONG).show();
         } else {
             Snackbar.make(view, "Все поля должны быть заполнены!", Snackbar.LENGTH_LONG).show();
         }

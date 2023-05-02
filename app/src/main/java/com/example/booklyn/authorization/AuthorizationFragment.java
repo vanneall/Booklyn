@@ -95,7 +95,7 @@ public class AuthorizationFragment extends Fragment {
         if (user != null) {
             clickActionToHotelSelection(user, view);
         } else {
-            Toast.makeText(getActivity(), "Такого пользователя не существует", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Неправильный логин или пароль", Toast.LENGTH_LONG).show();
         }
     }
     @Override

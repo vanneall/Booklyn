@@ -22,6 +22,8 @@ import com.example.booklyn.entities.User;
 import com.example.booklyn.text_watchers.TelephoneTextWatcher;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.regex.Pattern;
+
 public class UserPageFragment extends Fragment {
 
 
@@ -80,7 +82,7 @@ public class UserPageFragment extends Fragment {
 
     private void clickUpload(View view) {
         if (!editTextName.getText().toString().equals("") &&
-                !editTextEmail.getText().toString().equals("") &&
+                Pattern.matches(User.EMAIL_PATTERN, editTextEmail.getText().toString()) &&
                 editTextTelephone.getText().toString().length() == 18) {
             DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity());
             dataBaseHelper.openDataBase();
@@ -89,6 +91,8 @@ public class UserPageFragment extends Fragment {
                     editTextTelephone.getText().toString());
             dataBaseHelper.close();
             Toast.makeText(getActivity(), "Успешно", Toast.LENGTH_LONG).show();
+        } else if (!Pattern.matches(User.EMAIL_PATTERN, editTextEmail.getText().toString())) {
+            Snackbar.make(view, "Некорректные данные почты!", Snackbar.LENGTH_LONG).show();
         } else {
             Snackbar.make(view, "Обнаружены пустые поля", Snackbar.LENGTH_LONG).show();
         }

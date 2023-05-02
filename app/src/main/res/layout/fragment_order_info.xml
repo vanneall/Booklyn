@@ -289,7 +289,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/input_promo"
             android:textAllCaps="true"
-            />
+            android:maxLength="10"/>
 
         <Button
             android:id="@+id/order_room_textView_button_book"

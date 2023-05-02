@@ -42,7 +42,8 @@
         android:textSize="@dimen/simple_size"
         android:inputType="textPersonName"
         android:drawableLeft="@drawable/customer_name"
-        android:drawablePadding="5dp"/>
+        android:drawablePadding="5dp"
+        android:maxLength="25"/>
 
 
     <EditText
@@ -72,7 +73,8 @@
         android:textSize="@dimen/simple_size"
         android:inputType="textEmailAddress"
         android:drawableLeft="@drawable/email"
-        android:drawablePadding="5dp"/>
+        android:drawablePadding="5dp"
+        android:maxLength="25"/>
 
     <Button
         android:id="@+id/user_page_upload_new_data"

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 public class User implements Parcelable {
     public static final String SELECTED_USER = "USER";
 
+    public static final String EMAIL_PATTERN = "([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)";
     public static final int ADMIN_ID = 1;
     private int ID;
     private String fullName;

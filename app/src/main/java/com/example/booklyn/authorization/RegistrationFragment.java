@@ -14,8 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
+import com.example.booklyn.database_classes.DataBaseHelper;
+import com.example.booklyn.entities.User;
 import com.example.booklyn.text_watchers.TelephoneTextWatcher;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.regex.Pattern;
 
 public class RegistrationFragment extends Fragment {
 
@@ -56,10 +60,14 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void clickRegistrate(View view) {
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
+        dataBaseHelper.openDataBase();
+        int id = dataBaseHelper.findUserByTelephone(editTextTelephone.getText().toString());
+        dataBaseHelper.close();
         if (!editTextFullName.getText().toString().equals("") &&
-                !editTextEmail.getText().toString().equals("") &&
-                !editTextTelephone.getText().toString().equals("") &&
-                !editTextPassword.getText().toString().equals("")){
+                Pattern.matches(User.EMAIL_PATTERN, editTextEmail.getText().toString()) &&
+                editTextTelephone.getText().toString().length() == 18 &&
+                !editTextPassword.getText().toString().equals("") && id == -1){
 
             Bundle bundle = new Bundle();
             bundle.putString(USER_NAME, editTextFullName.getText().toString());
@@ -67,6 +75,10 @@ public class RegistrationFragment extends Fragment {
             bundle.putString(USER_TELEPHONE, editTextTelephone.getText().toString());
             bundle.putString(USER_PASSWORD, editTextPassword.getText().toString());
             Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_verificationFragment, bundle);
+        } else if (id != -1) {
+            Snackbar.make(view, "Пользователь с таким номером телефона уже существует", Snackbar.LENGTH_LONG).show();
+        } else if (!Pattern.matches(User.EMAIL_PATTERN, editTextEmail.getText().toString())){
+            Snackbar.make(view, "Некорректные данные почты!", Snackbar.LENGTH_LONG).show();
         }
         else {
             Snackbar.make(view, "Необходимо заполнить все поля для продолжения", Snackbar.LENGTH_LONG).show();

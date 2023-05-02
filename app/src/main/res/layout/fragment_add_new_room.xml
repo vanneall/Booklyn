@@ -67,7 +67,8 @@
         android:inputType="textMultiLine"
         android:hint="Описание*"
         android:layout_above="@id/add_new_room_button_apply"
-        android:gravity="top"/>
+        android:gravity="top"
+        android:maxLength="100"/>
 
     <Button
         android:id="@+id/add_new_room_button_apply"
