@@ -54,8 +54,11 @@ public class HotelSelectionFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //Установка пользователя
         user = getArguments().getParcelable(User.SELECTED_USER);
-        mainPageController.setUser(user);
-        mainPageController.setMainPage(this);
+        if (user != null) {
+            mainPageController.setUser(user);
+            mainPageController.setMainPage(this);
+        }
+
     }
 
     @Override
@@ -70,7 +73,7 @@ public class HotelSelectionFragment extends Fragment {
 
         //Список всех отелей
         listViewMainHotels = view.findViewById(R.id.main_listView_hotels);
-        adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageController.getHotels(),user.getID() ==  User.ADMIN_ID);
+        adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageController.getHotels(), userGetter.getUser().getID() ==  User.ADMIN_ID);
         listViewMainHotels.setAdapter(adapter);
 
         //Установка компонента сортировщика отелей
@@ -84,7 +87,7 @@ public class HotelSelectionFragment extends Fragment {
 
         //Кнопка создания нового отеля
         TextView textViewAddNewHotel = view.findViewById(R.id.main_textView_add_new_hotel);
-        if (((User)getArguments().getParcelable(User.SELECTED_USER)).getID() != User.ADMIN_ID) {
+        if (userGetter.getUser().getID() != User.ADMIN_ID) {
             textViewAddNewHotel.setVisibility(View.GONE);
         } else {
             textViewAddNewHotel.setOnClickListener(this::clickActionToAddNewHotel);
