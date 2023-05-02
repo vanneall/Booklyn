@@ -50,7 +50,8 @@ public class ChangePasswordFragment extends Fragment {
             dataBaseHelper.openDataBase();
             dataBaseHelper.userUpdatePassword(id, editTextNewPassword.getText().toString());
             Bundle bundle = new Bundle();
-            bundle.putParcelable(User.SELECTED_USER, dataBaseHelper.getUser(id));
+            User user = dataBaseHelper.getUser(id);
+            bundle.putParcelable(User.SELECTED_USER, user);
             dataBaseHelper.close();
             Navigation.findNavController(view).navigate(R.id.action_changePasswordFragment_to_hotelSelectionFragment, bundle);
         } else {

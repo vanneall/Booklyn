@@ -61,7 +61,7 @@ public class ForgetPasswordFragment extends Fragment {
             Snackbar.make(view, "Пользователь не найден", Snackbar.LENGTH_LONG).show();
         } else {
             Bundle bundle = new Bundle();
-            bundle.putInt(User.SELECTED_USER, id + 1);
+            bundle.putInt(User.SELECTED_USER, id);
             Navigation.findNavController(view).navigate(R.id.action_forgetPasswordFragment_to_verificationFragment, bundle);
         }
     }

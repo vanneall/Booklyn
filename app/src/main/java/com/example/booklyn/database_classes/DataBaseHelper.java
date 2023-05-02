@@ -313,7 +313,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 new String[]{telephone}, null, null, null);
         int userId = -1;
         if (cursor.moveToNext()) {
-            userId = cursor.getInt(cursor.getColumnIndex(TABLE_USER_KEY_TELEPHONE));
+            userId = cursor.getInt(cursor.getColumnIndex(TABLE_USER_KEY_ID));
         }
         cursor.close();
         return userId;

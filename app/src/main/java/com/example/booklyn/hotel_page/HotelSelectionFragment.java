@@ -40,6 +40,7 @@ public class HotelSelectionFragment extends Fragment {
     SortFragment sortFragment;
 
     private boolean isHideSortAndFilterFragment = true;
+    User user;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -52,7 +53,8 @@ public class HotelSelectionFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Установка пользователя
-        mainPageController.setUser(getArguments().getParcelable(User.SELECTED_USER));
+        user = getArguments().getParcelable(User.SELECTED_USER);
+        mainPageController.setUser(user);
         mainPageController.setMainPage(this);
     }
 
@@ -65,11 +67,10 @@ public class HotelSelectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainPageController.setVisible();
-        mainPageController.setUser(getArguments().getParcelable(User.SELECTED_USER));
 
         //Список всех отелей
         listViewMainHotels = view.findViewById(R.id.main_listView_hotels);
-        adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageController.getHotels(),userGetter.getUser().getID() ==  User.ADMIN_ID);
+        adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageController.getHotels(),user.getID() ==  User.ADMIN_ID);
         listViewMainHotels.setAdapter(adapter);
 
         //Установка компонента сортировщика отелей
