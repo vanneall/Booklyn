@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +36,7 @@ public class UserPageFragment extends Fragment {
         super.onAttach(context);
         userGetter = (UserGetter) context;
     }
-
     User user;
-
     EditText editTextName;
     EditText editTextEmail;
     EditText editTextTelephone;
@@ -61,8 +61,21 @@ public class UserPageFragment extends Fragment {
         editTextEmail.setText(user.getEmail());
         editTextTelephone.setText(user.getTelephone());
 
+        //Кнопка для обновления данных о пользователе
         Button button = view.findViewById(R.id.user_page_upload_new_data);
         button.setOnClickListener(this::clickUpload);
+
+        //Кнопка для просмотра всех пользователей
+        Button buttonCheckAllUsers = view.findViewById(R.id.user_page_check_all_users);
+        if (user.getID() == User.ADMIN_ID) {
+            buttonCheckAllUsers.setOnClickListener(this::clickActionToAllUsers);
+        } else {
+            buttonCheckAllUsers.setVisibility(View.GONE);
+        }
+    }
+
+    private void clickActionToAllUsers(View view){
+        Navigation.findNavController(view).navigate(R.id.action_userPageFragment_to_allUsersPageFragment);
     }
 
     private void clickUpload(View view) {

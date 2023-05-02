@@ -1,6 +1,7 @@
 package com.example.booklyn.database_classes;
 
 import android.annotation.SuppressLint;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -115,6 +116,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_USER_NAME = "User";
     private static final String TABLE_USER_KEY_TELEPHONE = "telephone";
+    private static final String TABLE_USER_KEY_ID = "_id";
+    private static final String TABLE_USER_KEY_FULL_NAME = "full_name";
+    private static final String TABLE_USER_KEY_EMAIL = "email";
 
     private static final String TABLE_ALL_PARENT_ID = "parent_id";
 
@@ -168,7 +172,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return hotels;
     }
 
-    public void writeFeedbackToDatabase(Rate rate, int hoteLID){
+    public void writeFeedbackToDatabase(Rate rate, int hoteLID) {
         ContentValues cv = new ContentValues();
         cv.put(TABLE_RATE_KEY_INFO, rate.getInfo());
         cv.put(TABLE_RATE_KEY_RATE, rate.getRate());
@@ -176,12 +180,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqliteDataBase.insert(TABLE_RATE_NAME, null, cv);
     }
 
-    public void deleteFeedbackFromDatabase(Rate rate, int hotelID){
+    public void deleteFeedbackFromDatabase(Rate rate, int hotelID) {
         sqliteDataBase.delete(TABLE_RATE_NAME, "parent_id = ? and info = ? and rate = ?", new String[]{String.valueOf(hotelID),
                 rate.getInfo(), String.valueOf(rate.getRate())});
     }
 
-    public void writeRoomToDatabase(Room room, int hotelID){
+    public void writeRoomToDatabase(Room room, int hotelID) {
         ContentValues cv = new ContentValues();
         cv.put(TABLE_ROOM_KEY_NAME, room.getName());
         cv.put(TABLE_ROOM_KEY_INFO, room.getInfo());
@@ -190,12 +194,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqliteDataBase.insert(TABLE_ROOM_NAME, null, cv);
     }
 
-    public void deleteRoomFromDatabase(Room room, int hotelID){
+    public void deleteRoomFromDatabase(Room room, int hotelID) {
         sqliteDataBase.delete(TABLE_ROOM_NAME, "parent_id = ? and info = ? and name = ? and price = ?", new String[]{String.valueOf(hotelID),
-        room.getInfo(), room.getName(), String.valueOf(room.getPrice())});
+                room.getInfo(), room.getName(), String.valueOf(room.getPrice())});
     }
 
-    public void writeHotelToDatabase(Hotel hotel){
+    public void writeHotelToDatabase(Hotel hotel) {
         ContentValues cv = new ContentValues();
         cv.put(TABLE_HOTEL_KEY_NAME, hotel.getName());
         cv.put(TABLE_HOTEL_KEY_INFO, hotel.getInfo());
@@ -206,19 +210,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqliteDataBase.insert(TABLE_HOTEL_NAME, null, cv);
     }
 
-    public void deleteHotelFromDatabase(Hotel hotel){
+    public void deleteHotelFromDatabase(Hotel hotel) {
         sqliteDataBase.delete(TABLE_HOTEL_NAME, "_id = ?", new String[]{String.valueOf(hotel.getID())});
-        sqliteDataBase.delete(TABLE_RATE_NAME, "parent_id = ?",new String[]{String.valueOf(hotel.getID())});
-        sqliteDataBase.delete(TABLE_ROOM_NAME, "parent_id = ?",new String[]{String.valueOf(hotel.getID())});
-        sqliteDataBase.delete(TABLE_IMAGES_NAME, "parent_id = ?",new String[]{String.valueOf(hotel.getID())});
+        sqliteDataBase.delete(TABLE_RATE_NAME, "parent_id = ?", new String[]{String.valueOf(hotel.getID())});
+        sqliteDataBase.delete(TABLE_ROOM_NAME, "parent_id = ?", new String[]{String.valueOf(hotel.getID())});
+        sqliteDataBase.delete(TABLE_IMAGES_NAME, "parent_id = ?", new String[]{String.valueOf(hotel.getID())});
     }
 
     @SuppressLint("Range")
-    public User checkActiveUser(){
+    public User checkActiveUser() {
         Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "is_activated = ?",
                 new String[]{"1"}, null, null, null);
         User user = null;
-        if (cursor.moveToNext()){
+        if (cursor.moveToNext()) {
             user = new User(cursor.getInt(cursor.getColumnIndex("_id")),
                     cursor.getString(cursor.getColumnIndex("full_name")),
                     cursor.getString(cursor.getColumnIndex("email")),
@@ -230,21 +234,36 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    public User getUser(String telephone, String password){
+    public User getUser(String telephone, String password) {
         Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "telephone = ? and password = ?",
                 new String[]{telephone, password}, null, null, null);
         User user = null;
-        if (cursor.moveToNext()){
+        if (cursor.moveToNext()) {
             user = new User(cursor.getInt(cursor.getColumnIndex("_id")),
                     cursor.getString(cursor.getColumnIndex("full_name")),
                     cursor.getString(cursor.getColumnIndex("email")),
                     telephone, password);
             ContentValues contentValues = new ContentValues();
             contentValues.put("is_activated", "1");
-            sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" +  cursor.getInt(cursor.getColumnIndex("_id")), null);
+            sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" + cursor.getInt(cursor.getColumnIndex("_id")), null);
         }
         cursor.close();
         return user;
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<User> getAllUsers() {
+        Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, null,
+                null, null, null, null);
+        ArrayList<User> users = new ArrayList<>(10);
+        while (cursor.moveToNext()) {
+            users.add(new User(cursor.getInt(cursor.getColumnIndex(TABLE_USER_KEY_ID)),
+                    cursor.getString(cursor.getColumnIndex(TABLE_USER_KEY_FULL_NAME)),
+                    cursor.getString(cursor.getColumnIndex(TABLE_USER_KEY_EMAIL)),
+                    cursor.getString(cursor.getColumnIndex(TABLE_USER_KEY_TELEPHONE))));
+        }
+        cursor.close();
+        return users;
     }
 
     @SuppressLint("Range")
@@ -252,7 +271,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "_id = ?",
                 new String[]{String.valueOf(id)}, null, null, null);
         User user = null;
-        if (cursor.moveToNext()){
+        if (cursor.moveToNext()) {
             user = new User(id,
                     cursor.getString(cursor.getColumnIndex("full_name")),
                     cursor.getString(cursor.getColumnIndex("email")),
@@ -266,7 +285,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return user;
     }
 
-    public User createUser(String fullName, String email, String telephone, String password){
+    public User createUser(String fullName, String email, String telephone, String password) {
         ContentValues cv = new ContentValues();
         cv.put("full_name", fullName);
         cv.put("telephone", telephone);
@@ -277,11 +296,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return new User((int) id, fullName, email, telephone, password);
     }
 
+    public void deleteUserFromDatabase(int id) {
+        sqliteDataBase.delete(TABLE_USER_NAME, "_id = " + id, null);
+    }
+
     @SuppressLint("Range")
-    public void leftFromAccount(int id){
+    public void leftFromAccount(int id) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("is_activated", "0");
-        sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" +  id, null);
+        sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" + id, null);
     }
 
     @SuppressLint("Range")
@@ -289,20 +312,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "telephone = ?",
                 new String[]{telephone}, null, null, null);
         int userId = -1;
-        if (cursor.moveToNext()){
+        if (cursor.moveToNext()) {
             userId = cursor.getInt(cursor.getColumnIndex(TABLE_USER_KEY_TELEPHONE));
         }
         cursor.close();
         return userId;
     }
 
-    public void userUpdatePassword(int id, String password){
+    public void userUpdatePassword(int id, String password) {
         ContentValues cv = new ContentValues();
         cv.put("password", password);
         sqliteDataBase.update(TABLE_USER_NAME, cv, "_id" + "=" + id, null);
     }
 
-    public void userUpdate(int id, String fullName, String email, String telephone){
+    public void userUpdate(int id, String fullName, String email, String telephone) {
         ContentValues cv = new ContentValues();
         cv.put("full_name", fullName);
         cv.put("telephone", telephone);
@@ -311,8 +334,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {}
+    public void onCreate(SQLiteDatabase db) {
+    }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
 }

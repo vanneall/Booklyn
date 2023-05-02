@@ -84,4 +84,14 @@
         android:layout_gravity="center"
         android:text="@string/refresh"/>
 
+    <Button
+        android:id="@+id/user_page_check_all_users"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:text="все пользователи"
+        android:backgroundTint="@color/faded_green"/>
+
 </LinearLayout>

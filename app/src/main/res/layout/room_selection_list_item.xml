@@ -86,7 +86,7 @@
         android:id="@+id/room_selection_list_item_button_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ВЫБРАТЬ" />
+        android:text="Выбрать" />
 
     <Button
         android:id="@+id/room_selection_list_item_button_delete"
