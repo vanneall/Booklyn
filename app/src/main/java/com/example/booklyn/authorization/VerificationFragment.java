@@ -46,6 +46,8 @@ public class VerificationFragment extends Fragment {
         String telephone = getArguments().getString(RegistrationFragment.USER_TELEPHONE);
         String password = getArguments().getString(RegistrationFragment.USER_PASSWORD);
 
+        int id = getArguments().getInt(User.SELECTED_USER, -1);
+
         //Поля для ввода кода
         EditText editTextCode1 = view.findViewById(R.id.verification_editText_code_1);
         EditText editTextCode2 = view.findViewById(R.id.verification_editText_code_2);
@@ -116,14 +118,21 @@ public class VerificationFragment extends Fragment {
                 editTextCode2.getText().toString() +
                 editTextCode3.getText().toString() +
                 editTextCode4.getText().toString())){
-                    DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity());
-                    dataBaseHelper.openDataBase();
-                    User user = dataBaseHelper.createUser(name, email, telephone, password);
-                    dataBaseHelper.close();
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelable("USER", user);
-                    Toast.makeText(getActivity(), "Регистрация прошла успешно", Toast.LENGTH_LONG).show();
-                    Navigation.findNavController(view).navigate(R.id.action_verificationFragment_to_hotelSelectionFragment, bundle);
+                    if (id == -1) {
+                        DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity());
+                        dataBaseHelper.openDataBase();
+                        User user = dataBaseHelper.createUser(name, email, telephone, password);
+                        dataBaseHelper.close();
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(User.SELECTED_USER, user);
+                        Toast.makeText(getActivity(), "Регистрация прошла успешно", Toast.LENGTH_LONG).show();
+                        Navigation.findNavController(view).navigate(R.id.action_verificationFragment_to_hotelSelectionFragment, bundle);
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(User.SELECTED_USER, id);
+                        Navigation.findNavController(view).navigate(R.id.action_verificationFragment_to_changePasswordFragment, bundle);
+                    }
+
                 } else {
                     Toast.makeText(getActivity(), "Неправильный код", Toast.LENGTH_LONG).show();
                 }

@@ -65,6 +65,7 @@ public class HotelSelectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainPageController.setVisible();
+        mainPageController.setUser(getArguments().getParcelable(User.SELECTED_USER));
 
         //Список всех отелей
         listViewMainHotels = view.findViewById(R.id.main_listView_hotels);

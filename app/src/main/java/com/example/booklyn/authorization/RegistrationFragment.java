@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,8 +45,14 @@ public class RegistrationFragment extends Fragment {
         editTextTelephone.addTextChangedListener(new TelephoneTextWatcher());
         editTextPassword = view.findViewById(R.id.registration_editText_password);
 
+        //Кнопка для перехода к верификации
         Button buttonEnter = view.findViewById(R.id.registration_button_enter);
         buttonEnter.setOnClickListener(this::clickRegistrate);
+
+        //Кнопка для перехода к авторизации
+        TextView textViewEnterTheSystem = view.findViewById(R.id.registration_textView_enter_the_system);
+        textViewEnterTheSystem.setOnClickListener(this::clickBack);
+
     }
 
     private void clickRegistrate(View view) {
@@ -64,6 +71,10 @@ public class RegistrationFragment extends Fragment {
         else {
             Snackbar.make(view, "Необходимо заполнить все поля для продолжения", Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    private void clickBack(View view) {
+        Navigation.findNavController(view).popBackStack();
     }
 
     @Override

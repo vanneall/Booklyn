@@ -57,7 +57,7 @@ public class AuthorizationFragment extends Fragment {
         bottomNavigationVisibaleController.setInvisible();
         //Переход на создание аккаунта
         TextView textViewCreateAccount = view.findViewById(R.id.authorization_textView_create_account);
-        textViewCreateAccount.setOnClickListener(this::clickActionToRegiastration);
+        textViewCreateAccount.setOnClickListener(this::clickActionToRegistration);
 
         //Поля для ввода данных
         editTextTelephone = view.findViewById(R.id.authorization_editText_telephone);
@@ -66,6 +66,10 @@ public class AuthorizationFragment extends Fragment {
 
         Button button = view.findViewById(R.id.authorization_button_enter);
         button.setOnClickListener(this::clickEnter);
+
+        //Переход к восстановлению пароля
+        TextView textViewForgetPassword = view.findViewById(R.id.authorization_textView_forget_password);
+        textViewForgetPassword.setOnClickListener(this::clickActionToForgetPassword);
     }
 
     private void clickActionToHotelSelection(User user, View view) {
@@ -75,7 +79,11 @@ public class AuthorizationFragment extends Fragment {
         Navigation.findNavController(view).navigate(R.id.action_authorizationFragment_to_hotelSelectionFragment, bundle);
     }
 
-    private void clickActionToRegiastration(View view){
+    private void clickActionToForgetPassword(View view){
+        Navigation.findNavController(view).navigate(R.id.action_authorizationFragment_to_forgetPasswordFragment);
+    }
+
+    private void clickActionToRegistration(View view){
         Navigation.findNavController(view).navigate(R.id.action_authorizationFragment_to_registrationFragment);
     }
 

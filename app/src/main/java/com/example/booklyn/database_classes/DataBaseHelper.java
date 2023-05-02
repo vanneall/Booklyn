@@ -114,6 +114,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_IMAGES_KEY_PICTIRE = "picture";
 
     private static final String TABLE_USER_NAME = "User";
+    private static final String TABLE_USER_KEY_TELEPHONE = "telephone";
 
     private static final String TABLE_ALL_PARENT_ID = "parent_id";
 
@@ -246,6 +247,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return user;
     }
 
+    @SuppressLint("Range")
+    public User getUser(int id) {
+        Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "_id = ?",
+                new String[]{String.valueOf(id)}, null, null, null);
+        User user = null;
+        if (cursor.moveToNext()){
+            user = new User(id,
+                    cursor.getString(cursor.getColumnIndex("full_name")),
+                    cursor.getString(cursor.getColumnIndex("email")),
+                    cursor.getString(cursor.getColumnIndex("telephone")),
+                    cursor.getString(cursor.getColumnIndex("password")));
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("is_activated", "1");
+            sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" + id, null);
+        }
+        cursor.close();
+        return user;
+    }
+
     public User createUser(String fullName, String email, String telephone, String password){
         ContentValues cv = new ContentValues();
         cv.put("full_name", fullName);
@@ -259,11 +279,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @SuppressLint("Range")
     public void leftFromAccount(int id){
-        Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "_id = ?",
-                new String[]{id+""}, null, null, null);
         ContentValues contentValues = new ContentValues();
         contentValues.put("is_activated", "0");
         sqliteDataBase.update(TABLE_USER_NAME, contentValues, "_id" + "=" +  id, null);
+    }
+
+    @SuppressLint("Range")
+    public int findUserByTelephone(String telephone) {
+        Cursor cursor = sqliteDataBase.query(TABLE_USER_NAME, null, "telephone = ?",
+                new String[]{telephone}, null, null, null);
+        int userId = -1;
+        if (cursor.moveToNext()){
+            userId = cursor.getInt(cursor.getColumnIndex(TABLE_USER_KEY_TELEPHONE));
+        }
+        cursor.close();
+        return userId;
+    }
+
+    public void userUpdatePassword(int id, String password){
+        ContentValues cv = new ContentValues();
+        cv.put("password", password);
+        sqliteDataBase.update(TABLE_USER_NAME, cv, "_id" + "=" + id, null);
     }
 
     public void userUpdate(int id, String fullName, String email, String telephone){
