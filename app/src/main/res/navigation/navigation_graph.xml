@@ -25,6 +25,9 @@
             app:argType="com.example.booklyn.entities.User"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_hotelSelectionFragment_to_addNewHotelFragment"
+            app:destination="@id/addNewHotelFragment" />
     </fragment>
 
     <fragment
@@ -293,5 +296,10 @@
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>
+    <fragment
+        android:id="@+id/addNewHotelFragment"
+        android:name="com.example.booklyn.hotel_page.AddNewHotelFragment"
+        android:label="fragment_add_new_hotel"
+        tools:layout="@layout/fragment_add_new_hotel" />
 
 </navigation>

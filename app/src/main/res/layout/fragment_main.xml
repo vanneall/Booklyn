@@ -19,6 +19,21 @@
         android:background="@color/primary_color"
         />
 
+    <TextView
+        android:id="@+id/main_textView_add_new_hotel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+ Добавить отель"
+        android:textSize="17dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/faded_green"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line"/>
+
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"

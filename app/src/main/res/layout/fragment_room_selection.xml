@@ -39,9 +39,9 @@
         android:id="@+id/room_selection_textView_add_new_room"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+Добавить комнату"
-        android:textSize="15dp"
-        android:gravity="right"
+        android:text="+ Добавить комнату"
+        android:textSize="17dp"
+        android:gravity="center"
         android:padding="10dp"
         android:textColor="@color/faded_green"/>
 

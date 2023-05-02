@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -10,7 +9,7 @@
     <ImageView
         android:id="@+id/hotel_list_item_imageView_picture"
         android:layout_width="130dp"
-        android:layout_height="250dp"
+        android:layout_height="245dp"
         android:scaleType="centerCrop"/>
 
     <LinearLayout
@@ -76,13 +75,14 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/hotels_list_item_textView_location"
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Находится тута"
             android:drawablePadding="5dp"
-            android:textSize="@dimen/simple_size"
+            android:textSize="12dp"
             android:drawableLeft="@drawable/geolocation_icon"
             />
 
@@ -138,6 +138,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/chose"/>
+        <Button
+            android:id="@+id/hotel_list_item_button_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Удалить"
+            android:backgroundTint="@color/red"/>
     </LinearLayout>
 
 </LinearLayout>

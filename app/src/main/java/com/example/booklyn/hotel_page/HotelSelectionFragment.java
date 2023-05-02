@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +19,13 @@ import com.example.booklyn.R;
 import com.example.booklyn.adapters.HotelsAdapter;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.User;
+import com.example.booklyn.entities.UserGetter;
 
 import java.util.ArrayList;
 
 public class HotelSelectionFragment extends Fragment {
 
+    UserGetter userGetter;
 
     public interface MainPageController {
         void setMainPage(HotelSelectionFragment hotelSelectionFragment);
@@ -41,6 +45,7 @@ public class HotelSelectionFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mainPageController = (MainPageController) context;
+        userGetter = (UserGetter) context;
     }
 
     @Override
@@ -63,7 +68,7 @@ public class HotelSelectionFragment extends Fragment {
 
         //Список всех отелей
         listViewMainHotels = view.findViewById(R.id.main_listView_hotels);
-        adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageController.getHotels());
+        adapter = new HotelsAdapter(getActivity(), R.layout.hotels_list_item, mainPageController.getHotels(),userGetter.getUser().getID() ==  User.ADMIN_ID);
         listViewMainHotels.setAdapter(adapter);
 
         //Установка компонента сортировщика отелей
@@ -74,12 +79,24 @@ public class HotelSelectionFragment extends Fragment {
         //Кнопка открытия сортировщика
         TextView textViewSort = view.findViewById(R.id.main_textView_sort);
         textViewSort.setOnClickListener(this::clickOpenSort);
+
+        //Кнопка создания нового отеля
+        TextView textViewAddNewHotel = view.findViewById(R.id.main_textView_add_new_hotel);
+        if (((User)getArguments().getParcelable(User.SELECTED_USER)).getID() != User.ADMIN_ID) {
+            textViewAddNewHotel.setVisibility(View.GONE);
+        } else {
+            textViewAddNewHotel.setOnClickListener(this::clickActionToAddNewHotel);
+        }
     }
 
     @Override
     public void onStart() {
         super.onStart();
         dataChanged();
+    }
+
+    private void clickActionToAddNewHotel(View view){
+        Navigation.findNavController(view).navigate(R.id.action_hotelSelectionFragment_to_addNewHotelFragment);
     }
 
     public void dataChanged() {

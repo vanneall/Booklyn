@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".hotel_page.AddNewHotelFragment">
+
+    <FrameLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/add_new_hotel_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/primary_color">
+
+        <TextView
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="57dp"
+            android:layout_marginLeft="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавление отеля"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="casual" />
+
+        <ImageView
+            android:id="@+id/add_new_room_imageView_sign_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sign_back"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"/>
+    </FrameLayout>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/add_new_hotel_title_container"
+        android:id="@+id/add_new_hotel_textView_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Название отеля*" />
+
+    <EditText
+        android:layout_below="@id/add_new_hotel_textView_name"
+        android:layout_marginTop="20dp"
+        android:id="@+id/add_new_hotel_textView_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Местоположение*" />
+
+    <EditText
+        android:layout_below="@id/add_new_hotel_textView_location"
+        android:id="@+id/add_new_hotel_textView_telephone"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Телефон*"
+        android:maxLength="18"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/add_new_hotel_textView_telephone"
+        android:id="@+id/add_new_hotel_textView_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Почта"  />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/add_new_hotel_textView_email"
+        android:id="@+id/add_new_hotel_textView_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Описание*"
+        android:layout_above="@id/add_new_hotel_button_add"
+        android:gravity="top"/>
+
+    <Button
+        android:id="@+id/add_new_hotel_button_add"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить"/>
+
+</RelativeLayout>

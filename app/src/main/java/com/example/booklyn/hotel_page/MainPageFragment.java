@@ -67,6 +67,15 @@ public class MainPageFragment extends Fragment {
         RatingBar ratingBar = view.findViewById(R.id.main_page_ratingBar_rating);
         ratingBar.setRating(hotel.getAvgRate());
 
+        TextView textViewLocation = view.findViewById(R.id.main_page_textView_location);
+        textViewLocation.setText(hotel.getLocation());
+
+        TextView textViewEmail = view.findViewById(R.id.main_page_textView_email);
+        textViewEmail.setText(hotel.getEmail());
+
+        TextView textViewTelephone = view.findViewById(R.id.main_page_textView_telephone);
+        textViewTelephone.setText(hotel.getTelephone());
+
         //Список нескольких комментариев
         ListView listViewFeedbacks = view.findViewById(R.id.main_page_listView_feedbacks);
         RatingAdapter ratingAdapter = new RatingAdapter(getActivity(), R.layout.feedback_list_item, hotel.getRates());

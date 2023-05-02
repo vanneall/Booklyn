@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 
 import com.example.booklyn.R;
+import com.example.booklyn.database_classes.DataBaseHelper;
 import com.example.booklyn.entities.Hotel;
 
 import java.util.List;
@@ -26,11 +27,14 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
 
     private int layout;
 
-    public HotelsAdapter(@NonNull Context context, int resource, @NonNull List<Hotel> objects) {
+    boolean isAdmin;
+
+    public HotelsAdapter(@NonNull Context context, int resource, @NonNull List<Hotel> objects, boolean isAdmin) {
         super(context, resource, objects);
         inflater = LayoutInflater.from(context);
         layout = resource;
         hotels = objects;
+        this.isAdmin = isAdmin;
     }
 
     @Override
@@ -63,6 +67,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         viewHolder.textViewRate.setText(String.valueOf(hotel.getAvgRate()));
         viewHolder.textViewPrice.setText(hotel.getMinPrice() + "₽");
         viewHolder.ratingBar.setRating(hotel.getAvgRate());
+        viewHolder.textViewLocation.setText(hotel.getLocation());
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +76,23 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
                 Navigation.findNavController(view).navigate(R.id.action_hotelSelectionFragment_to_mainPageFragment, bundle);
             }
         });
+
+        if (isAdmin) {
+            viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Hotel.hotels.remove(hotel);
+                    DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
+                    dataBaseHelper.openDataBase();
+                    dataBaseHelper.deleteHotelFromDatabase(hotel);
+                    dataBaseHelper.close();
+                    notifyDataSetChanged();
+                }
+            });
+        } else {
+            viewHolder.buttonDelete.setVisibility(View.GONE);
+        }
+
         return view;
     }
 
@@ -84,6 +106,8 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         final TextView textViewNumberOfFeedbacks;
         final TextView textViewRatingEstimation;
         final Button button;
+        final TextView textViewLocation;
+        final Button buttonDelete;
 
         ViewHolder(View view){
             imageView = view.findViewById(R.id.hotel_list_item_imageView_picture);
@@ -94,6 +118,8 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
             textViewNumberOfFeedbacks = view.findViewById(R.id.hotel_list_item_textView_number_of_feedbacks);
             textViewRatingEstimation = view.findViewById(R.id.hotel_list_item_textView_rating_estimation);
             button = view.findViewById(R.id.hotel_list_item_button_selection_hotel);
+            textViewLocation = view.findViewById(R.id.hotels_list_item_textView_location);
+            buttonDelete = view.findViewById(R.id.hotel_list_item_button_delete);
         }
     }
 }

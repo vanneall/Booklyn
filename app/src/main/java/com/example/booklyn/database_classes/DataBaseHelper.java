@@ -96,6 +96,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_HOTEL_KEY_NAME = "name";
     private static final String TABLE_HOTEL_MAIN_IMAGE_NAME = "mainPicture";
     private static final String TABLE_HOTEL_KEY_INFO = "info";
+    private static final String TABLE_HOTEL_KEY_EMAIL = "email";
+    private static final String TABLE_HOTEL_KEY_TELEPHONE = "telephone";
+    private static final String TABLE_HOTEL_KEY_LOCATION = "location";
+    private static final String TABLE_HOTEL_KEY_MAIN_PICTURE = "mainPicture";
 
     private static final String TABLE_RATE_NAME = "Rate";
     private static final String TABLE_RATE_KEY_RATE = "rate";
@@ -153,7 +157,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_NAME)),
                     cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_INFO)),
                     cursor.getInt(cursor.getColumnIndex(TABLE_HOTEL_MAIN_IMAGE_NAME)),
-                    rates, rooms, images);
+                    rates, rooms, images,
+                    cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_EMAIL)),
+                    cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_TELEPHONE)),
+                    cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_LOCATION)));
             hotels.add(hotel);
         }
         cursor.close();
@@ -185,6 +192,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void deleteRoomFromDatabase(Room room, int hotelID){
         sqliteDataBase.delete(TABLE_ROOM_NAME, "parent_id = ? and info = ? and name = ? and price = ?", new String[]{String.valueOf(hotelID),
         room.getInfo(), room.getName(), String.valueOf(room.getPrice())});
+    }
+
+    public void writeHotelToDatabase(Hotel hotel){
+        ContentValues cv = new ContentValues();
+        cv.put(TABLE_HOTEL_KEY_NAME, hotel.getName());
+        cv.put(TABLE_HOTEL_KEY_INFO, hotel.getInfo());
+        cv.put(TABLE_HOTEL_KEY_MAIN_PICTURE, hotel.getMainPicture());
+        cv.put(TABLE_HOTEL_KEY_TELEPHONE, hotel.getTelephone());
+        cv.put(TABLE_HOTEL_KEY_LOCATION, hotel.getLocation());
+        cv.put(TABLE_HOTEL_KEY_EMAIL, hotel.getEmail());
+        sqliteDataBase.insert(TABLE_HOTEL_NAME, null, cv);
+    }
+
+    public void deleteHotelFromDatabase(Hotel hotel){
+        sqliteDataBase.delete(TABLE_HOTEL_NAME, "_id = ?", new String[]{String.valueOf(hotel.getID())});
+        sqliteDataBase.delete(TABLE_RATE_NAME, "parent_id = ?",new String[]{String.valueOf(hotel.getID())});
+        sqliteDataBase.delete(TABLE_ROOM_NAME, "parent_id = ?",new String[]{String.valueOf(hotel.getID())});
+        sqliteDataBase.delete(TABLE_IMAGES_NAME, "parent_id = ?",new String[]{String.valueOf(hotel.getID())});
     }
 
     @SuppressLint("Range")
