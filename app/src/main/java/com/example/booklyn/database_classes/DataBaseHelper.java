@@ -24,14 +24,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    //The Android's default system path of your application database.
     private static String DB_PATH = "/data/data/com.example.booklyn/databases/";
-    // Data Base Name.
-    private static final String DATABASE_NAME = "booklyn.db";
-    // Data Base Version.
+    private static final String DATABASE_NAME = "new_booklyn.db";
     private static final int DATABASE_VERSION = 1;
-    // Table Names of Data Base.
-    static final String TABLE_Name = "tableName";
 
     public Context context;
     static SQLiteDatabase sqliteDataBase;
