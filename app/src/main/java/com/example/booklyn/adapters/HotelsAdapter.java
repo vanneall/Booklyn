@@ -49,7 +49,7 @@ public class HotelsAdapter extends ArrayAdapter<Hotel> {
         }
 
         Hotel hotel = hotels.get(i);
-        viewHolder.imageView.setImageResource(hotel.getMainPicture());
+        viewHolder.imageView.setImageResource(getContext().getResources().getIdentifier(hotel.getMainPicture(), "drawable", getContext().getPackageName()));
         int num = (int) (hotel.getAvgRate() * 10);
         if (num >= 45) {
             viewHolder.textViewRatingEstimation.setText(view.getResources().getString(R.string.very_good));

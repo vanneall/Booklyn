@@ -41,7 +41,7 @@ public class ViewPagerPhotosFragment extends Fragment {
 
         //Установка пейджера фотографий
         ViewPager2 pager = view.findViewById(R.id.view_pager_photos_viewPager);
-        PhotoViewPagerAdapter adapter = new PhotoViewPagerAdapter(getActivity(), getArguments().getIntegerArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS));
+        PhotoViewPagerAdapter adapter = new PhotoViewPagerAdapter(getActivity(), getArguments().getStringArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS));
         pager.setAdapter(adapter);
 
         //Установка определенной страницы

@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class PhotoViewPagerAdapter extends FragmentStateAdapter {
 
-    ArrayList<Integer> additionalPictures;
+    ArrayList<String> additionalPictures;
 
-    public PhotoViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Integer> additionalPictures) {
+    public PhotoViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<String> additionalPictures) {
         super(fragmentActivity);
         this.additionalPictures = additionalPictures;
     }

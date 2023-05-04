@@ -69,7 +69,7 @@ public class OrderInfoFragment extends Fragment {
 
         //Основная информация на странице
         ImageView imageView = view.findViewById(R.id.order_info_imageView_photo);
-        imageView.setImageResource(hotel.getMainPicture());
+        imageView.setImageResource(getContext().getResources().getIdentifier(hotel.getMainPicture(), "drawable", getContext().getPackageName()));
 
         TextView textViewTitle = view.findViewById(R.id.order_info_textView_title);
         textViewTitle.setText(hotel.getName());

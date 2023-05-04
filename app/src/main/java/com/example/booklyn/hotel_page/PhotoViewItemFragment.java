@@ -19,15 +19,15 @@ import java.util.ArrayList;
 
 public class PhotoViewItemFragment extends Fragment {
 
-    ArrayList<Integer> additionalPictures;
+    ArrayList<String> additionalPictures;
     private int pageNumber;
     private int allPages;
 
-    public static PhotoViewItemFragment newInstance(int page, ArrayList<Integer> pictures) {
+    public static PhotoViewItemFragment newInstance(int page, ArrayList<String> pictures) {
         PhotoViewItemFragment fragment = new PhotoViewItemFragment();
         Bundle args = new Bundle();
         args.putInt(PhotosAdapter.PHOTO_POSITION, page);
-        args.putIntegerArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS, pictures);
+        args.putStringArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS, pictures);
         args.putInt(PhotosAdapter.AMOUNT_OF_PAGES, pictures.size());
         fragment.setArguments(args);
         return fragment;
@@ -36,7 +36,7 @@ public class PhotoViewItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        additionalPictures = getArguments().getIntegerArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS);
+        additionalPictures = getArguments().getStringArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS);
         pageNumber = getArguments().getInt(PhotosAdapter.PHOTO_POSITION);
         allPages = getArguments().getInt(PhotosAdapter.AMOUNT_OF_PAGES);
     }
@@ -52,6 +52,7 @@ public class PhotoViewItemFragment extends Fragment {
 
         //Надпись с выбранной страницей
         ((TextView)view.findViewById(R.id.photo_view_textView_position)).setText((pageNumber + 1) + " из " + allPages);
-        ((ImageView)view.findViewById(R.id.photo_view_imageView_photo)).setImageResource(additionalPictures.get(pageNumber));
+        ((ImageView)view.findViewById(R.id.photo_view_imageView_photo)).setImageResource(
+                getContext().getResources().getIdentifier(additionalPictures.get(pageNumber), "drawable", getContext().getPackageName()));
     }
 }

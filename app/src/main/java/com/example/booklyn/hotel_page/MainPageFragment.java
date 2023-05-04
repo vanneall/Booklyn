@@ -56,7 +56,7 @@ public class MainPageFragment extends Fragment {
         textViewMinPrice.setText("Цена начинается от " + hotel.getMinPrice() + "₽");
 
         ImageView imageViewMain = view.findViewById(R.id.main_page_imageView_photo);
-        imageViewMain.setImageResource(hotel.getMainPicture());
+        imageViewMain.setImageResource(getContext().getResources().getIdentifier(hotel.getMainPicture(), "drawable", getContext().getPackageName()));
 
         TextView textViewAvgRating = view.findViewById(R.id.main_page_textView_avgRating);
         textViewAvgRating.setText(String.valueOf(hotel.getAvgRate()));
@@ -107,7 +107,7 @@ public class MainPageFragment extends Fragment {
 
     private void clickActionToAllPhotos(View view) {
         Bundle bundle = new Bundle();
-        bundle.putIntegerArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS, hotel.getAdditionalPictures());
+        bundle.putStringArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS, hotel.getAdditionalPictures());
         Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_photosFragment, bundle);
     }
 

@@ -152,16 +152,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             // Считваем доп.фотографии отеля
             Cursor cursorAdditionalImages = sqliteDataBase.query(TABLE_IMAGES_NAME, null, "parent_id = ?",
                     new String[]{cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_ID))}, null, null, null);
-            ArrayList<Integer> images = new ArrayList<>();
+            ArrayList<String> images = new ArrayList<>();
             while (cursorAdditionalImages.moveToNext()) {
-                images.add(cursorAdditionalImages.getInt(cursorAdditionalImages.getColumnIndex(TABLE_IMAGES_KEY_PICTIRE)));
+                images.add(cursorAdditionalImages.getString(cursorAdditionalImages.getColumnIndex(TABLE_IMAGES_KEY_PICTIRE)));
             }
             cursorAdditionalImages.close();
             //Создание отеля
             Hotel hotel = new Hotel(cursor.getInt(cursor.getColumnIndex(TABLE_HOTEL_KEY_ID)),
                     cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_NAME)),
                     cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_INFO)),
-                    cursor.getInt(cursor.getColumnIndex(TABLE_HOTEL_MAIN_IMAGE_NAME)),
+                    cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_MAIN_IMAGE_NAME)),
                     rates, rooms, images,
                     cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_EMAIL)),
                     cursor.getString(cursor.getColumnIndex(TABLE_HOTEL_KEY_TELEPHONE)),

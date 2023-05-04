@@ -187,9 +187,8 @@
         tools:layout="@layout/fragment_photos" >
         <argument
             android:name="photos"
-            app:argType="integer[]"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:argType="string[]"
+            app:nullable="true" />
         <action
             android:id="@+id/action_photosFragment_to_viewPagerPhotosFragment"
             app:destination="@id/viewPagerPhotosFragment" />
@@ -231,9 +230,8 @@
         tools:layout="@layout/fragment_view_pager_photos" >
         <argument
             android:name="photos"
-            app:argType="integer[]"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:argType="string[]"
+            app:nullable="true" />
         <argument
             android:name="i"
             app:argType="integer"

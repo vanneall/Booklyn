@@ -1,7 +1,10 @@
 package com.example.booklyn.entities;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.example.booklyn.MainActivity;
 import com.example.booklyn.R;
 
 import androidx.annotation.NonNull;
@@ -32,9 +35,9 @@ public class Hotel implements Parcelable {
     // Цена за отель
     private int minPrice;
     // Главная картинка отеля
-    private int mainPicture;
+    private String mainPicture;
     // Дополнительные фотографии
-    private ArrayList<Integer> additionalPictures;
+    private ArrayList<String> additionalPictures;
 
     public Hotel(String name, String info, String location, String telephone, String email) {
         this.name = name;
@@ -45,15 +48,15 @@ public class Hotel implements Parcelable {
         additionalPictures = new ArrayList<>();
         rates = new ArrayList<>();
         rooms = new ArrayList<>();
-        mainPicture = R.drawable.no_photo;
+        mainPicture = "no_photo";
     }
 
-    public Hotel(int ID, String name, String info, int picture, ArrayList<Rate> rates,
-                 ArrayList<Room> rooms, ArrayList<Integer> images, String email, String telephone, String location) {
+    public Hotel(int ID, String name, String info, String namePicture, ArrayList<Rate> rates,
+                 ArrayList<Room> rooms, ArrayList<String> images, String email, String telephone, String location) {
         this.ID = ID;
         this.name = name;
         this.info = info;
-        this.mainPicture = picture;
+        this.mainPicture = namePicture;
         this.rates = rates;
         this.rooms = rooms;
         resetRate();
@@ -73,7 +76,7 @@ public class Hotel implements Parcelable {
         avgRate = in.readFloat();
         rateCount = in.createIntArray();
         minPrice = in.readInt();
-        mainPicture = in.readInt();
+        mainPicture = in.readString();
     }
 
     public static final Creator<Hotel> CREATOR = new Creator<Hotel>() {
@@ -100,7 +103,7 @@ public class Hotel implements Parcelable {
         return (float)((int)(avgRate*10))/10;
     }
 
-    public int getMainPicture() {
+    public String getMainPicture() {
         return mainPicture;
     }
 
@@ -157,7 +160,7 @@ public class Hotel implements Parcelable {
         return rates;
     }
 
-    public ArrayList<Integer> getAdditionalPictures() {
+    public ArrayList<String> getAdditionalPictures() {
         return additionalPictures;
     }
 
@@ -201,6 +204,6 @@ public class Hotel implements Parcelable {
         parcel.writeFloat(avgRate);
         parcel.writeIntArray(rateCount);
         parcel.writeInt(minPrice);
-        parcel.writeInt(mainPicture);
+        parcel.writeString(mainPicture);
     }
 }

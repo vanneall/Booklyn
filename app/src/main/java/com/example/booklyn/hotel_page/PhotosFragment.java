@@ -31,7 +31,7 @@ public class PhotosFragment extends Fragment {
 
         //Список фотографий
         GridView gridView = view.findViewById(R.id.photos_gridView_photos);
-        PhotosAdapter photosAdapter = new PhotosAdapter(getActivity(), R.layout.photos_list_item, getArguments().getIntegerArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS));
+        PhotosAdapter photosAdapter = new PhotosAdapter(getActivity(), R.layout.photos_list_item, getArguments().getStringArrayList(PhotosAdapter.ALL_HOTEL_PHOTOS));
         gridView.setAdapter(photosAdapter);
     }
 
