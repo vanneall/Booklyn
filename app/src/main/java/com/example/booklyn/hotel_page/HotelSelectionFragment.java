@@ -12,6 +12,7 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.example.booklyn.adapters.HotelsAdapter;
 import com.example.booklyn.entities.Hotel;
 import com.example.booklyn.entities.User;
 import com.example.booklyn.entities.UserGetter;
+import com.example.booklyn.text_watchers.HotelTextWatcher;
 
 import java.util.ArrayList;
 
@@ -58,7 +60,6 @@ public class HotelSelectionFragment extends Fragment {
             mainPageController.setUser(user);
             mainPageController.setMainPage(this);
         }
-
     }
 
     @Override
@@ -92,6 +93,10 @@ public class HotelSelectionFragment extends Fragment {
         } else {
             textViewAddNewHotel.setOnClickListener(this::clickActionToAddNewHotel);
         }
+
+        //Поле для выборки отелей
+        EditText editText = view.findViewById(R.id.main_editText_search_hotel);
+        editText.addTextChangedListener(new HotelTextWatcher(listViewMainHotels, adapter, userGetter.getUser()));
     }
 
     @Override

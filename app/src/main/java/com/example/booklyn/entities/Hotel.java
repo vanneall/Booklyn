@@ -177,6 +177,16 @@ public class Hotel implements Parcelable {
         return telephone;
     }
 
+    public static ArrayList<Hotel> getHotelsByName(String name){
+        ArrayList<Hotel> newHotels = new ArrayList<Hotel>(5);
+        for (int i = 0; i < hotels.size(); i++) {
+            if (hotels.get(i).getName().startsWith(name)){
+                newHotels.add(hotels.get(i));
+            }
+        }
+        return newHotels;
+    }
+
     @Override
     public int describeContents() {
         return 0;

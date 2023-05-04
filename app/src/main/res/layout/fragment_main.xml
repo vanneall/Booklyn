@@ -19,23 +19,24 @@
         android:background="@color/primary_color"
         />
 
-    <TextView
-        android:id="@+id/main_textView_add_new_hotel"
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/main_editText_search_hotel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+ Добавить отель"
-        android:textSize="17dp"
-        android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/faded_green"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/line"/>
+        android:ems="10"
+        android:inputType="text"
+        android:maxLength="25"
+        android:hint="Поиск"
+        android:background="@drawable/search_bar_rectangle"
+        android:drawableLeft="@drawable/search_icon"
+        android:drawablePadding="5dp"/>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -80,6 +81,16 @@
         android:layout_height="wrap_content"
         android:src="@drawable/line"
         android:layout_gravity="bottom"/>
+
+    <TextView
+        android:id="@+id/main_textView_add_new_hotel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="+ Добавить отель"
+        android:textColor="@color/faded_green"
+        android:textSize="17dp" />
 
     <ListView
         android:id="@+id/main_listView_hotels"
