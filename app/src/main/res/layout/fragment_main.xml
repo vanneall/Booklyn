@@ -12,7 +12,7 @@
         android:paddingLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="@string/activity_hotel_selection_title"
+        android:text="@string/hotel_selection_title"
         android:textSize="@dimen/title_size"
         android:textColor="@color/white"
         android:fontFamily="casual"
@@ -30,7 +30,7 @@
         android:ems="10"
         android:inputType="text"
         android:maxLength="25"
-        android:hint="Поиск"
+        android:hint="@string/search"
         android:background="@drawable/search_bar_rectangle"
         android:drawableLeft="@drawable/search_icon"
         android:drawablePadding="5dp"/>
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="+ Добавить отель"
+        android:text="@string/hotel_selection_add_new_hotel"
         android:textColor="@color/faded_green"
         android:textSize="17dp" />
 

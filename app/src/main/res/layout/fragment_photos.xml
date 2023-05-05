@@ -17,7 +17,7 @@
             android:layout_marginLeft="55dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Фотографии"
+            android:text="@string/photos_title"
             android:textSize="18dp"
             android:textColor="@color/white"
             android:fontFamily="casual" />

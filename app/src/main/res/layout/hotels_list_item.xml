@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Цена начинается от"
+            android:text="@string/hotel_item_price_start"
             android:textSize="@dimen/simple_size"
             android:fontFamily="sans-serif-black"
             android:textColor="@color/black"/>
@@ -137,13 +137,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/chose"/>
+            android:text="@string/hotel_item_transef"/>
         <Button
             android:id="@+id/hotel_list_item_button_delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Удалить"
+            android:text="@string/remove"
             android:backgroundTint="@color/red"/>
     </LinearLayout>
 

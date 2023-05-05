@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/title_size"
         android:textColor="@color/white"
-        android:text="Авторизация"
+        android:text="@string/authorization_title"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"/>
 
@@ -31,7 +31,7 @@
             android:layout_marginTop="70dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Номер телефона"
+            android:hint="@string/telephone_number"
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/telephone"
             android:drawablePadding="10dp"
@@ -43,7 +43,7 @@
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Пароль"
+            android:hint="@string/password"
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/lock_sign"
             android:drawablePadding="10dp"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Войти"/>
+            android:text="@string/enter"/>
 
 
         <TextView
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/red"
-            android:text="Забыли пароль?"
+            android:text="@string/authorization_forget_password"
             android:padding="15dp"/>
 
         <TextView
@@ -76,14 +76,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="bottom"
-            android:text="У вас нет учетной записи?"/>
+            android:text="@string/authorization_dont_have_account"/>
 
         <TextView
             android:id="@+id/authorization_textView_create_account"
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Создайте ее"
+            android:text="@string/authorization_create_account"
             android:textColor="@color/lime"
             android:layout_gravity="center_horizontal"/>
 

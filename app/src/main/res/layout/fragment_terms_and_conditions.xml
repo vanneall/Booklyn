@@ -27,7 +27,7 @@
             android:layout_marginLeft="55dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/terms_and_conditions"
+            android:text="@string/settings_terms_and_conditions"
             android:textSize="@dimen/title_size"
             android:textColor="@color/white" />
     </FrameLayout>

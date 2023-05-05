@@ -18,7 +18,7 @@
             android:layout_marginLeft="55dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выберите дату"
+            android:text="@string/trip_date_title"
             android:textSize="18dp"
             android:textColor="@color/white"
             android:fontFamily="casual" />
@@ -51,7 +51,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             style="@style/HotelDataString"
-            android:text="@string/check_in"
+            android:text="@string/trip_date_check_in"
             android:gravity="center"
             android:drawableLeft="@drawable/check_in_icon"/>
 
@@ -75,7 +75,7 @@
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             style="@style/HotelDataString"
-            android:text="@string/check_out"
+            android:text="@string/trip_date_check_out"
             android:gravity="center"
             android:drawableLeft="@drawable/check_out_icon"/>
 
@@ -93,7 +93,7 @@
         android:id="@+id/trip_date_button_apply"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="Выбрать даты"
+        android:text="@string/trip_date_chose_dates"
         android:textSize="@dimen/simple_size" />
 
 </LinearLayout>

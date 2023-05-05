@@ -18,7 +18,7 @@
             android:layout_marginLeft="55dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выберите апартаменты"
+            android:text="@string/room_selection_title"
             android:textSize="18dp"
             android:textColor="@color/white"
             android:fontFamily="casual" />
@@ -39,7 +39,7 @@
         android:id="@+id/room_selection_textView_add_new_room"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+ Добавить комнату"
+        android:text="@string/room_selection_add_new_room"
         android:textSize="17dp"
         android:gravity="center"
         android:padding="10dp"

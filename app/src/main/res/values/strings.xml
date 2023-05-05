@@ -1,78 +1,74 @@
 <resources>
     <string name="app_name">Booklyn</string>
-    <string name="activity_hotel_selection_title">Гостиницы</string>
     <string name="filter">Фильтр</string>
     <string name="sort">Сортировать</string>
-    <string name="chose">Перейти</string>
-    <string name="sort_by_name">По имени</string>
-    <string name="sort_by_price">По цене</string>
-    <string name="sort_by_rate">По рейтингу</string>
-    <string name="in_ascending_order">По возрастанию</string>
-    <string name="in_descending_order">По убыванию</string>
     <plurals name="feedbacks">
         <item quantity="one">отзыв</item>
         <item quantity="two">отзыва</item>
         <item quantity="other">отзывов</item>
     </plurals>
 
+    <!-- Общие надписи -->
+    <string name="apply">Принять</string>
+    <string name="cancel">Отменить</string>
+    <string name="remove">Удалить</string>
+    <string name="add">Добавить</string>
+    <string name="telephone_number">Номер телефона</string>
+    <string name="full_name">ФИО</string>
+    <string name="mail">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="enter">Войти</string>
+    <string name="continu">Продолжить</string>
+    <string name="search">Поиск</string>
+    <string name="location">Местоположение</string>
+    <string name="photos">Фотографии</string>
+    <string name="refresh">Обновить</string>
+    <string name="select">Выбрать</string>
+
+
+    <!-- Окно сортировки -->
+    <string name="sort_by_name">По имени</string>
+    <string name="sort_by_price">По цене</string>
+    <string name="sort_by_rate">По рейтингу</string>
+    <string name="in_ascending_order">По возрастанию</string>
+    <string name="in_descending_order">По убыванию</string>
+
+    <!-- Конвертация рейтинга в текст -->
     <string name="very_good">Очень хорошо</string>
     <string name="good">Хорошо</string>
     <string name="normal">Нормально</string>
     <string name="not_bad">Приемлемо</string>
     <string name="terrible">Ужасно</string>
 
-    <string name="apply">Принять</string>
-    <string name="cancel">Отменить</string>
-
     <!-- Страница выбора отеля -->
-    <string name="hotel_title">Гостиница</string>
-    <string name="review">Описание</string>
-    <string name="services">Услуги</string>
-    <string name="photos_hotel">Фотографии</string>
-    <string name="feedbacks">Отзывы</string>
+    <string name="hotel_selection_title">Отели</string>
+    <string name="hotel_title">Отель</string>
+    <string name="hotel_selection_add_new_hotel">+ Добавить отель</string>
 
-    <!-- Меню услуг отеля -->
-    <string name="place">Местоположение</string>
-    <string name="number">Номер</string>
-    <string name="check_in">Заезд:</string>
-    <string name="check_out">Отъезд:</string>
-    <string name="hotel_room">Номер</string>
-
-    <!-- Бронь -->
-    <string name="book_button">Забронировать</string>
-
-    <!-- Страница с отзывами -->
-    <string name="feedback_title">Отзывы и рейтинг</string>
-    <string name="feedback_add">+ Добавить отзыв</string>
-
-    <!-- Страница с добавлением отзыва -->
-    <string name="feedback_add_feedback">Поставьте оценку</string>
-    <string name="feedback_add_input_msg">Добавьте отзыв</string>
+    <!-- Страница описания отеля -->
+    <string name="hotel_info_select_room">Выбрать комнату</string>
+    <string name="hotel_info_mobile_price">Цена на мобильных устройствах</string>
+    <string name="hotel_info_user_feedbacks">Рейтинги и отзывы пользователей</string>
+    <string name="hotel_info_check_all_feedbacks">+ просмотреть все отзывы</string>
+    <string name="hotel_info_check_all_photos">+ просмотреть все фотографии</string>
 
     <!-- Страница с информацией о брони -->
-    <string name="information_about_order">Информация о заказе</string>
-    <string name="information_room_number">Выбранный тип номера</string>
-    <string name="information_about_room">Информация о номере</string>
-    <string name="information_about_trip_duration">Количество дней</string>
-    <string name="VAT">Налоги и сборы (10%)</string>
-    <string name="result_sum">Итог</string>
+    <string name="order_info_about_order">Информация о заказе</string>
+    <string name="order_info_room_number">Выбранный тип номера</string>
+    <string name="order_info_about_room">Информация о номере</string>
+    <string name="order_info_about_trip_duration">Количество дней</string>
+    <string name="order_info_VAT">Налоги и сборы (10%)</string>
+    <string name="order_info_result_sum">Итог</string>
     <plurals name="days">
         <item quantity="one">день</item>
         <item quantity="few">дня</item>
         <item quantity="other">дней</item>
     </plurals>
-
-    <string name="information_about_customer">Информация о покупателе</string>
-    <string name="full_name">ФИО</string>
-    <string name="mail">Почта</string>
-    <string name="telephone_number">Номер телефона</string>
-
-    <string name="promocode">Промокод</string>
-    <string name="input_invite_promocode">Если у вас есть промо-код, пожалуйста, введите его ниже</string>
-    <string name="input_promo">ПРОМОКОД</string>
-
-    <string name="book">Оформить заказ</string>
-
+    <string name="order_info_about_customer">Информация о покупателе</string>
+    <string name="order_info_promocode">Промокод</string>
+    <string name="order_info_input_invite_promocode">Если у вас есть промо-код, пожалуйста, введите его ниже</string>
+    <string name="order_info_input_promo">ПРОМОКОД</string>
+    <string name="order_info_book">Оформить заказ</string>
 
     <!-- Страница оплаты -->
     <string name="payment_title">Оплата картой</string>
@@ -82,19 +78,34 @@
     <string name="payment_CVV">CVV</string>
     <string name="payment_pay">Оплатить</string>
 
+    <!-- Страница с фотографиями -->
+    <string name="photos_title">Фотографии</string>
+
+    <!-- Страница с отзывами -->
+    <string name="feedback_title">Отзывы и рейтинг</string>
+    <string name="feedback_add">+ Добавить отзыв</string>
+
+    <!-- Страница с добавлением отзыва -->
+    <string name="feedback_add_feedback">Поставьте оценку</string>
+    <string name="feedback_add_input_msg">Добавьте отзыв</string>
+
+    <!-- Страница выбора номера -->
+    <string name="room_selection_title">Выберите апартаменты</string>
+    <string name="room_selection_add_new_room">+ Добавить комнату</string>
+
     <!-- Страница пользователя -->
     <string name="user_profile_title">Профиль</string>
-    <string name="refresh">Обновить</string>
+    <string name="user_profile_check_all_users">все пользователи</string>
 
-    <!-- Страница пользователя -->
+    <!-- Страница настроек -->
     <string name="settings_title">Настройки</string>
-    <string name="notifications">Уведомления</string>
-    <string name="privacy_policy">Политика приватности</string>
-    <string name="terms_and_conditions">Правила и условия</string>
-    <string name="about_the_app">О приложении</string>
-    <string name="support">Поддержка</string>
-    <string name="rate">Оцените Booklyn</string>
-
+    <string name="settings_notifications">Уведомления</string>
+    <string name="settings_privacy_policy">Политика приватности</string>
+    <string name="settings_terms_and_conditions">Правила и условия</string>
+    <string name="settings_about_the_app">О приложении</string>
+    <string name="settings_support">Поддержка</string>
+    <string name="settings_rate">Оцените Booklyn</string>
+    <string name="setting_leave_account">Выйти из аккаунта</string>
     <string name="privacy_policy_text">\t1. Использование Пользователем сайта приложения означает согласие с настоящей Политикой и условиями обработки персональных данных Пользователя.\n
 \t2. В случае несогласия с условиями Политики Пользователь должен прекратить использование приложения.\n
 \t3. Настоящая Политика применяется только к данному приложению. Администрация не контролирует и не несет ответственность за сайты третьих лиц, на которые Пользователь может перейти по ссылкам, доступным в приложении.\n
@@ -112,8 +123,71 @@
 \n\n\t6. Как лицо, делающее Бронирование, вы несете ответственность за действия и поведение (в отношении Туристического продукта) всех членов вашей группы. Вы также несете ответственность за получение согласия от этих лиц, прежде чем предоставлять нам их персональные данные.</string>
     <string name="about_the_app_text">\tРазработано соучередителем компании ..Point Демином Иваном Александровичем. Приложение Booklyn предназначено для бронирования гостиниц, просмотра их рейтинга, фотографий</string>
     <string name="support_text">По всем вопросам и предложениям https://vk.com/vanuuus</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Выбор даты -->
+    <string name="trip_date_title">Выберите дату</string>
+    <string name="trip_date_check_in">Заезд</string>
+    <string name="trip_date_check_out">Выезд</string>
+    <string name="trip_date_chose_dates">Выбрать даты</string>
+
+    <!-- Страница добавления отеля -->
+    <string name="input_hotel_title">Добавление отеля</string>
+    <string name="input_hotel_name">Название отеля*</string>
+    <string name="input_hotel_location">Местоположение*</string>
+    <string name="input_hotel_telephone">Номер телефона*</string>
+    <string name="input_hotel_email">Почта</string>
+    <string name="input_hotel_description">Описание*</string>
+
+    <!-- Страница добавления номера -->
+    <string name="input_room_title">Добавление номера</string>
+    <string name="input_room_name">Название номера*</string>
+    <string name="input_room_price">Цена в ₽*</string>
+
+    <!-- Страница всех пользователей -->
+    <string name="all_users_title">Все пользвователи</string>
+
+    <!-- Страница авторизации -->
+    <string name="authorization_title">Авторизация</string>
+    <string name="authorization_forget_password">Забыли пароль?</string>
+    <string name="authorization_dont_have_account">У вас нет учетной записи?</string>
+    <string name="authorization_create_account">Создайте ее</string>
+
+    <!-- Страница смены пароля -->
+    <string name="change_password_title">Смена пароля</string>
+    <string name="change_password_new_password">Введите новый пароль</string>
+    <string name="change_password_again_new_password">Повторите новый пароль</string>
+    <string name="change_password_input_new_password">Новый пароль</string>
+
+    <!-- Страница восстановления пароля -->
+    <string name="reset_password_title">Восстановление пароля</string>
+    <string name="reset_password_info">Введите ваш номер телефона, и следуйте инструкциям для восстановления вашего пароля</string>
+    <string name="reset_password_remeber_password">Вспомнили пароль?</string>
+    <string name="reset_password_remeber_enter">Войдите в систему</string>
+
+    <!-- Страница регистрации -->
+    <string name="registration_title">Регистрация</string>
+    <string name="registration_input_full_name">ФИО*</string>
+    <string name="registration_input_email">Почта*</string>
+    <string name="registration_input_password">Пароль*</string>
+    <string name="registration_create_account">Создать аккаунт</string>
+    <string name="registration_agreement">Создавая учетную запись, вы соглашаетесь с нашими условиями</string>
+    <string name="registration_already_have_account">У вас уже есть учетная запись?</string>
+
+    <!-- Страница верификации -->
+    <string name="verification_title">Верификация</string>
+    <string name="verification_info">Верификация с помощью мобильного телефона</string>
+    <string name="verification_info_below">Код был отправлено на ваш номер мобильного телефона</string>
+    <string name="verification_dont_have_code">Не получили код?</string>
+    <string name="verification_send_again">Отправить заново</string>
+    <string name="verification_change_number">Изменить номер</string>
+
+    <!-- Элемент отеля -->
+    <string name="hotel_item_price_start">Цена начинается от</string>
+    <string name="hotel_item_transef">Перейти</string>
+
+    <!-- Элемент номера -->
+    <string name="room_item_no_payback">Стоимость не возвращается</string>
+    <string name="roon_item_safe_pay">Безопасная оплата заранее через\nприложение Booklyn</string>
 
 
 </resources>

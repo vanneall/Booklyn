@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/title_size"
         android:textColor="@color/white"
-        android:text="Регистрация"
+        android:text="@string/registration_title"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"/>
 
@@ -31,7 +31,7 @@
             android:layout_marginTop="70dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ФИО*"
+            android:hint="@string/registration_input_full_name"
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/user_icon"
             android:drawablePadding="10dp"
@@ -43,7 +43,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Почта*"
+            android:hint="@string/registration_input_email"
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/email"
             android:drawablePadding="10dp"
@@ -55,7 +55,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Номер телефона*"
+            android:hint="@string/input_hotel_telephone"
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/telephone"
             android:drawablePadding="10dp"
@@ -67,7 +67,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Пароль*"
+            android:hint="@string/registration_input_password"
             android:textSize="@dimen/simple_size"
             android:drawableLeft="@drawable/lock_sign"
             android:drawablePadding="10dp"
@@ -81,14 +81,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Создать аккаунт"/>
+            android:text="@string/registration_create_account"/>
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Создавая учетную запись, вы соглашаетесь с нашими условиями"
+            android:text="@string/registration_agreement"
             android:padding="15dp"
             android:gravity="center"/>
 
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="bottom|center"
-            android:text="У вас уже есть учетная запись?"/>
+            android:text="@string/registration_already_have_account"/>
 
         <TextView
             android:id="@+id/registration_textView_enter_the_system"
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/lime"
-            android:text="Войдите в систему" />
+            android:text="@string/reset_password_remeber_enter" />
 
     </LinearLayout>
 </FrameLayout>

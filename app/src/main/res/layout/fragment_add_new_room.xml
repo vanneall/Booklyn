@@ -19,7 +19,7 @@
             android:layout_marginLeft="55dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Добавление номера"
+            android:text="@string/input_room_title"
             android:textSize="18dp"
             android:textColor="@color/white"
             android:fontFamily="casual" />
@@ -44,7 +44,7 @@
         android:ems="10"
         android:inputType="text"
         android:maxLength="20"
-        android:hint="Название номера*" />
+        android:hint="@string/input_room_name" />
 
     <EditText
         android:layout_below="@id/add_new_room_editText_room_title"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:hint="Цена в ₽*"
+        android:hint="@string/input_room_price"
         android:maxLength="5"/>
 
     <EditText
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:hint="Описание*"
+        android:hint="@string/input_hotel_description"
         android:layout_above="@id/add_new_room_button_apply"
         android:gravity="top"
         android:maxLength="100"/>
@@ -75,6 +75,6 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавить"/>
+        android:text="@string/add"/>
 
 </RelativeLayout>

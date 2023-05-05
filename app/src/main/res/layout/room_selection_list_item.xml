@@ -24,7 +24,7 @@
         android:drawableLeft="@drawable/cancelled_refund_icon"
         android:drawablePadding="5dp"
         android:fontFamily="sans-serif-black"
-        android:text="Стоимость не возвращается"
+        android:text="@string/room_item_no_payback"
         android:textColor="@color/text_color" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/lock_icon"
         android:drawablePadding="5dp"
-        android:text="Безопасная оплата заранее через\nприложение Booklyn"
+        android:text="@string/roon_item_safe_pay"
         android:textColor="@color/text_color" />
 
 
@@ -65,7 +65,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/red"
         android:padding="4dp"
-        android:text="Цена на мобильных устройствах"
+        android:text="@string/hotel_info_mobile_price"
         android:textColor="@color/white"
         android:textSize="13dp" />
 
@@ -86,13 +86,13 @@
         android:id="@+id/room_selection_list_item_button_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Выбрать" />
+        android:text="@string/select" />
 
     <Button
         android:id="@+id/room_selection_list_item_button_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Удалить"
+        android:text="@string/remove"
         android:backgroundTint="@color/red"/>
 
 </LinearLayout>

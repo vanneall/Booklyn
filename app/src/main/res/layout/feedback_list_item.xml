@@ -46,7 +46,7 @@
             android:id="@+id/feedback_list_item_button_delete_feedback"
             android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:text="Удалить"
+            android:text="@string/remove"
             android:backgroundTint="@color/red"
             android:layout_gravity="center"
             android:layout_weight="1"

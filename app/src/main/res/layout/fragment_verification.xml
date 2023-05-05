@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/title_size"
         android:textColor="@color/white"
-        android:text="Верификация"
+        android:text="@string/verification_title"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"/>
 
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Верификация с помощью мобильного телефона"
+            android:text="@string/verification_info"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textAllCaps="true"/>
@@ -38,7 +38,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Код был отправлено на ваш номер мобильного телефона"/>
+            android:text="@string/verification_info_below"/>
 
         <LinearLayout
             android:gravity="center_horizontal"
@@ -88,7 +88,7 @@
             android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Не получили код?"
+            android:text="@string/verification_dont_have_code"
             android:layout_gravity="center_horizontal"/>
 
 
@@ -104,7 +104,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:text="Отправить заново через 30с"
+                android:text="@string/verification_send_again"
                 android:layout_weight="1"
                 android:backgroundTint="@color/faded_green"
                 android:textSize="@dimen/little_size"
@@ -116,7 +116,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:text="Изменить номер"
+                android:text="@string/verification_change_number"
                 android:layout_weight="1"
                 android:backgroundTint="@color/faded_blue"
                 android:textSize="@dimen/little_size"

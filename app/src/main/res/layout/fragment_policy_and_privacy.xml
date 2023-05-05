@@ -28,7 +28,7 @@
             android:layout_marginLeft="55dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/privacy_policy"
+            android:text="@string/settings_privacy_policy"
             android:textSize="@dimen/title_size"
             android:textColor="@color/white" />
     </FrameLayout>
