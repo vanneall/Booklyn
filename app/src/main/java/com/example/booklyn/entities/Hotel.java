@@ -183,7 +183,7 @@ public class Hotel implements Parcelable {
     public static ArrayList<Hotel> getHotelsByName(String name){
         ArrayList<Hotel> newHotels = new ArrayList<Hotel>(5);
         for (int i = 0; i < hotels.size(); i++) {
-            if (hotels.get(i).getName().startsWith(name)){
+            if (hotels.get(i).getName().toLowerCase().contains(name.toLowerCase())){
                 newHotels.add(hotels.get(i));
             }
         }
